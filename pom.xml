@@ -20,7 +20,7 @@
         <jackson.version>2.13.3</jackson.version>
         <svarut-rest-model.version>1.0.0-SNAPSHOT</svarut-rest-model.version>
         <maskinporten-client.version>2.1.0</maskinporten-client.version>
-        <jetty-client.version>9.4.31.v20200723</jetty-client.version>
+        <jetty-client.version>9.4.48.v20220622</jetty-client.version>
     </properties>
 
     <dependencyManagement>
