@@ -34,4 +34,3 @@ class EksternRefKlientV1(
                 }
             }
 }
-
