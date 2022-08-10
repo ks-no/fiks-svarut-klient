@@ -1,17 +1,17 @@
 package no.ks.svarut.klient.forsendelse.typer.v1
 
 import com.fasterxml.jackson.module.kotlin.readValue
+import no.ks.fiks.svarut.forsendelse.typer.model.v1.Forsendelsetyper
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
 import no.ks.svarut.klient.SvarUtKlientException
-import no.ks.svarut.model.forsendelse.typer.v1.Forsendelsetyper
 import org.eclipse.jetty.client.api.Request
 import org.eclipse.jetty.http.HttpMethod
 import java.util.function.Function
 
-private const val BASE_PATH = "tjenester/forsendelse/api/v1/typer"
+private const val BASE_PATH = "/tjenester/api/v2/forsendelsestyper"
 
-class TyperKlientV1(
+class TyperKlientV2(
     baseUrl: String,
     authenticationStrategy: AuthenticationStrategy,
     requestInterceptor: Function<Request, Request>
@@ -19,7 +19,7 @@ class TyperKlientV1(
 
     private fun pathHentForsendelseTyper() = BASE_PATH
 
-    fun hentForsendelseTyper() =
+    fun hentForsendelsestyper(): Set<String> =
         newRequest()
             .method(HttpMethod.GET)
             .path(pathHentForsendelseTyper())

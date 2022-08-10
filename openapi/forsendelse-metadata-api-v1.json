@@ -1,0 +1,175 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "KS SvarUt: Metadata API",
+    "description" : "API for henting av metadata for forsendelser",
+    "contact" : {
+      "name" : "Fiks-brukerstøtte",
+      "url" : "https://ks-no.github.io/",
+      "email" : "fiks-utvikling@ks.no"
+    },
+    "version" : "v1"
+  },
+  "servers" : [ {
+    "url" : "https://api.fiks.ks.no",
+    "description" : "KS Fiks API host",
+    "variables" : { }
+  } ],
+  "tags" : [ {
+    "name" : "Metadata",
+    "description" : "API for henting av metadata for forsendelser"
+  } ],
+  "paths" : {
+    "/api/v2/forsendelser/{forsendelsesId}/metadata" : {
+      "get" : {
+        "tags" : [ "Metadata" ],
+        "description" : "Markerer forsendelse som lest",
+        "operationId" : "hentMetadata",
+        "parameters" : [ {
+          "name" : "forsendelsesId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Metadata for forsendelse",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MetadataList"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Ingen tilgang",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Systemfeil",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Entry" : {
+        "required" : [ "key", "value" ],
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string"
+          },
+          "value" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Metadata" : {
+        "required" : [ "dokumentType", "filnavn", "kanSigneres", "mimeType", "nedlasningUrl", "sha256Hash", "sizeInBytes" ],
+        "type" : "object",
+        "properties" : {
+          "filnavn" : {
+            "type" : "string"
+          },
+          "mimeType" : {
+            "type" : "string"
+          },
+          "dokumentType" : {
+            "type" : "string"
+          },
+          "kanSigneres" : {
+            "type" : "boolean"
+          },
+          "sizeInBytes" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "sha256Hash" : {
+            "type" : "string"
+          },
+          "nedlasningUrl" : {
+            "type" : "string"
+          },
+          "signeringUrl" : {
+            "type" : "string"
+          },
+          "ekstraMetadata" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Entry"
+            }
+          },
+          "inneholderPersonsensitivInformasjon" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "MetadataList" : {
+        "required" : [ "metadata" ],
+        "type" : "object",
+        "properties" : {
+          "metadata" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Metadata"
+            }
+          }
+        }
+      },
+      "ErrorMessage" : {
+        "type" : "object",
+        "properties" : {
+          "timestamp" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "status" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "error" : {
+            "type" : "string"
+          },
+          "errorId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "path" : {
+            "type" : "string"
+          },
+          "originalPath" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "errorCode" : {
+            "type" : "string"
+          },
+          "errorJson" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}

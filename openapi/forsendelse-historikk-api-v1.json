@@ -1,0 +1,212 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "KS SvarUt: Historikk API",
+    "description" : "API for henting av historikk for forsendelse",
+    "contact" : {
+      "name" : "Fiks-brukerstøtte",
+      "url" : "https://ks-no.github.io/",
+      "email" : "fiks-utvikling@ks.no"
+    },
+    "version" : "v2"
+  },
+  "servers" : [ {
+    "url" : "https://api.fiks.ks.no",
+    "description" : "KS Fiks API host",
+    "variables" : { }
+  } ],
+  "tags" : [ {
+    "name" : "Historikk",
+    "description" : "API for henting av historikk for forsendelse"
+  } ],
+  "paths" : {
+    "/api/v2/forsendelser/{forsendelseId}/hendelser" : {
+      "get" : {
+        "tags" : [ "Historikk" ],
+        "description" : "Hendelser på forsendelsen",
+        "operationId" : "hentHendelser",
+        "parameters" : [ {
+          "name" : "forsendelseId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Forsendelse hendelser",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Hendelser"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Ingen tilgang",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Systemfeil",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/forsendelser/{forsendelseId}/signeringshendelser" : {
+      "get" : {
+        "tags" : [ "Historikk" ],
+        "description" : "Signeringshistorikk for forsendelsen",
+        "operationId" : "hentSigneringshistorikk",
+        "parameters" : [ {
+          "name" : "forsendelseId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Signeringshistorikk for forsendelsen",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Signeringshendelser"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Ingen tilgang",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Systemfeil",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Hendelse" : {
+        "required" : [ "hendelse", "tidspunkt" ],
+        "type" : "object",
+        "properties" : {
+          "tidspunkt" : {
+            "type" : "string"
+          },
+          "hendelse" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Hendelser" : {
+        "required" : [ "hendelser" ],
+        "type" : "object",
+        "properties" : {
+          "hendelser" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Hendelse"
+            }
+          }
+        }
+      },
+      "ErrorMessage" : {
+        "type" : "object",
+        "properties" : {
+          "timestamp" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "status" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "error" : {
+            "type" : "string"
+          },
+          "errorId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "path" : {
+            "type" : "string"
+          },
+          "originalPath" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "errorCode" : {
+            "type" : "string"
+          },
+          "errorJson" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Signeringshendelse" : {
+        "required" : [ "hendelse", "status", "tidspunkt" ],
+        "type" : "object",
+        "properties" : {
+          "tidspunkt" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "status" : {
+            "type" : "string",
+            "enum" : [ "AVVIST_AV_SVARUT", "VENTER_SIGNERING", "SIGNERT_AV_MOTTAKER", "AVVIST_AV_MOTTAKER", "UTLOPT" ]
+          },
+          "hendelse" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Signeringshendelser" : {
+        "required" : [ "historikk" ],
+        "type" : "object",
+        "properties" : {
+          "historikk" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Signeringshendelse"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,11 +1,11 @@
 package no.ks.svarut.klient.forsendelse.send.v1
 
 import com.fasterxml.jackson.module.kotlin.readValue
+import no.ks.fiks.svarut.forsendelse.send.model.v1.Forsendelse
+import no.ks.fiks.svarut.forsendelse.send.model.v1.SendForsendelseResponse
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
 import no.ks.svarut.klient.SvarUtKlientException
-import no.ks.svarut.model.forsendelse.send.v1.Forsendelse
-import no.ks.svarut.model.forsendelse.send.v1.SendForsendelseResponse
 import org.eclipse.jetty.client.api.Request
 import org.eclipse.jetty.client.util.InputStreamContentProvider
 import org.eclipse.jetty.client.util.MultiPartContentProvider
@@ -16,15 +16,15 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 import java.util.function.Function
 
-private const val BASE_PATH = "tjenester/forsendelse/api/v1/send"
+private const val BASE_PATH = "/tjenester/api/v2"
 
-class SendKlientV1(
+class SendKlientV2(
     baseUrl: String,
     authenticationStrategy: AuthenticationStrategy,
     requestInterceptor: Function<Request, Request>
 ) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor) {
 
-    private fun pathSend(kontoId: UUID) = "$BASE_PATH/$kontoId/forsendelser/"
+    private fun pathSend(kontoId: UUID) = "$BASE_PATH/kontoer/$kontoId/forsendelser/"
 
     fun send(kontoId: UUID, forsendelse: Forsendelse, dokumenter: Map<String, InputStream>): UUID {
         val multipart = MultiPartContentProvider().also { multipart ->

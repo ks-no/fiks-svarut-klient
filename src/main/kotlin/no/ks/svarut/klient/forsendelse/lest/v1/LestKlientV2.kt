@@ -1,25 +1,25 @@
 package no.ks.svarut.klient.forsendelse.lest.v1
 
 import com.fasterxml.jackson.module.kotlin.readValue
+import no.ks.fiks.svarut.forsendelse.lest.model.v1.LestAv
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
 import no.ks.svarut.klient.SvarUtKlientException
-import no.ks.svarut.model.forsendelse.lest.v1.LestAv
 import org.eclipse.jetty.client.api.Request
 import org.eclipse.jetty.client.util.StringContentProvider
 import org.eclipse.jetty.http.HttpMethod
 import java.util.*
 import java.util.function.Function
 
-private const val BASE_PATH = "tjenester/forsendelse/api/v1/lest"
+private const val BASE_PATH = "/tjenester/api/v2"
 
-class LestKlientV1(
+class LestKlientV2(
     baseUrl: String,
     authenticationStrategy: AuthenticationStrategy,
     requestInterceptor: Function<Request, Request>
 ) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor) {
 
-    private fun pathSettForsendelseLestAvEksterntSystem(forsendelseId: UUID) = "$BASE_PATH/$forsendelseId/lest"
+    private fun pathSettForsendelseLestAvEksterntSystem(forsendelseId: UUID) = "$BASE_PATH/forsendelser/$forsendelseId/lest"
 
     fun settForsendelseLestAvEksterntSystem(forsendelseId: UUID, lestAv: LestAv) {
         return newRequest()
