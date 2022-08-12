@@ -1,4 +1,4 @@
-package no.ks.svarut.klient.forsendelse.lest.v1
+package no.ks.svarut.klient.forsendelse.lest.v2
 
 import com.fasterxml.jackson.module.kotlin.readValue
 import no.ks.fiks.svarut.forsendelse.lest.model.v1.LestAv

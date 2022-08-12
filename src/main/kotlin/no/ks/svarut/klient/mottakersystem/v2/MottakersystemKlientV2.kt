@@ -1,39 +1,39 @@
-package no.ks.svarut.klient.forsendelse.eksternRef.v1
+package no.ks.svarut.klient.mottakersystem.v2
 
 import com.fasterxml.jackson.module.kotlin.readValue
-import no.ks.fiks.svarut.forsendelse.eksternRef.model.v1.EksternRefOppslag
+import no.ks.fiks.svarut.mottakersystem.model.v1.Mottakersystem
+import no.ks.fiks.svarut.mottakersystem.model.v1.Mottakersystemer
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
 import no.ks.svarut.klient.SvarUtKlientException
 import org.eclipse.jetty.client.api.Request
 import org.eclipse.jetty.http.HttpMethod
-import java.util.*
 import java.util.function.Function
 
-private const val BASE_PATH = "/tjenester/api/v2"
+private const val BASE_PATH = "/tjenester/api/v2/mottakersystem"
 
-private const val PARAM_EKSTERN_REF = "eksternRef"
+private const val PARAM_ORGNR = "organisasjonsnummer"
 
-class EksternRefKlientV2(
+class MottakersystemKlientV2(
     baseUrl: String,
     authenticationStrategy: AuthenticationStrategy,
     requestInterceptor: Function<Request, Request>
 ) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor) {
 
-    private fun pathFinnForsendelserKnyttetTilEksternRef(kontoId: UUID) = "$BASE_PATH/kontoer/$kontoId/forsendelser/"
+    private fun pathHentMottakersystemForOrgnr() = BASE_PATH
 
-    fun finnForsendelserKnyttetTilEksternRef(kontoId: UUID, eksternRef: String): List<String> =
+    fun hentMottakersystemForOrgnr(organisasjonsnummer: String): List<Mottakersystem> =
         newRequest()
             .method(HttpMethod.GET)
-            .path(pathFinnForsendelserKnyttetTilEksternRef(kontoId))
-            .param(PARAM_EKSTERN_REF, eksternRef)
+            .path(pathHentMottakersystemForOrgnr())
+            .param(PARAM_ORGNR, organisasjonsnummer)
             .send()
             .let { response ->
                 if (response.status != 200) {
                     throw SvarUtKlientException(objectMapper.readValue(response.contentAsString))
                 } else {
-                    objectMapper.readValue<EksternRefOppslag>(response.contentAsString)
-                        .forsendelseIds
+                    objectMapper.readValue<Mottakersystemer>(response.contentAsString)
+                        .mottakersystemer
                 }
             }
 }

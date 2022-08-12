@@ -1,8 +1,7 @@
-package no.ks.svarut.klient.forsendelse.metadata.v1
+package no.ks.svarut.klient.forsendelse.eksternRef.v2
 
 import com.fasterxml.jackson.module.kotlin.readValue
-import no.ks.fiks.svarut.forsendelse.metadata.model.v1.Metadata
-import no.ks.fiks.svarut.forsendelse.metadata.model.v1.MetadataList
+import no.ks.fiks.svarut.forsendelse.eksternRef.model.v1.EksternRefOppslag
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
 import no.ks.svarut.klient.SvarUtKlientException
@@ -13,25 +12,28 @@ import java.util.function.Function
 
 private const val BASE_PATH = "/tjenester/api/v2"
 
-class MetadataKlientV2(
+private const val PARAM_EKSTERN_REF = "eksternRef"
+
+class EksternRefKlientV2(
     baseUrl: String,
     authenticationStrategy: AuthenticationStrategy,
     requestInterceptor: Function<Request, Request>
 ) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor) {
 
-    private fun pathHentMetadata(forsendelseId: UUID) = "$BASE_PATH/forsendelser/$forsendelseId/metadata"
+    private fun pathFinnForsendelserKnyttetTilEksternRef(kontoId: UUID) = "$BASE_PATH/kontoer/$kontoId/forsendelser/"
 
-    fun hentMetadata(forsendelseId: UUID): List<Metadata> =
+    fun finnForsendelserKnyttetTilEksternRef(kontoId: UUID, eksternRef: String): List<String> =
         newRequest()
             .method(HttpMethod.GET)
-            .path(pathHentMetadata(forsendelseId))
+            .path(pathFinnForsendelserKnyttetTilEksternRef(kontoId))
+            .param(PARAM_EKSTERN_REF, eksternRef)
             .send()
             .let { response ->
                 if (response.status != 200) {
                     throw SvarUtKlientException(objectMapper.readValue(response.contentAsString))
                 } else {
-                    objectMapper.readValue<MetadataList>(response.contentAsString)
-                        .metadata
+                    objectMapper.readValue<EksternRefOppslag>(response.contentAsString)
+                        .forsendelseIds
                 }
             }
 }

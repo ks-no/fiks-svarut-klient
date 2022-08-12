@@ -1,4 +1,4 @@
-package no.ks.svarut.klient.forsendelse.slett.v1
+package no.ks.svarut.klient.forsendelse.slett.v2
 
 import com.fasterxml.jackson.module.kotlin.readValue
 import no.ks.svarut.klient.AuthenticationStrategy

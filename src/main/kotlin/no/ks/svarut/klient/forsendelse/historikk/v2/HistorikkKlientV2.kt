@@ -1,4 +1,4 @@
-package no.ks.svarut.klient.forsendelse.historikk.v1
+package no.ks.svarut.klient.forsendelse.historikk.v2
 
 import com.fasterxml.jackson.module.kotlin.readValue
 import no.ks.fiks.svarut.forsendelse.historikk.model.v1.Hendelse

@@ -11,7 +11,9 @@ class IntegrasjonAuthenticationStrategy(
     private val integrasjonPassord: String,
 ) : AuthenticationStrategy {
     override fun setAuthenticationHeaders(request: Request) {
-        request.header("Authorization", "Bearer ${getAccessToken()}").header("IntegrasjonId", integrasjonId.toString())
+        request
+            .header("Authorization", "Bearer ${getAccessToken()}")
+            .header("IntegrasjonId", integrasjonId.toString())
             .header("IntegrasjonPassord", integrasjonPassord)
     }
 
