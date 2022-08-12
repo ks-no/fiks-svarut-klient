@@ -110,9 +110,11 @@
         }
       },
       "LestAv" : {
+        "required" : [ "lestDato" ],
         "type" : "object",
         "properties" : {
           "lestAvFnr" : {
+            "pattern" : "^[0-9]{11}$",
             "type" : "string"
           },
           "eksterntSystemnavn" : {
