@@ -28,6 +28,7 @@
         "parameters" : [ {
           "name" : "organisasjonsnummer",
           "in" : "query",
+          "required" : true,
           "schema" : {
             "pattern" : "^[0-9]{9}$",
             "type" : "string"
@@ -44,18 +45,8 @@
               }
             }
           },
-          "403" : {
-            "description" : "Ingen tilgang",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          },
-          "500" : {
-            "description" : "Systemfeil",
+          "default" : {
+            "description" : "Feil",
             "content" : {
               "application/json" : {
                 "schema" : {

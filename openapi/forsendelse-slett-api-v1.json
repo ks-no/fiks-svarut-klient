@@ -23,7 +23,7 @@
     "/api/v2/forsendelser/{forsendelseId}/dokumenter" : {
       "delete" : {
         "tags" : [ "Slett" ],
-        "description" : "Sletter alle originaldokumenter knyttet til forsendelse",
+        "description" : "Sletter dokumenter knyttet til forsendelse",
         "operationId" : "slettFiler",
         "parameters" : [ {
           "name" : "forsendelseId",
@@ -43,21 +43,11 @@
           }
         } ],
         "responses" : {
-          "202" : {
-            "description" : "Originaldokumenter slettet"
+          "204" : {
+            "description" : "Dokumenter slettet"
           },
-          "403" : {
-            "description" : "Ingen tilgang",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          },
-          "500" : {
-            "description" : "Systemfeil",
+          "default" : {
+            "description" : "Feil",
             "content" : {
               "application/json" : {
                 "schema" : {

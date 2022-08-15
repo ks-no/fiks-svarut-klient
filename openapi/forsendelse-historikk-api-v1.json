@@ -45,18 +45,8 @@
               }
             }
           },
-          "403" : {
-            "description" : "Ingen tilgang",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          },
-          "500" : {
-            "description" : "Systemfeil",
+          "default" : {
+            "description" : "Feil",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -93,18 +83,8 @@
               }
             }
           },
-          "403" : {
-            "description" : "Ingen tilgang",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          },
-          "500" : {
-            "description" : "Systemfeil",
+          "default" : {
+            "description" : "Feil",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -196,10 +176,10 @@
         }
       },
       "Signeringshendelser" : {
-        "required" : [ "historikk" ],
+        "required" : [ "hendelser" ],
         "type" : "object",
         "properties" : {
-          "historikk" : {
+          "hendelser" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/Signeringshendelse"

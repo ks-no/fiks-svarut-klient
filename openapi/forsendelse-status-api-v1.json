@@ -38,7 +38,7 @@
           "content" : {
             "*/*" : {
               "schema" : {
-                "$ref" : "#/components/schemas/ForsendelseIds"
+                "$ref" : "#/components/schemas/StatusSok"
               }
             }
           },
@@ -46,27 +46,17 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Hent status for flere forsendelser",
+            "description" : "Status for forsendelser",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forsendelsestatuser"
+                  "$ref" : "#/components/schemas/ForsendelseStatuser"
                 }
               }
             }
           },
-          "403" : {
-            "description" : "Ingen tilgang",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          },
-          "500" : {
-            "description" : "Systemfeil",
+          "default" : {
+            "description" : "Feil",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -81,7 +71,7 @@
   },
   "components" : {
     "schemas" : {
-      "Forsendelsestatus" : {
+      "ForsendelseStatus" : {
         "required" : [ "id", "sisteStatusEndring", "status" ],
         "type" : "object",
         "properties" : {
@@ -99,14 +89,14 @@
           }
         }
       },
-      "Forsendelsestatuser" : {
+      "ForsendelseStatuser" : {
         "required" : [ "statuser" ],
         "type" : "object",
         "properties" : {
           "statuser" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/Forsendelsestatus"
+              "$ref" : "#/components/schemas/ForsendelseStatus"
             }
           }
         }
@@ -146,7 +136,7 @@
           }
         }
       },
-      "ForsendelseIds" : {
+      "StatusSok" : {
         "required" : [ "forsendelseIds" ],
         "type" : "object",
         "properties" : {

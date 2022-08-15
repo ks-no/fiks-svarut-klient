@@ -1,7 +1,7 @@
 package no.ks.svarut.klient.forsendelse.typer.v2
 
 import com.fasterxml.jackson.module.kotlin.readValue
-import no.ks.fiks.svarut.forsendelse.typer.model.v1.Forsendelsetyper
+import no.ks.fiks.svarut.forsendelse.typer.model.v1.Forsendelsestyper
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
 import no.ks.svarut.klient.SvarUtKlientException
@@ -28,8 +28,8 @@ class TyperKlientV2(
                 if (response.status != 200) {
                     throw SvarUtKlientException(objectMapper.readValue(response.contentAsString))
                 } else {
-                    objectMapper.readValue<Forsendelsetyper>(response.contentAsString)
-                        .forsendelsetyper
+                    objectMapper.readValue<Forsendelsestyper>(response.contentAsString)
+                        .forsendelsestyper
                 }
             }
 }

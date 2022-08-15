@@ -45,18 +45,8 @@
               }
             }
           },
-          "403" : {
-            "description" : "Ingen tilgang til å sende forsendelse fra konto",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          },
-          "500" : {
-            "description" : "Systemfeil",
+          "default" : {
+            "description" : "Feil",
             "content" : {
               "application/json" : {
                 "schema" : {

@@ -31,23 +31,13 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Forsendelsetyper"
+                  "$ref" : "#/components/schemas/Forsendelsestyper"
                 }
               }
             }
           },
-          "403" : {
-            "description" : "Ingen tilgang",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          },
-          "500" : {
-            "description" : "Systemfeil",
+          "default" : {
+            "description" : "Feil",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -62,11 +52,11 @@
   },
   "components" : {
     "schemas" : {
-      "Forsendelsetyper" : {
-        "required" : [ "forsendelsetyper" ],
+      "Forsendelsestyper" : {
+        "required" : [ "forsendelsestyper" ],
         "type" : "object",
         "properties" : {
-          "forsendelsetyper" : {
+          "forsendelsestyper" : {
             "uniqueItems" : true,
             "type" : "array",
             "items" : {

@@ -48,18 +48,8 @@
           "204" : {
             "description" : "Forsendelse markert som lest"
           },
-          "403" : {
-            "description" : "Ingen tilgang",
-            "content" : {
-              "*/*" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          },
-          "500" : {
-            "description" : "Systemfeil",
+          "default" : {
+            "description" : "Feil",
             "content" : {
               "*/*" : {
                 "schema" : {
@@ -110,19 +100,19 @@
         }
       },
       "LestAv" : {
-        "required" : [ "lestDato" ],
+        "required" : [ "fnr", "tidspunkt" ],
         "type" : "object",
         "properties" : {
-          "lestAvFnr" : {
+          "fnr" : {
             "pattern" : "^[0-9]{11}$",
             "type" : "string"
           },
-          "eksterntSystemnavn" : {
-            "type" : "string"
-          },
-          "lestDato" : {
+          "tidspunkt" : {
             "type" : "string",
             "format" : "date-time"
+          },
+          "eksterntSystemnavn" : {
+            "type" : "string"
           }
         }
       }

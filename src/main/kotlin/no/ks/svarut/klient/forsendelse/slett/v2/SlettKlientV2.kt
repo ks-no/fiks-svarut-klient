@@ -34,7 +34,7 @@ class SlettKlientV2(
             .param(PARAM_SLETTETYPE, slettetype)
             .send()
             .let { response ->
-                if (response.status != 202) {
+                if (response.status != 204) {
                     throw SvarUtKlientException(objectMapper.readValue(response.contentAsString))
                 }
             }

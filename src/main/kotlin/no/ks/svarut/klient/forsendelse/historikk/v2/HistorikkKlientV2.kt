@@ -48,7 +48,7 @@ class HistorikkKlientV2(
                     throw SvarUtKlientException(objectMapper.readValue(response.contentAsString))
                 } else {
                     objectMapper.readValue<Signeringshendelser>(response.contentAsString)
-                        .historikk
+                        .hendelser
                 }
             }
 }

@@ -1,8 +1,8 @@
 package no.ks.svarut.klient.forsendelse.metadata.v2
 
 import com.fasterxml.jackson.module.kotlin.readValue
-import no.ks.fiks.svarut.forsendelse.metadata.model.v1.Metadata
-import no.ks.fiks.svarut.forsendelse.metadata.model.v1.MetadataList
+import no.ks.fiks.svarut.forsendelse.metadata.model.v1.DokumentMetadata
+import no.ks.fiks.svarut.forsendelse.metadata.model.v1.ForsendelseMetadata
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
 import no.ks.svarut.klient.SvarUtKlientException
@@ -21,7 +21,7 @@ class MetadataKlientV2(
 
     private fun pathHentMetadata(forsendelseId: UUID) = "$BASE_PATH/forsendelser/$forsendelseId/metadata"
 
-    fun hentMetadata(forsendelseId: UUID): List<Metadata> =
+    fun hentMetadata(forsendelseId: UUID): List<DokumentMetadata> =
         newRequest()
             .method(HttpMethod.GET)
             .path(pathHentMetadata(forsendelseId))
@@ -30,8 +30,8 @@ class MetadataKlientV2(
                 if (response.status != 200) {
                     throw SvarUtKlientException(objectMapper.readValue(response.contentAsString))
                 } else {
-                    objectMapper.readValue<MetadataList>(response.contentAsString)
-                        .metadata
+                    objectMapper.readValue<ForsendelseMetadata>(response.contentAsString)
+                        .dokumenter
                 }
             }
 }

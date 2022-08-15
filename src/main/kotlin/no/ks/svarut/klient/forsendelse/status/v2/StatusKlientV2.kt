@@ -1,9 +1,9 @@
 package no.ks.svarut.klient.forsendelse.status.v2
 
 import com.fasterxml.jackson.module.kotlin.readValue
-import no.ks.fiks.svarut.forsendelse.status.model.v1.ForsendelseIds
-import no.ks.fiks.svarut.forsendelse.status.model.v1.Forsendelsestatus
-import no.ks.fiks.svarut.forsendelse.status.model.v1.Forsendelsestatuser
+import no.ks.fiks.svarut.forsendelse.status.model.v1.ForsendelseStatus
+import no.ks.fiks.svarut.forsendelse.status.model.v1.ForsendelseStatuser
+import no.ks.fiks.svarut.forsendelse.status.model.v1.StatusSok
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
 import no.ks.svarut.klient.SvarUtKlientException
@@ -23,20 +23,20 @@ class StatusKlientV2(
 
     private fun pathHentStatuser(kontoId: UUID) = "$BASE_PATH/kontoer/$kontoId/forsendelser/status-sok"
 
-    fun hentStatus(kontoId: UUID, forsendelseId: UUID): Forsendelsestatus? =
+    fun hentStatus(kontoId: UUID, forsendelseId: UUID): ForsendelseStatus? =
         hentStatuser(kontoId, listOf(forsendelseId)).singleOrNull()
 
-    fun hentStatuser(kontoId: UUID, forsendelseIds: List<UUID>): List<Forsendelsestatus> =
+    fun hentStatuser(kontoId: UUID, forsendelseIds: List<UUID>): List<ForsendelseStatus> =
         newRequest()
             .method(HttpMethod.POST)
             .path(pathHentStatuser(kontoId))
-            .content(StringContentProvider(objectMapper.writeValueAsString(ForsendelseIds().forsendelseIds(forsendelseIds))), "application/json")
+            .content(StringContentProvider(objectMapper.writeValueAsString(StatusSok().forsendelseIds(forsendelseIds))), "application/json")
             .send()
             .let { response ->
                 if (response.status != 200) {
                     throw SvarUtKlientException(objectMapper.readValue(response.contentAsString))
                 } else {
-                    objectMapper.readValue<Forsendelsestatuser>(response.contentAsString)
+                    objectMapper.readValue<ForsendelseStatuser>(response.contentAsString)
                         .statuser
                 }
             }
