@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>no.ks.fiks</groupId>
-    <artifactId>svarut-rest-klient-v2</artifactId>
+    <artifactId>fiks-svarut-klient</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <properties>
