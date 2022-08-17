@@ -1,10 +1,10 @@
 package no.ks.svarut.klient.forsendelse.historikk.v2
 
 import com.fasterxml.jackson.module.kotlin.readValue
-import no.ks.fiks.svarut.forsendelse.historikk.model.v1.Hendelse
-import no.ks.fiks.svarut.forsendelse.historikk.model.v1.Hendelser
-import no.ks.fiks.svarut.forsendelse.historikk.model.v1.Signeringshendelse
-import no.ks.fiks.svarut.forsendelse.historikk.model.v1.Signeringshendelser
+import no.ks.fiks.svarut.forsendelse.historikk.model.v2.Hendelse
+import no.ks.fiks.svarut.forsendelse.historikk.model.v2.Hendelser
+import no.ks.fiks.svarut.forsendelse.historikk.model.v2.Signeringshendelse
+import no.ks.fiks.svarut.forsendelse.historikk.model.v2.Signeringshendelser
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
 import no.ks.svarut.klient.SvarUtKlientException

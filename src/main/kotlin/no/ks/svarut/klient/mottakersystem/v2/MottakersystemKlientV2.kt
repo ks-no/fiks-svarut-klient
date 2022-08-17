@@ -1,8 +1,8 @@
 package no.ks.svarut.klient.mottakersystem.v2
 
 import com.fasterxml.jackson.module.kotlin.readValue
-import no.ks.fiks.svarut.mottakersystem.model.v1.Mottakersystem
-import no.ks.fiks.svarut.mottakersystem.model.v1.Mottakersystemer
+import no.ks.fiks.svarut.mottakersystem.model.v2.Mottakersystem
+import no.ks.fiks.svarut.mottakersystem.model.v2.Mottakersystemer
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
 import no.ks.svarut.klient.SvarUtKlientException

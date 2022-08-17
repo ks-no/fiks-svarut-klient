@@ -1,14 +1,14 @@
 {
   "openapi" : "3.0.1",
   "info" : {
-    "title" : "KS SvarUt: Lest API",
-    "description" : "API for markering av forsendelser som lest",
+    "title" : "KS SvarUt: Forsendelsetyper API",
+    "description" : "Oppslagstjeneste for forsendelsetyper",
     "contact" : {
       "name" : "Fiks-brukerstøtte",
       "url" : "https://ks-no.github.io/",
       "email" : "fiks-utvikling@ks.no"
     },
-    "version" : "v1"
+    "version" : "v2"
   },
   "servers" : [ {
     "url" : "https://api.fiks.ks.no",
@@ -16,42 +16,30 @@
     "variables" : { }
   } ],
   "tags" : [ {
-    "name" : "Lest",
-    "description" : "API for markering av forsendelser som lest"
+    "name" : "Forsendelsestyper",
+    "description" : "API for henting av forsendelsetyper"
   } ],
   "paths" : {
-    "/api/v2/forsendelser/{forsendelseId}/lest" : {
-      "post" : {
-        "tags" : [ "Lest" ],
-        "description" : "Markerer forsendelse som lest",
-        "operationId" : "settForsendelseLestAvEksterntSystem",
-        "parameters" : [ {
-          "name" : "forsendelseId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string",
-            "format" : "uuid"
-          }
-        } ],
-        "requestBody" : {
-          "content" : {
-            "*/*" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/LestAv"
+    "/api/v2/forsendelsestyper" : {
+      "get" : {
+        "tags" : [ "Forsendelsestyper" ],
+        "description" : "Henter alle forsendelsetyper",
+        "operationId" : "hentForsendelsestyper",
+        "responses" : {
+          "200" : {
+            "description" : "Liste med forsendelsetyper",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Forsendelsestyper"
+                }
               }
             }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "204" : {
-            "description" : "Forsendelse markert som lest"
           },
           "default" : {
             "description" : "Feil",
             "content" : {
-              "*/*" : {
+              "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ErrorMessage"
                 }
@@ -64,6 +52,19 @@
   },
   "components" : {
     "schemas" : {
+      "Forsendelsestyper" : {
+        "required" : [ "forsendelsestyper" ],
+        "type" : "object",
+        "properties" : {
+          "forsendelsestyper" : {
+            "uniqueItems" : true,
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
       "ErrorMessage" : {
         "type" : "object",
         "properties" : {
@@ -95,23 +96,6 @@
             "type" : "string"
           },
           "errorJson" : {
-            "type" : "string"
-          }
-        }
-      },
-      "LestAv" : {
-        "required" : [ "fnr", "tidspunkt" ],
-        "type" : "object",
-        "properties" : {
-          "fnr" : {
-            "pattern" : "^[0-9]{11}$",
-            "type" : "string"
-          },
-          "tidspunkt" : {
-            "type" : "string",
-            "format" : "date-time"
-          },
-          "eksterntSystemnavn" : {
             "type" : "string"
           }
         }

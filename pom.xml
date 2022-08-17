@@ -169,16 +169,16 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi.path}/forsendelse-eksternref-api-v1.json</inputSpec>
+                            <inputSpec>${openapi.path}/forsendelse-eksternref-api-v2.json</inputSpec>
                             <generatorName>java</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
                                 <feignVersion>10.x</feignVersion>
                                 <java8>true</java8>
                             </configOptions>
-                            <modelPackage>${openapi.package-prefix}.forsendelse.eksternRef.model.v1</modelPackage>
-                            <apiPackage>${openapi.package-prefix}.forsendelse.eksternRef.api.v1</apiPackage>
-                            <invokerPackage>${openapi.package-prefix}.forsendelse.eksternRef.invoker.v1</invokerPackage>
+                            <modelPackage>${openapi.package-prefix}.forsendelse.eksternRef.model.v2</modelPackage>
+                            <apiPackage>${openapi.package-prefix}.forsendelse.eksternRef.api.v2</apiPackage>
+                            <invokerPackage>${openapi.package-prefix}.forsendelse.eksternRef.invoker.v2</invokerPackage>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
                             <generateSupportingFiles>true</generateSupportingFiles>
@@ -193,16 +193,16 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi.path}/forsendelse-historikk-api-v1.json</inputSpec>
+                            <inputSpec>${openapi.path}/forsendelse-historikk-api-v2.json</inputSpec>
                             <generatorName>java</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
                                 <feignVersion>10.x</feignVersion>
                                 <java8>true</java8>
                             </configOptions>
-                            <modelPackage>${openapi.package-prefix}.forsendelse.historikk.model.v1</modelPackage>
-                            <apiPackage>${openapi.package-prefix}.forsendelse.historikk.api.v1</apiPackage>
-                            <invokerPackage>${openapi.package-prefix}.forsendelse.historikk.invoker.v1</invokerPackage>
+                            <modelPackage>${openapi.package-prefix}.forsendelse.historikk.model.v2</modelPackage>
+                            <apiPackage>${openapi.package-prefix}.forsendelse.historikk.api.v2</apiPackage>
+                            <invokerPackage>${openapi.package-prefix}.forsendelse.historikk.invoker.v2</invokerPackage>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
                             <generateSupportingFiles>true</generateSupportingFiles>
@@ -217,16 +217,16 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi.path}/forsendelse-lest-api-v1.json</inputSpec>
+                            <inputSpec>${openapi.path}/forsendelse-lest-api-v2.json</inputSpec>
                             <generatorName>java</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
                                 <feignVersion>10.x</feignVersion>
                                 <java8>true</java8>
                             </configOptions>
-                            <modelPackage>${openapi.package-prefix}.forsendelse.lest.model.v1</modelPackage>
-                            <apiPackage>${openapi.package-prefix}.forsendelse.lest.api.v1</apiPackage>
-                            <invokerPackage>${openapi.package-prefix}.forsendelse.lest.invoker.v1</invokerPackage>
+                            <modelPackage>${openapi.package-prefix}.forsendelse.lest.model.v2</modelPackage>
+                            <apiPackage>${openapi.package-prefix}.forsendelse.lest.api.v2</apiPackage>
+                            <invokerPackage>${openapi.package-prefix}.forsendelse.lest.invoker.v2</invokerPackage>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
                             <generateSupportingFiles>true</generateSupportingFiles>
@@ -241,16 +241,16 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi.path}/forsendelse-metadata-api-v1.json</inputSpec>
+                            <inputSpec>${openapi.path}/forsendelse-metadata-api-v2.json</inputSpec>
                             <generatorName>java</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
                                 <feignVersion>10.x</feignVersion>
                                 <java8>true</java8>
                             </configOptions>
-                            <modelPackage>${openapi.package-prefix}.forsendelse.metadata.model.v1</modelPackage>
-                            <apiPackage>${openapi.package-prefix}.forsendelse.metadata.api.v1</apiPackage>
-                            <invokerPackage>${openapi.package-prefix}.forsendelse.metadata.invoker.v1</invokerPackage>
+                            <modelPackage>${openapi.package-prefix}.forsendelse.metadata.model.v2</modelPackage>
+                            <apiPackage>${openapi.package-prefix}.forsendelse.metadata.api.v2</apiPackage>
+                            <invokerPackage>${openapi.package-prefix}.forsendelse.metadata.invoker.v2</invokerPackage>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
                             <generateSupportingFiles>true</generateSupportingFiles>
@@ -265,16 +265,16 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi.path}/forsendelse-send-api-v1.json</inputSpec>
+                            <inputSpec>${openapi.path}/forsendelse-send-api-v2.json</inputSpec>
                             <generatorName>java</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
                                 <feignVersion>10.x</feignVersion>
                                 <java8>true</java8>
                             </configOptions>
-                            <modelPackage>${openapi.package-prefix}.forsendelse.send.model.v1</modelPackage>
-                            <apiPackage>${openapi.package-prefix}.forsendelse.send.api.v1</apiPackage>
-                            <invokerPackage>${openapi.package-prefix}.forsendelse.send.invoker.v1</invokerPackage>
+                            <modelPackage>${openapi.package-prefix}.forsendelse.send.model.v2</modelPackage>
+                            <apiPackage>${openapi.package-prefix}.forsendelse.send.api.v2</apiPackage>
+                            <invokerPackage>${openapi.package-prefix}.forsendelse.send.invoker.v2</invokerPackage>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
                             <generateSupportingFiles>true</generateSupportingFiles>
@@ -289,16 +289,16 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi.path}/forsendelse-slett-api-v1.json</inputSpec>
+                            <inputSpec>${openapi.path}/forsendelse-slett-api-v2.json</inputSpec>
                             <generatorName>java</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
                                 <feignVersion>10.x</feignVersion>
                                 <java8>true</java8>
                             </configOptions>
-                            <modelPackage>${openapi.package-prefix}.forsendelse.slett.model.v1</modelPackage>
-                            <apiPackage>${openapi.package-prefix}.forsendelse.slett.api.v1</apiPackage>
-                            <invokerPackage>${openapi.package-prefix}.forsendelse.slett.invoker.v1</invokerPackage>
+                            <modelPackage>${openapi.package-prefix}.forsendelse.slett.model.v2</modelPackage>
+                            <apiPackage>${openapi.package-prefix}.forsendelse.slett.api.v2</apiPackage>
+                            <invokerPackage>${openapi.package-prefix}.forsendelse.slett.invoker.v2</invokerPackage>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
                             <generateSupportingFiles>true</generateSupportingFiles>
@@ -313,16 +313,16 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi.path}/forsendelse-status-api-v1.json</inputSpec>
+                            <inputSpec>${openapi.path}/forsendelse-status-api-v2.json</inputSpec>
                             <generatorName>java</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
                                 <feignVersion>10.x</feignVersion>
                                 <java8>true</java8>
                             </configOptions>
-                            <modelPackage>${openapi.package-prefix}.forsendelse.status.model.v1</modelPackage>
-                            <apiPackage>${openapi.package-prefix}.forsendelse.status.api.v1</apiPackage>
-                            <invokerPackage>${openapi.package-prefix}.forsendelse.status.invoker.v1</invokerPackage>
+                            <modelPackage>${openapi.package-prefix}.forsendelse.status.model.v2</modelPackage>
+                            <apiPackage>${openapi.package-prefix}.forsendelse.status.api.v2</apiPackage>
+                            <invokerPackage>${openapi.package-prefix}.forsendelse.status.invoker.v2</invokerPackage>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
                             <generateSupportingFiles>true</generateSupportingFiles>
@@ -337,16 +337,16 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi.path}/forsendelse-typer-api-v1.json</inputSpec>
+                            <inputSpec>${openapi.path}/forsendelse-typer-api-v2.json</inputSpec>
                             <generatorName>java</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
                                 <feignVersion>10.x</feignVersion>
                                 <java8>true</java8>
                             </configOptions>
-                            <modelPackage>${openapi.package-prefix}.forsendelse.typer.model.v1</modelPackage>
-                            <apiPackage>${openapi.package-prefix}.forsendelse.typer.api.v1</apiPackage>
-                            <invokerPackage>${openapi.package-prefix}.forsendelse.typer.invoker.v1</invokerPackage>
+                            <modelPackage>${openapi.package-prefix}.forsendelse.typer.model.v2</modelPackage>
+                            <apiPackage>${openapi.package-prefix}.forsendelse.typer.api.v2</apiPackage>
+                            <invokerPackage>${openapi.package-prefix}.forsendelse.typer.invoker.v2</invokerPackage>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
                             <generateSupportingFiles>true</generateSupportingFiles>
@@ -361,16 +361,16 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi.path}/mottakersystem-api-v1.json</inputSpec>
+                            <inputSpec>${openapi.path}/mottakersystem-api-v2.json</inputSpec>
                             <generatorName>java</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
                                 <feignVersion>10.x</feignVersion>
                                 <java8>true</java8>
                             </configOptions>
-                            <modelPackage>${openapi.package-prefix}.mottakersystem.model.v1</modelPackage>
-                            <apiPackage>${openapi.package-prefix}.mottakersystem.api.v1</apiPackage>
-                            <invokerPackage>${openapi.package-prefix}.mottakersystem.invoker.v1</invokerPackage>
+                            <modelPackage>${openapi.package-prefix}.mottakersystem.model.v2</modelPackage>
+                            <apiPackage>${openapi.package-prefix}.mottakersystem.api.v2</apiPackage>
+                            <invokerPackage>${openapi.package-prefix}.mottakersystem.invoker.v2</invokerPackage>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
                             <generateSupportingFiles>true</generateSupportingFiles>

@@ -1,7 +1,7 @@
 package no.ks.svarut.klient.forsendelse.lest.v2
 
 import com.fasterxml.jackson.module.kotlin.readValue
-import no.ks.fiks.svarut.forsendelse.lest.model.v1.LestAv
+import no.ks.fiks.svarut.forsendelse.lest.model.v2.LestAv
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
 import no.ks.svarut.klient.SvarUtKlientException

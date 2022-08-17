@@ -1,14 +1,14 @@
 {
   "openapi" : "3.0.1",
   "info" : {
-    "title" : "KS SvarUt: Mottakersystem-API",
-    "description" : "API henting av mottakersystem",
+    "title" : "KS SvarUt: Ekstern referanse-oppslag",
+    "description" : "Oppslagstjeneste for eksterne referanser",
     "contact" : {
       "name" : "Fiks-brukerstøtte",
       "url" : "https://ks-no.github.io/",
       "email" : "fiks-utvikling@ks.no"
     },
-    "version" : "v1"
+    "version" : "v2"
   },
   "servers" : [ {
     "url" : "https://api.fiks.ks.no",
@@ -16,31 +16,38 @@
     "variables" : { }
   } ],
   "tags" : [ {
-    "name" : "Mottakersystem",
-    "description" : "API henting av mottakersystem"
+    "name" : "EksternRef",
+    "description" : "API for henting av forsendelser knyttet til ekstern ref"
   } ],
   "paths" : {
-    "/api/v2/mottakersystem" : {
+    "/api/v2/kontoer/{kontoId}/forsendelser" : {
       "get" : {
-        "tags" : [ "Mottakersystem" ],
-        "description" : "Henter mottakersystem tilknyttet et orgnummer",
-        "operationId" : "hentMottakersystemForOrgnr",
+        "tags" : [ "EksternRef" ],
+        "description" : "Henter status for forsendelse",
+        "operationId" : "finnForsendelserKnyttetTilEksternRef",
         "parameters" : [ {
-          "name" : "organisasjonsnummer",
+          "name" : "kontoId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "eksternRef",
           "in" : "query",
           "required" : true,
           "schema" : {
-            "pattern" : "^[0-9]{9}$",
             "type" : "string"
           }
         } ],
         "responses" : {
           "200" : {
-            "description" : "Mottakersystem knyttet til orgnummer",
+            "description" : "Id for forsendelser knyttet til ekstern ref",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Mottakersystemer"
+                  "$ref" : "#/components/schemas/EksternRefOppslag"
                 }
               }
             }
@@ -61,36 +68,14 @@
   },
   "components" : {
     "schemas" : {
-      "Mottakersystem" : {
-        "required" : [ "forsendelseType", "mottakerId", "mottakersystem", "niva", "organisasjonsnummer" ],
+      "EksternRefOppslag" : {
+        "required" : [ "forsendelseIds" ],
         "type" : "object",
         "properties" : {
-          "organisasjonsnummer" : {
-            "type" : "string"
-          },
-          "forsendelseType" : {
-            "type" : "string"
-          },
-          "mottakersystem" : {
-            "type" : "string"
-          },
-          "mottakerId" : {
-            "type" : "string"
-          },
-          "niva" : {
-            "type" : "integer",
-            "format" : "int32"
-          }
-        }
-      },
-      "Mottakersystemer" : {
-        "required" : [ "mottakersystemer" ],
-        "type" : "object",
-        "properties" : {
-          "mottakersystemer" : {
+          "forsendelseIds" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/Mottakersystem"
+              "type" : "string"
             }
           }
         }

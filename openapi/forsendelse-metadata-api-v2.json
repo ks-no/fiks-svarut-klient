@@ -8,7 +8,7 @@
       "url" : "https://ks-no.github.io/",
       "email" : "fiks-utvikling@ks.no"
     },
-    "version" : "v1"
+    "version" : "v2"
   },
   "servers" : [ {
     "url" : "https://api.fiks.ks.no",

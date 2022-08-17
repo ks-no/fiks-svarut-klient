@@ -1,8 +1,8 @@
 package no.ks.svarut.klient.forsendelse.metadata.v2
 
 import com.fasterxml.jackson.module.kotlin.readValue
-import no.ks.fiks.svarut.forsendelse.metadata.model.v1.DokumentMetadata
-import no.ks.fiks.svarut.forsendelse.metadata.model.v1.ForsendelseMetadata
+import no.ks.fiks.svarut.forsendelse.metadata.model.v2.DokumentMetadata
+import no.ks.fiks.svarut.forsendelse.metadata.model.v2.ForsendelseMetadata
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
 import no.ks.svarut.klient.SvarUtKlientException

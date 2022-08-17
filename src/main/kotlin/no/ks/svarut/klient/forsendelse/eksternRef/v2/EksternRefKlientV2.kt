@@ -1,7 +1,7 @@
 package no.ks.svarut.klient.forsendelse.eksternRef.v2
 
 import com.fasterxml.jackson.module.kotlin.readValue
-import no.ks.fiks.svarut.forsendelse.eksternRef.model.v1.EksternRefOppslag
+import no.ks.fiks.svarut.forsendelse.eksternRef.model.v2.EksternRefOppslag
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
 import no.ks.svarut.klient.SvarUtKlientException
