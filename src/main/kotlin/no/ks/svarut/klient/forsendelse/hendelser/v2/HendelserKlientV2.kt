@@ -1,10 +1,10 @@
-package no.ks.svarut.klient.forsendelse.historikk.v2
+package no.ks.svarut.klient.forsendelse.hendelser.v2
 
 import com.fasterxml.jackson.module.kotlin.readValue
-import no.ks.fiks.svarut.forsendelse.historikk.model.v2.Hendelse
-import no.ks.fiks.svarut.forsendelse.historikk.model.v2.Hendelser
-import no.ks.fiks.svarut.forsendelse.historikk.model.v2.Signeringshendelse
-import no.ks.fiks.svarut.forsendelse.historikk.model.v2.Signeringshendelser
+import no.ks.fiks.svarut.forsendelse.hendelser.model.v2.Hendelse
+import no.ks.fiks.svarut.forsendelse.hendelser.model.v2.Hendelser
+import no.ks.fiks.svarut.forsendelse.hendelser.model.v2.Signeringshendelse
+import no.ks.fiks.svarut.forsendelse.hendelser.model.v2.Signeringshendelser
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
 import no.ks.svarut.klient.SvarUtKlientException
@@ -15,7 +15,7 @@ import java.util.function.Function
 
 private const val BASE_PATH = "/tjenester/api/v2/forsendelser"
 
-class HistorikkKlientV2(
+class HendelserKlientV2(
     baseUrl: String,
     authenticationStrategy: AuthenticationStrategy,
     requestInterceptor: Function<Request, Request>
