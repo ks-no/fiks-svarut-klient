@@ -16,7 +16,7 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 import java.util.function.Function
 
-private const val BASE_PATH = "/tjenester/api/v2"
+private const val BASE_PATH = "/api/v2"
 
 class SendKlientV2(
     baseUrl: String,

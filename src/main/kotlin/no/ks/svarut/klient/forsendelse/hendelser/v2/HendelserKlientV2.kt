@@ -13,7 +13,7 @@ import org.eclipse.jetty.http.HttpMethod
 import java.util.*
 import java.util.function.Function
 
-private const val BASE_PATH = "/tjenester/api/v2/forsendelser"
+private const val BASE_PATH = "/api/v2/forsendelser"
 
 class HendelserKlientV2(
     baseUrl: String,

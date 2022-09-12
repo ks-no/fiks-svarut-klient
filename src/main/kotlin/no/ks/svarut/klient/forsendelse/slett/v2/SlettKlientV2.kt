@@ -9,7 +9,7 @@ import org.eclipse.jetty.http.HttpMethod
 import java.util.*
 import java.util.function.Function
 
-private const val BASE_PATH = "/tjenester/api/v2"
+private const val BASE_PATH = "/api/v2"
 
 private const val PARAM_SLETTETYPE = "slettetype"
 private const val SLETTETYPE_ORIGINALDOKUMENTER = "ORIGINALDOKUMENTER"
