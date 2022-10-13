@@ -18,7 +18,7 @@
         <java.version>11</java.version>
         <kotlin.code.style>official</kotlin.code.style>
 
-        <jackson.version>2.13.4</jackson.version>
+        <jackson.version>2.13.4.20221012</jackson.version>
         <maskinporten-client.version>2.1.2</maskinporten-client.version>
         <jetty-client.version>9.4.49.v20220914</jetty-client.version>
 
