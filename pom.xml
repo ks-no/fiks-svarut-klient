@@ -25,7 +25,7 @@
         <!-- OpenAPI -->
         <openapi.path>${project.basedir}/openapi</openapi.path>
         <openapi.package-prefix>${project.groupId}.svarut</openapi.package-prefix>
-        <swagger-annotations.version>1.6.8</swagger-annotations.version>
+        <swagger-annotations.version>1.6.9</swagger-annotations.version>
         <feign.version>12.0</feign.version>
         <feign-form.version>3.8.0</feign-form.version>
         <scribejava.version>8.3.2</scribejava.version>
