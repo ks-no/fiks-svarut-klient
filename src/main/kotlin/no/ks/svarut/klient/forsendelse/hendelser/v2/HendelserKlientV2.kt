@@ -45,7 +45,7 @@ class HendelserKlientV2(
             .send()
             .let { response ->
                 if (response.status != 200) {
-                    throw SvarUtKlientException(objectMapper.readValue(response.contentAsString))
+                    throw objectMapper.bodyToException(response.contentAsString)
                 } else {
                     objectMapper.readValue<Signeringshendelser>(response.contentAsString)
                         .hendelser
