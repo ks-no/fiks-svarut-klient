@@ -20,7 +20,7 @@
 
         <jackson.version>2.14.2</jackson.version>
         <maskinporten-client.version>2.1.5</maskinporten-client.version>
-        <jetty-client.version>9.4.49.v20220914</jetty-client.version>
+        <jetty-client.version>9.4.50.v20221201</jetty-client.version>
 
         <!-- OpenAPI -->
         <openapi.path>${project.basedir}/openapi</openapi.path>
