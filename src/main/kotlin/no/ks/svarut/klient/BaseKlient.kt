@@ -3,6 +3,7 @@ package no.ks.svarut.klient
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
+import com.fasterxml.jackson.module.kotlin.readValue
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import org.eclipse.jetty.client.HttpClient
 import org.eclipse.jetty.client.api.Request
@@ -43,5 +44,11 @@ abstract class BaseKlient(
         } catch (e: Exception) {
             throw RuntimeException(e)
         }
+    }
+
+    fun ObjectMapper.bodyToException(body: String): Exception = try {
+        SvarUtKlientException(objectMapper.readValue(body))
+    } catch (e: Exception) {
+        RuntimeException("Uventet feil. Response body: $body")
     }
 }
