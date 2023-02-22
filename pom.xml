@@ -29,7 +29,7 @@
         <feign.version>12.1</feign.version>
         <feign-form.version>3.8.0</feign-form.version>
         <scribejava.version>8.3.3</scribejava.version>
-        <jackson-databind-nullable.version>0.2.5</jackson-databind-nullable.version>
+        <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
         <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
         <jsr305.version>3.0.2</jsr305.version>
     </properties>
