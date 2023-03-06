@@ -2,6 +2,7 @@ package no.ks.svarut.klient
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
@@ -22,7 +23,8 @@ abstract class BaseKlient(
     internal val objectMapper = ObjectMapper()
         .registerKotlinModule()
         .registerModule(JavaTimeModule())
-        .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+        .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+        .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
 
     init {
         try {
