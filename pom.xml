@@ -19,7 +19,7 @@
         <kotlin.code.style>official</kotlin.code.style>
 
         <jackson.version>2.14.2</jackson.version>
-        <maskinporten-client.version>2.1.5</maskinporten-client.version>
+        <maskinporten-client.version>3.0.0</maskinporten-client.version>
         <jetty-client.version>9.4.51.v20230217</jetty-client.version>
 
         <!-- OpenAPI -->
