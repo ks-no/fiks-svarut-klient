@@ -1,10 +1,9 @@
 package no.ks.svarut.klient.forsendelse.eksternRef.v2
 
 import com.fasterxml.jackson.module.kotlin.readValue
-import no.ks.fiks.svarut.forsendelse.eksternRef.model.v2.EksternRefOppslag
+import no.ks.fiks.svarut.forsendelse.eksternRef.model.v2.EksternRefOppslagResponse
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
-import no.ks.svarut.klient.SvarUtKlientException
 import org.eclipse.jetty.client.api.Request
 import org.eclipse.jetty.http.HttpMethod
 import java.util.*
@@ -32,7 +31,7 @@ class EksternRefKlientV2(
                 if (response.status != 200) {
                     throw objectMapper.bodyToException(response.contentAsString)
                 } else {
-                    objectMapper.readValue<EksternRefOppslag>(response.contentAsString)
+                    objectMapper.readValue<EksternRefOppslagResponse>(response.contentAsString)
                         .forsendelseIds
                 }
             }
