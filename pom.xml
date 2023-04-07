@@ -26,7 +26,7 @@
         <openapi.path>${project.basedir}/openapi</openapi.path>
         <openapi.package-prefix>${project.groupId}.svarut</openapi.package-prefix>
         <swagger-annotations.version>1.6.10</swagger-annotations.version>
-        <feign.version>12.2</feign.version>
+        <feign.version>12.3</feign.version>
         <feign-form.version>3.8.0</feign-form.version>
         <scribejava.version>8.3.3</scribejava.version>
         <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
