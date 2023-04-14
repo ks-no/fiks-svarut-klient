@@ -8,6 +8,8 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import org.eclipse.jetty.client.HttpClient
 import org.eclipse.jetty.client.api.Request
+import org.eclipse.jetty.client.dynamic.HttpClientTransportDynamic
+import org.eclipse.jetty.io.ClientConnector
 import org.eclipse.jetty.util.ssl.SslContextFactory
 import java.io.Closeable
 import java.util.function.Function
@@ -19,7 +21,12 @@ abstract class BaseKlient(
     private val requestInterceptor: Function<Request, Request>
 ) : Closeable {
 
-    internal val client = HttpClient(SslContextFactory.Client())
+    internal val client = HttpClient(
+        HttpClientTransportDynamic(
+            ClientConnector()
+                .apply { sslContextFactory = SslContextFactory.Client() }
+        )
+    )
     internal val objectMapper = ObjectMapper()
         .registerKotlinModule()
         .registerModule(JavaTimeModule())
