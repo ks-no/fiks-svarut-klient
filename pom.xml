@@ -25,7 +25,7 @@
         <!-- OpenAPI -->
         <openapi.path>${project.basedir}/openapi</openapi.path>
         <openapi.package-prefix>${project.groupId}.svarut</openapi.package-prefix>
-        <feign.version>12.3</feign.version>
+        <feign.version>13.1</feign.version>
         <feign-form.version>3.8.0</feign-form.version>
         <jakarta.annotation-api.version>2.1.1</jakarta.annotation-api.version>
     </properties>
