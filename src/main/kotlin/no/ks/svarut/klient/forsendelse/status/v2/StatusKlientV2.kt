@@ -6,9 +6,8 @@ import no.ks.fiks.svarut.forsendelse.status.model.v2.ForsendelseStatuser
 import no.ks.fiks.svarut.forsendelse.status.model.v2.StatusSok
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
-import no.ks.svarut.klient.SvarUtKlientException
-import org.eclipse.jetty.client.api.Request
-import org.eclipse.jetty.client.util.StringContentProvider
+import org.eclipse.jetty.client.Request
+import org.eclipse.jetty.client.StringRequestContent
 import org.eclipse.jetty.http.HttpMethod
 import java.util.*
 import java.util.function.Function
@@ -30,7 +29,7 @@ class StatusKlientV2(
         newRequest()
             .method(HttpMethod.POST)
             .path(pathHentStatuser(kontoId))
-            .content(StringContentProvider(objectMapper.writeValueAsString(StatusSok().forsendelseIds(forsendelseIds))), "application/json")
+            .body(StringRequestContent("application/json", objectMapper.writeValueAsString(StatusSok().forsendelseIds(forsendelseIds))))
             .send()
             .let { response ->
                 if (response.status != 200) {

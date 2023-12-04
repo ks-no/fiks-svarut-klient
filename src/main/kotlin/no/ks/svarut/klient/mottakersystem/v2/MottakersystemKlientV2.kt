@@ -5,8 +5,7 @@ import no.ks.fiks.svarut.mottakersystem.model.v2.Mottakersystem
 import no.ks.fiks.svarut.mottakersystem.model.v2.Mottakersystemer
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
-import no.ks.svarut.klient.SvarUtKlientException
-import org.eclipse.jetty.client.api.Request
+import org.eclipse.jetty.client.Request
 import org.eclipse.jetty.http.HttpMethod
 import java.util.function.Function
 

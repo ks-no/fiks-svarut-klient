@@ -4,7 +4,7 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import no.ks.fiks.svarut.forsendelse.eksternRef.model.v2.EksternRefOppslagResponse
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
-import org.eclipse.jetty.client.api.Request
+import org.eclipse.jetty.client.Request
 import org.eclipse.jetty.http.HttpMethod
 import java.util.*
 import java.util.function.Function
