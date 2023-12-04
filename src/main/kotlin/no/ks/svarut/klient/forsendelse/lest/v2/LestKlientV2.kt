@@ -1,12 +1,10 @@
 package no.ks.svarut.klient.forsendelse.lest.v2
 
-import com.fasterxml.jackson.module.kotlin.readValue
 import no.ks.fiks.svarut.forsendelse.lest.model.v2.LestAv
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
-import no.ks.svarut.klient.SvarUtKlientException
-import org.eclipse.jetty.client.api.Request
-import org.eclipse.jetty.client.util.StringContentProvider
+import org.eclipse.jetty.client.Request
+import org.eclipse.jetty.client.StringRequestContent
 import org.eclipse.jetty.http.HttpMethod
 import java.util.*
 import java.util.function.Function
@@ -25,7 +23,7 @@ class LestKlientV2(
         return newRequest()
             .method(HttpMethod.POST)
             .path(pathSettForsendelseLestAvEksterntSystem(forsendelseId))
-            .content(StringContentProvider(objectMapper.writeValueAsString(lestAv)), "application/json")
+            .body(StringRequestContent("application/json", objectMapper.writeValueAsString(lestAv)))
             .send()
             .let { response ->
                 if (response.status != 204) {

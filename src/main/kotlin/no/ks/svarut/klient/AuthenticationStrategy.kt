@@ -1,6 +1,7 @@
 package no.ks.svarut.klient
 
-import org.eclipse.jetty.client.api.Request
+import org.eclipse.jetty.client.Request
+
 
 interface AuthenticationStrategy {
     fun setAuthenticationHeaders(request: Request)

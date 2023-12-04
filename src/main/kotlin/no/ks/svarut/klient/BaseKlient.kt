@@ -7,8 +7,8 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import org.eclipse.jetty.client.HttpClient
-import org.eclipse.jetty.client.api.Request
-import org.eclipse.jetty.client.dynamic.HttpClientTransportDynamic
+import org.eclipse.jetty.client.Request
+import org.eclipse.jetty.client.transport.HttpClientTransportDynamic
 import org.eclipse.jetty.io.ClientConnector
 import org.eclipse.jetty.util.ssl.SslContextFactory
 import java.io.Closeable
