@@ -8,13 +8,13 @@ Klient for REST-APIer som benytter autentisering via Maskinporten, som beskrevet
 
 API-dokumentasjon finnes [her](https://developers.fiks.ks.no/tjenester/svarut/restv2/).
 
-### Prerequisites
+### Major-versjoner
 
-| Client version | JDK version | Jetty client version |
-|----------------|-------------|----------------------|
-| 1.x.x          | 11          | 9                    |
-| 2.x.x          | 17          | 11                   |
-| 3.x.x          | 17          | 12                   |
+| Klientversjon | JDK-versjon | Jetty klientversjon |
+|---------------|-------------|---------------------|
+| 1.x.x         | 11          | 9                   |
+| 2.x.x         | 17          | 11                  |
+| 3.x.x         | 17          | 12                  |
 
 #### Maven dependency
 
