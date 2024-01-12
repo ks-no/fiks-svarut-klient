@@ -4,6 +4,10 @@
 ![GitHub Release Date](https://img.shields.io/github/release-date/ks-no/fiks-svarut-klient.svg)
 ![GitHub Last Commit](https://img.shields.io/github/last-commit/ks-no/fiks-svarut-klient.svg)
 
+Klient for REST-APIer som benytter autentisering via Maskinporten, som beskrevet [her](https://developers.fiks.ks.no/felles/integrasjoner/).
+
+API-dokumentasjon finnes [her](https://developers.fiks.ks.no/tjenester/svarut/restv2/).
+
 ### Prerequisites
 
 | Client version | JDK version | Jetty client version |
