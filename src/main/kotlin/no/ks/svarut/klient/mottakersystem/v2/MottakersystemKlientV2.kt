@@ -11,7 +11,9 @@ import java.util.function.Function
 
 private const val BASE_PATH = "/api/v2/mottakersystem"
 
-private const val PARAM_ORGNR = "organisasjonsnummer"
+private const val PARAM_ORGANISASJONSNUMMER = "organisasjonsnummer"
+private const val PARAM_FORSENDELSE_TYPE = "forsendelseType"
+private const val PARAM_NIVA = "niva"
 
 class MottakersystemKlientV2(
     baseUrl: String,
@@ -21,11 +23,19 @@ class MottakersystemKlientV2(
 
     private fun pathHentMottakersystemForOrgnr() = BASE_PATH
 
-    fun hentMottakersystemForOrgnr(organisasjonsnummer: String): List<Mottakersystem> =
+    fun hentMottakersystem(
+        organisasjonsnummer: String? = null,
+        forsendelseType: String? = null,
+        niva: Int? = null,
+    ): List<Mottakersystem> =
         newRequest()
             .method(HttpMethod.GET)
             .path(pathHentMottakersystemForOrgnr())
-            .param(PARAM_ORGNR, organisasjonsnummer)
+            .also { request ->
+                organisasjonsnummer?.run { request.param(PARAM_ORGANISASJONSNUMMER, this) }
+                forsendelseType?.run { request.param(PARAM_FORSENDELSE_TYPE, this) }
+                niva?.run { request.param(PARAM_NIVA, this.toString()) }
+            }
             .send()
             .let { response ->
                 if (response.status != 200) {
