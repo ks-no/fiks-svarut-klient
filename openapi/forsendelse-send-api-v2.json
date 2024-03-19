@@ -97,7 +97,7 @@
             "description" : "Land. Ikke nødvendig å sette for norske adresser."
           }
         },
-        "description" : "Mottaker det skal sendes til dersom man ønsker å svare på forsendelsen."
+        "description" : "Dersom feltet settes må full postadresse være utfylt. Dette er adressen det skal sendes til dersom man ønsker å svare på forsendelsen. En eventuell adresse som fylles inn her vil overstyre adressen fra avsenderens forsidekonfigurasjon. Den vil også fremkomme på forsiden av brevet dersom forsendelsen sendes i posten."
       },
       "Dokument" : {
         "required" : [ "filnavn", "mimeType" ],
@@ -293,7 +293,7 @@
           "sakssekvensnummer" : {
             "type" : "integer",
             "description" : "Noark 5 sakssekvensnummer",
-            "format" : "int32"
+            "format" : "int64"
           },
           "saksaar" : {
             "type" : "integer",
@@ -316,18 +316,6 @@
           "tittel" : {
             "type" : "string",
             "description" : "Noark 5 tittel"
-          },
-          "mappeId" : {
-            "type" : "string",
-            "description" : "Noark 5 mappeId"
-          },
-          "systemId" : {
-            "type" : "string",
-            "description" : "Noark 5 systemId"
-          },
-          "registreringsId" : {
-            "type" : "string",
-            "description" : "Noark 5 registreringsId"
           }
         },
         "description" : "Noark 5-metadata som stemmer med mottakende system. Kan brukes til å legge dokumentet på rett sak."
@@ -338,7 +326,7 @@
           "sakssekvensnummer" : {
             "type" : "integer",
             "description" : "Noark 5 sakssekvensnummer",
-            "format" : "int32"
+            "format" : "int64"
           },
           "saksaar" : {
             "type" : "integer",
@@ -353,12 +341,12 @@
           "journalsekvensnummer" : {
             "type" : "integer",
             "description" : "Noark 5 journalsekvensnummer",
-            "format" : "int32"
+            "format" : "int64"
           },
           "journalpostnummer" : {
             "type" : "integer",
             "description" : "Noark 5 journalpostnummer",
-            "format" : "int32"
+            "format" : "int64"
           },
           "journalposttype" : {
             "type" : "string",
