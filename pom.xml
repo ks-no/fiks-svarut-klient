@@ -27,7 +27,7 @@
         <openapi.package-prefix>${project.groupId}.svarut</openapi.package-prefix>
         <feign.version>13.2.1</feign.version>
         <feign-form.version>3.8.0</feign-form.version>
-        <jakarta.annotation-api.version>2.1.1</jakarta.annotation-api.version>
+        <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
     </properties>
 
     <dependencyManagement>
