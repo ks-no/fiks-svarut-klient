@@ -25,8 +25,6 @@
         <!-- OpenAPI -->
         <openapi.path>${project.basedir}/openapi</openapi.path>
         <openapi.package-prefix>${project.groupId}.svarut</openapi.package-prefix>
-        <feign.version>13.3</feign.version>
-        <feign-form.version>3.8.0</feign-form.version>
         <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
     </properties>
 
@@ -44,6 +42,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+        </dependency>
+        <dependency>
             <groupId>no.ks.fiks</groupId>
             <artifactId>maskinporten-spring-boot-client</artifactId>
             <version>${maskinporten-client.version}</version>
@@ -53,10 +55,18 @@
             <artifactId>jetty-client</artifactId>
             <version>${jetty-client.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>${jakarta.annotation-api.version}</version>
+        </dependency>
         <dependency>
             <groupId>io.github.microutils</groupId>
             <artifactId>kotlin-logging-jvm</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
@@ -66,44 +76,6 @@
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-kotlin</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
-        </dependency>
-
-        <!-- OpenAPI -->
-        <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-core</artifactId>
-            <version>${feign.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-jackson</artifactId>
-            <version>${feign.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-slf4j</artifactId>
-            <version>${feign.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-okhttp</artifactId>
-            <version>${feign.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.openfeign.form</groupId>
-            <artifactId>feign-form</artifactId>
-            <version>${feign-form.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.annotation</groupId>
-            <artifactId>jakarta.annotation-api</artifactId>
-            <version>${jakarta.annotation-api.version}</version>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -127,6 +99,10 @@
                         <goals>
                             <goal>compile</goal>
                         </goals>
+                        <configuration>
+                            <sourceDirs>src/main/kotlin</sourceDirs>
+                            <sourceDirs>target/generated-sources/openapi</sourceDirs>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -142,21 +118,16 @@
                         <phase>generate-sources</phase>
                         <configuration>
                             <inputSpec>${openapi.path}/forsendelse-eksternref-api-v2.json</inputSpec>
-                            <generatorName>java</generatorName>
+                            <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
-                                <feignVersion>10.x</feignVersion>
-                                <java8>true</java8>
-                                <useJakartaEe>true</useJakartaEe>
-                                <openApiNullable>false</openApiNullable>
+                                <serializationLibrary>jackson</serializationLibrary>
                             </configOptions>
                             <modelPackage>${openapi.package-prefix}.forsendelse.eksternRef.model.v2</modelPackage>
-                            <apiPackage>${openapi.package-prefix}.forsendelse.eksternRef.api.v2</apiPackage>
-                            <invokerPackage>${openapi.package-prefix}.forsendelse.eksternRef.invoker.v2</invokerPackage>
+                            <generateApis>false</generateApis>
+                            <generateSupportingFiles>false</generateSupportingFiles>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
-                            <generateSupportingFiles>true</generateSupportingFiles>
-                            <library>feign</library>
                             <addCompileSourceRoot>true</addCompileSourceRoot>
                         </configuration>
                     </execution>
@@ -168,21 +139,16 @@
                         <phase>generate-sources</phase>
                         <configuration>
                             <inputSpec>${openapi.path}/forsendelse-hendelser-api-v2.json</inputSpec>
-                            <generatorName>java</generatorName>
+                            <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
-                                <feignVersion>10.x</feignVersion>
-                                <java8>true</java8>
-                                <useJakartaEe>true</useJakartaEe>
-                                <openApiNullable>false</openApiNullable>
+                                <serializationLibrary>jackson</serializationLibrary>
                             </configOptions>
                             <modelPackage>${openapi.package-prefix}.forsendelse.hendelser.model.v2</modelPackage>
-                            <apiPackage>${openapi.package-prefix}.forsendelse.hendelser.api.v2</apiPackage>
-                            <invokerPackage>${openapi.package-prefix}.forsendelse.hendelser.invoker.v2</invokerPackage>
+                            <generateApis>false</generateApis>
+                            <generateSupportingFiles>false</generateSupportingFiles>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
-                            <generateSupportingFiles>true</generateSupportingFiles>
-                            <library>feign</library>
                             <addCompileSourceRoot>true</addCompileSourceRoot>
                         </configuration>
                     </execution>
@@ -194,21 +160,16 @@
                         <phase>generate-sources</phase>
                         <configuration>
                             <inputSpec>${openapi.path}/forsendelse-lest-api-v2.json</inputSpec>
-                            <generatorName>java</generatorName>
+                            <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
-                                <feignVersion>10.x</feignVersion>
-                                <java8>true</java8>
-                                <useJakartaEe>true</useJakartaEe>
-                                <openApiNullable>false</openApiNullable>
+                                <serializationLibrary>jackson</serializationLibrary>
                             </configOptions>
                             <modelPackage>${openapi.package-prefix}.forsendelse.lest.model.v2</modelPackage>
-                            <apiPackage>${openapi.package-prefix}.forsendelse.lest.api.v2</apiPackage>
-                            <invokerPackage>${openapi.package-prefix}.forsendelse.lest.invoker.v2</invokerPackage>
+                            <generateApis>false</generateApis>
+                            <generateSupportingFiles>false</generateSupportingFiles>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
-                            <generateSupportingFiles>true</generateSupportingFiles>
-                            <library>feign</library>
                             <addCompileSourceRoot>true</addCompileSourceRoot>
                         </configuration>
                     </execution>
@@ -220,21 +181,16 @@
                         <phase>generate-sources</phase>
                         <configuration>
                             <inputSpec>${openapi.path}/forsendelse-metadata-api-v2.json</inputSpec>
-                            <generatorName>java</generatorName>
+                            <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
-                                <feignVersion>10.x</feignVersion>
-                                <java8>true</java8>
-                                <useJakartaEe>true</useJakartaEe>
-                                <openApiNullable>false</openApiNullable>
+                                <serializationLibrary>jackson</serializationLibrary>
                             </configOptions>
                             <modelPackage>${openapi.package-prefix}.forsendelse.metadata.model.v2</modelPackage>
-                            <apiPackage>${openapi.package-prefix}.forsendelse.metadata.api.v2</apiPackage>
-                            <invokerPackage>${openapi.package-prefix}.forsendelse.metadata.invoker.v2</invokerPackage>
+                            <generateApis>false</generateApis>
+                            <generateSupportingFiles>false</generateSupportingFiles>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
-                            <generateSupportingFiles>true</generateSupportingFiles>
-                            <library>feign</library>
                             <addCompileSourceRoot>true</addCompileSourceRoot>
                         </configuration>
                     </execution>
@@ -246,21 +202,16 @@
                         <phase>generate-sources</phase>
                         <configuration>
                             <inputSpec>${openapi.path}/forsendelse-send-api-v2.json</inputSpec>
-                            <generatorName>java</generatorName>
+                            <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
-                                <feignVersion>10.x</feignVersion>
-                                <java8>true</java8>
-                                <useJakartaEe>true</useJakartaEe>
-                                <openApiNullable>false</openApiNullable>
+                                <serializationLibrary>jackson</serializationLibrary>
                             </configOptions>
                             <modelPackage>${openapi.package-prefix}.forsendelse.send.model.v2</modelPackage>
-                            <apiPackage>${openapi.package-prefix}.forsendelse.send.api.v2</apiPackage>
-                            <invokerPackage>${openapi.package-prefix}.forsendelse.send.invoker.v2</invokerPackage>
+                            <generateApis>false</generateApis>
+                            <generateSupportingFiles>false</generateSupportingFiles>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
-                            <generateSupportingFiles>true</generateSupportingFiles>
-                            <library>feign</library>
                             <addCompileSourceRoot>true</addCompileSourceRoot>
                         </configuration>
                     </execution>
@@ -272,21 +223,16 @@
                         <phase>generate-sources</phase>
                         <configuration>
                             <inputSpec>${openapi.path}/forsendelse-slett-api-v2.json</inputSpec>
-                            <generatorName>java</generatorName>
+                            <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
-                                <feignVersion>10.x</feignVersion>
-                                <java8>true</java8>
-                                <useJakartaEe>true</useJakartaEe>
-                                <openApiNullable>false</openApiNullable>
+                                <serializationLibrary>jackson</serializationLibrary>
                             </configOptions>
                             <modelPackage>${openapi.package-prefix}.forsendelse.slett.model.v2</modelPackage>
-                            <apiPackage>${openapi.package-prefix}.forsendelse.slett.api.v2</apiPackage>
-                            <invokerPackage>${openapi.package-prefix}.forsendelse.slett.invoker.v2</invokerPackage>
+                            <generateApis>false</generateApis>
+                            <generateSupportingFiles>false</generateSupportingFiles>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
-                            <generateSupportingFiles>true</generateSupportingFiles>
-                            <library>feign</library>
                             <addCompileSourceRoot>true</addCompileSourceRoot>
                         </configuration>
                     </execution>
@@ -298,21 +244,16 @@
                         <phase>generate-sources</phase>
                         <configuration>
                             <inputSpec>${openapi.path}/forsendelse-status-api-v2.json</inputSpec>
-                            <generatorName>java</generatorName>
+                            <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
-                                <feignVersion>10.x</feignVersion>
-                                <java8>true</java8>
-                                <useJakartaEe>true</useJakartaEe>
-                                <openApiNullable>false</openApiNullable>
+                                <serializationLibrary>jackson</serializationLibrary>
                             </configOptions>
                             <modelPackage>${openapi.package-prefix}.forsendelse.status.model.v2</modelPackage>
-                            <apiPackage>${openapi.package-prefix}.forsendelse.status.api.v2</apiPackage>
-                            <invokerPackage>${openapi.package-prefix}.forsendelse.status.invoker.v2</invokerPackage>
+                            <generateApis>false</generateApis>
+                            <generateSupportingFiles>false</generateSupportingFiles>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
-                            <generateSupportingFiles>true</generateSupportingFiles>
-                            <library>feign</library>
                             <addCompileSourceRoot>true</addCompileSourceRoot>
                         </configuration>
                     </execution>
@@ -324,21 +265,16 @@
                         <phase>generate-sources</phase>
                         <configuration>
                             <inputSpec>${openapi.path}/forsendelse-typer-api-v2.json</inputSpec>
-                            <generatorName>java</generatorName>
+                            <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
-                                <feignVersion>10.x</feignVersion>
-                                <java8>true</java8>
-                                <useJakartaEe>true</useJakartaEe>
-                                <openApiNullable>false</openApiNullable>
+                                <serializationLibrary>jackson</serializationLibrary>
                             </configOptions>
                             <modelPackage>${openapi.package-prefix}.forsendelse.typer.model.v2</modelPackage>
-                            <apiPackage>${openapi.package-prefix}.forsendelse.typer.api.v2</apiPackage>
-                            <invokerPackage>${openapi.package-prefix}.forsendelse.typer.invoker.v2</invokerPackage>
+                            <generateApis>false</generateApis>
+                            <generateSupportingFiles>false</generateSupportingFiles>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
-                            <generateSupportingFiles>true</generateSupportingFiles>
-                            <library>feign</library>
                             <addCompileSourceRoot>true</addCompileSourceRoot>
                         </configuration>
                     </execution>
@@ -350,21 +286,16 @@
                         <phase>generate-sources</phase>
                         <configuration>
                             <inputSpec>${openapi.path}/mottakersystem-api-v2.json</inputSpec>
-                            <generatorName>java</generatorName>
+                            <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
-                                <feignVersion>10.x</feignVersion>
-                                <java8>true</java8>
-                                <useJakartaEe>true</useJakartaEe>
-                                <openApiNullable>false</openApiNullable>
+                                <serializationLibrary>jackson</serializationLibrary>
                             </configOptions>
                             <modelPackage>${openapi.package-prefix}.mottakersystem.model.v2</modelPackage>
-                            <apiPackage>${openapi.package-prefix}.mottakersystem.api.v2</apiPackage>
-                            <invokerPackage>${openapi.package-prefix}.mottakersystem.invoker.v2</invokerPackage>
+                            <generateApis>false</generateApis>
+                            <generateSupportingFiles>false</generateSupportingFiles>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
-                            <generateSupportingFiles>true</generateSupportingFiles>
-                            <library>feign</library>
                             <addCompileSourceRoot>true</addCompileSourceRoot>
                         </configuration>
                     </execution>
