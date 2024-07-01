@@ -29,7 +29,7 @@ class StatusKlientV2(
         newRequest()
             .method(HttpMethod.POST)
             .path(pathHentStatuser(kontoId))
-            .body(StringRequestContent("application/json", objectMapper.writeValueAsString(StatusSok().forsendelseIds(forsendelseIds))))
+            .body(StringRequestContent("application/json", objectMapper.writeValueAsString(StatusSok(forsendelseIds))))
             .send()
             .let { response ->
                 if (response.status != 200) {
