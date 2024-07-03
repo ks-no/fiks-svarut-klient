@@ -155,7 +155,7 @@
         "description" : "Forsendelsens dokumenter. Innsendt rekkefølge overholdes i generert brev. Total filstørrelse inntil 350 MB er støttet dersom forsendelsen skal kunne gå til print."
       },
       "Forsendelse" : {
-        "required" : [ "dokumenter", "mottaker", "tittel" ],
+        "required" : [ "mottaker", "tittel" ],
         "type" : "object",
         "properties" : {
           "mottaker" : {
