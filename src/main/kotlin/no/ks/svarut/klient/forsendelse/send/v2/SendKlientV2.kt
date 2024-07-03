@@ -69,7 +69,7 @@ class SendKlientV2(
                 dokumentnavn = it.filnavn,
                 data = dokumentnavnTilData[it.filnavn] ?: throw MissingDataException("Fant ikke input stream for dokument ${it.filnavn}")
             )
-        }?: throw MissingDataException("Feltet dokumenter kan ikke være null")
+        }
     }
 
     private fun MultiPartRequestContent.addDokument(dokumentnavn: String, data: InputStream) {
