@@ -21,6 +21,7 @@
         <jackson.version>2.17.2</jackson.version>
         <maskinporten-client.version>3.3.1</maskinporten-client.version>
         <jetty-client.version>12.0.11</jetty-client.version>
+        <fiksporten-klient.version>1.0.5</fiksporten-klient.version>
 
         <!-- OpenAPI -->
         <openapi.path>${project.basedir}/openapi</openapi.path>
@@ -49,6 +50,11 @@
             <groupId>no.ks.fiks</groupId>
             <artifactId>maskinporten-spring-boot-client</artifactId>
             <version>${maskinporten-client.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>no.ks.fiks</groupId>
+            <artifactId>fiksporten-klient</artifactId>
+            <version>${fiksporten-klient.version}</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
