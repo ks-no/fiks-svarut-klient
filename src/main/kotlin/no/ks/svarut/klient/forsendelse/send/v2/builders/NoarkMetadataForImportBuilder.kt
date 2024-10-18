@@ -1,10 +1,8 @@
 package no.ks.svarut.klient.forsendelse.send.v2.builders
 
-import no.ks.fiks.svarut.forsendelse.send.model.v2.Metadata
-import no.ks.fiks.svarut.forsendelse.send.model.v2.NoarkMetadataFraAvleverendeSaksSystem
-import java.time.OffsetDateTime
+import no.ks.fiks.svarut.forsendelse.send.model.v2.NoarkMetadataForImport
 
-class NoarkMetadataFraAvleverendeSaksSystemBuilder {
+class NoarkMetadataForImportBuilder {
 
     private var mappeId: String? = null
     private var mappeSystemId: String? = null
@@ -17,11 +15,8 @@ class NoarkMetadataFraAvleverendeSaksSystemBuilder {
     private var journalsekvensnummer: Long? = null
     private var journalposttype: String? = null
     private var journalstatus: String? = null
-    private var journaldato: OffsetDateTime? = null
-    private var dokumentetsDato: OffsetDateTime? = null
+    private var dokumentetsDato: java.time.OffsetDateTime? = null
     private var tittel: String? = null
-    private var saksbehandler: String? = null
-    private var ekstraMetadata: List<Metadata>? = null
 
     fun mappeId(mappeId: String?) = apply { this.mappeId = mappeId }
     fun mappeSystemId(mappeSystemId: String?) = apply { this.mappeSystemId = mappeSystemId }
@@ -34,13 +29,10 @@ class NoarkMetadataFraAvleverendeSaksSystemBuilder {
     fun journalsekvensnummer(journalsekvensnummer: Long?) = apply { this.journalsekvensnummer = journalsekvensnummer }
     fun journalposttype(journalposttype: String?) = apply { this.journalposttype = journalposttype }
     fun journalstatus(journalstatus: String?) = apply { this.journalstatus = journalstatus }
-    fun journaldato(journaldato: OffsetDateTime?) = apply { this.journaldato = journaldato }
-    fun dokumentetsDato(dokumentetsDato: OffsetDateTime?) = apply { this.dokumentetsDato = dokumentetsDato }
+    fun dokumentetsDato(dokumentetsDato: java.time.OffsetDateTime?) = apply { this.dokumentetsDato = dokumentetsDato }
     fun tittel(tittel: String?) = apply { this.tittel = tittel }
-    fun saksbehandler(saksbehandler: String?) = apply { this.saksbehandler = saksbehandler }
-    fun ekstraMetadata(ekstraMetadata: List<Metadata>?) = apply { this.ekstraMetadata = ekstraMetadata }
 
-    fun build() = NoarkMetadataFraAvleverendeSaksSystem(
+    fun build() = NoarkMetadataForImport(
         mappeId = mappeId,
         mappeSystemId = mappeSystemId,
         saksaar = saksaar,
@@ -52,11 +44,8 @@ class NoarkMetadataFraAvleverendeSaksSystemBuilder {
         journalsekvensnummer = journalsekvensnummer,
         journalposttype = journalposttype,
         journalstatus = journalstatus,
-        journaldato = journaldato,
         dokumentetsDato = dokumentetsDato,
-        tittel = tittel,
-        saksbehandler = saksbehandler,
-        ekstraMetadata = ekstraMetadata
+        tittel = tittel
     )
 
 }
