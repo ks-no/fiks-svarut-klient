@@ -7,10 +7,10 @@ class DokumentBuilder {
     private var ekstraMetadata: List<no.ks.fiks.svarut.forsendelse.send.model.v2.Metadata>? = null
     private var filnavn: String? = null
     private var giroarkSider: Set<Int>? = null
-    private var inneholderPersonsensitivInformasjon: Boolean? = null
+    private var inneholderPersonsensitivInformasjon: Boolean? = false
     private var mimeType: String? = null
-    private var skalEkskluderesFraUtskrift: Boolean? = null
-    private var skalSigneres: Boolean? = null
+    private var skalEkskluderesFraUtskrift: Boolean? = false
+    private var skalSigneres: Boolean? = false
 
     fun dokumentType(dokumentType: String?) = apply { this.dokumentType = dokumentType }
     fun ekstraMetadata(ekstraMetadata: List<no.ks.fiks.svarut.forsendelse.send.model.v2.Metadata>?) = apply { this.ekstraMetadata = ekstraMetadata }

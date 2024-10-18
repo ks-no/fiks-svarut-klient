@@ -1,6 +1,8 @@
 package no.ks.svarut.klient.forsendelse.send.v2.builders
 
 import no.ks.fiks.svarut.forsendelse.send.model.v2.*
+import java.time.OffsetDateTime
+import java.util.*
 
 class ForsendelseBuilder {
     private var avgivendeSystem: String? = null
@@ -9,19 +11,19 @@ class ForsendelseBuilder {
     private var eksternReferanse: String? = null
     private var forsendelsestype: String? = null
     private var konteringskode: String? = null
-    private var krevNiva4Innlogging: Boolean? = null
-    private var kryptert: Boolean? = null
-    private var kunDigitalLevering: Boolean? = null
+    private var krevNiva4Innlogging: Boolean? = false
+    private var kryptert: Boolean? = false
+    private var kunDigitalLevering: Boolean? = false
     private var lenker: List<Lenke>? = null
     private var metadataForImport: NoarkMetadataForImport? = null
     private var metadataFraAvleverendeSystem: NoarkMetadataFraAvleverendeSaksSystem? = null
     private var mottaker: Adresse? = null
     private var signaturType: Forsendelse.SignaturType? = null
-    private var signeringUtloper: java.time.OffsetDateTime? = null
-    private var svarPaForsendelse: java.util.UUID? = null
-    private var svarPaForsendelseLink: Boolean? = null
+    private var signeringUtloper: OffsetDateTime? = null
+    private var svarPaForsendelse: UUID? = null
+    private var svarPaForsendelseLink: Boolean? = false
     private var svarSendesTil: Adresse? = null
-    private var taushetsbelagtPost: Boolean? = null
+    private var taushetsbelagtPost: Boolean? = false
     private var tittel: String? = null
     private var utskriftskonfigurasjon: Utskriftskonfigurasjon? = null
 
