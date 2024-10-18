@@ -47,7 +47,7 @@
         </dependency>
         <dependency>
             <groupId>no.ks.fiks</groupId>
-            <artifactId>maskinporten-spring-boot-client</artifactId>
+            <artifactId>maskinporten-client</artifactId>
             <version>${maskinporten-client.version}</version>
         </dependency>
         <dependency>
