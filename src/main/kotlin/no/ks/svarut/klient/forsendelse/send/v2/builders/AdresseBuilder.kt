@@ -22,6 +22,14 @@ class AdresseBuilder {
     fun postnummer(postnummer: String) = this.also { this.postnummer = postnummer }
     fun land(land: String) = this.also { this.land = land }
 
-    fun build() = Adresse(navn ?: throw IllegalArgumentException("Navn må være satt"), digitalId, adresselinje1, adresselinje2, adresselinje3, poststed, postnummer, land)
+    fun build() = Adresse(
+        navn = navn ?: throw IllegalArgumentException("Navn må være satt"),
+        digitalId = digitalId,
+        adresselinje1 = adresselinje1,
+        adresselinje2 = adresselinje2,
+        adresselinje3 = adresselinje3,
+        poststed = poststed,
+        postnummer = postnummer,
+        land = land)
 
 }
