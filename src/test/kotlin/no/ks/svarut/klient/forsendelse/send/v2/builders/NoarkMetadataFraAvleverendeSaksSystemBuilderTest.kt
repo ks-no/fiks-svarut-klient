@@ -12,7 +12,7 @@ import kotlin.random.Random
 
 class NoarkMetadataFraAvleverendeSaksSystemBuilderTest : StringSpec({
 
-    "Test no fields required" {
+    "Ingen felter skal være påkrevd" {
         val noarkMetadata = NoarkMetadataFraAvleverendeSaksSystemBuilder().build()
         noarkMetadata.asClue {
             it.dokumentetsDato should beNull()
@@ -34,7 +34,7 @@ class NoarkMetadataFraAvleverendeSaksSystemBuilderTest : StringSpec({
         }
     }
 
-    "Test set some fields" {
+    "Setter enkelte felter" {
         val dokumentetsDato = OffsetDateTime.now()
         val journalaar = Random.nextInt()
         val journalpostnummer = Random.nextLong()
@@ -68,7 +68,7 @@ class NoarkMetadataFraAvleverendeSaksSystemBuilderTest : StringSpec({
             }
     }
 
-    "Test set all fields" {
+    "Setter alle felter" {
         val dokumentetsDato = OffsetDateTime.now()
         val ekstraMetadata = List(Random.nextInt(1, 11)) { Metadata(UUID.randomUUID().toString(), UUID.randomUUID().toString()) }
         val journalaar = Random.nextInt()

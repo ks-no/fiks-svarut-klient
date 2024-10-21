@@ -10,13 +10,13 @@ import java.util.*
 
 class AdresseBuilderTest : StringSpec({
 
-    "Test navn should be required" {
+    "Navn skal være påkrevd" {
         shouldThrow<IllegalArgumentException> { AdresseBuilder().build() }.asClue {
             it.message shouldBe "Navn må være satt"
         }
     }
 
-    "Test only required fields" {
+    "Setter bare påkrevde felter" {
         val navn = UUID.randomUUID().toString()
         AdresseBuilder().navn(navn).build().asClue {
             it.navn shouldBe navn
@@ -30,7 +30,7 @@ class AdresseBuilderTest : StringSpec({
         }
     }
 
-    "Test set all fields" {
+    "Setter alle felter" {
         val navn = UUID.randomUUID().toString()
         val digitalId = UUID.randomUUID().toString()
         val adresselinje1 = UUID.randomUUID().toString()

@@ -12,13 +12,13 @@ import java.util.*
 
 class ForsendelseBuilderTest : StringSpec({
 
-    "Test mottaker should be required" {
+    "Mottaker skal være påkrevd" {
         shouldThrow<IllegalArgumentException> { ForsendelseBuilder().build() }.asClue {
             it.message shouldBe "Mottaker er ikke satt"
         }
     }
 
-    "Test build with only required fields" {
+    "Setter bare påkrevde felter" {
         val mottaker = AdresseBuilder().navn(UUID.randomUUID().toString()).build()
         val tittel = UUID.randomUUID().toString()
 
@@ -51,7 +51,7 @@ class ForsendelseBuilderTest : StringSpec({
             }
     }
 
-    "Test set all fields" {
+    "Setter alle felter" {
         val mottaker = buildRandomAdresse()
         val svarSendesTil = buildRandomAdresse()
         val tittel = UUID.randomUUID().toString()

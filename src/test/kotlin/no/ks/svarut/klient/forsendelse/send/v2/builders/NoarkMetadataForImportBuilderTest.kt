@@ -11,7 +11,7 @@ import kotlin.random.Random
 
 class NoarkMetadataForImportBuilderTest : StringSpec({
 
-    "Test no fields required" {
+    "Ingen felter skal være påkrevd" {
         NoarkMetadataForImportBuilder().build()
             .asClue {
                 it.dokumentetsDato should beNull()
@@ -30,7 +30,7 @@ class NoarkMetadataForImportBuilderTest : StringSpec({
             }
     }
 
-    "Test set some fields" {
+    "Setter enkelte felter" {
         val dokumentetsDato = OffsetDateTime.now()
         val journalaar = Random.nextInt()
         val journalpostnummer = Random.nextLong()
@@ -59,7 +59,7 @@ class NoarkMetadataForImportBuilderTest : StringSpec({
             }
     }
 
-    "Test set all fields" {
+    "Setter alle felter" {
         val dokumentetsDato = OffsetDateTime.now()
         val journalaar = Random.nextInt()
         val journalpostnummer = Random.nextLong()

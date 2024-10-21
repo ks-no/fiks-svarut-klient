@@ -13,13 +13,13 @@ import kotlin.random.Random.Default.nextInt
 
 class DokumentBuilderTest : StringSpec({
 
-    "Test filnavn should be required" {
+    "Filnavn skal være påkrevd" {
         shouldThrow<IllegalArgumentException> { DokumentBuilder().build() }.asClue {
             it.message shouldBe "Dokument må ha filnavn"
         }
     }
 
-    "Test mimeType should be required" {
+    "Mime type skal være påkrevd" {
         shouldThrow<IllegalArgumentException> {
             DokumentBuilder().filnavn(UUID.randomUUID().toString()).build()
         }.asClue {
@@ -27,7 +27,7 @@ class DokumentBuilderTest : StringSpec({
         }
     }
 
-    "Test only required fields" {
+    "Setter bare påkrevde felter" {
         DokumentBuilder()
             .filnavn(UUID.randomUUID().toString())
             .mimeType(UUID.randomUUID().toString())
@@ -42,7 +42,7 @@ class DokumentBuilderTest : StringSpec({
             }
     }
 
-    "Test set all fields" {
+    "Setter alle felter" {
         val dokumentType = UUID.randomUUID().toString()
         val ekstraMetadata = (1..nextInt(2, 10)).map { Metadata(UUID.randomUUID().toString(), UUID.randomUUID().toString()) }
         val filnavn = UUID.randomUUID().toString()

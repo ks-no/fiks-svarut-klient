@@ -7,7 +7,7 @@ import kotlin.random.Random
 
 class UtskriftskonfigurasjonBuilderTest : StringSpec({
 
-    "Test no fields required" {
+    "Ingen felter skal være påkrevd" {
         val utskriftskonfigurasjon = UtskriftskonfigurasjonBuilder().build()
         utskriftskonfigurasjon.asClue {
             it.tosidig shouldBe false
@@ -15,7 +15,7 @@ class UtskriftskonfigurasjonBuilderTest : StringSpec({
         }
     }
 
-    "Test set only tosidig" {
+    "Setter kun tosidig" {
         val tosidig = Random.nextBoolean()
 
         val utskriftskonfigurasjon = UtskriftskonfigurasjonBuilder()
@@ -28,7 +28,7 @@ class UtskriftskonfigurasjonBuilderTest : StringSpec({
         }
     }
 
-    "Test set only utskriftMedFarger" {
+    "Setter kun utskriftMedFarger" {
         val utskriftMedFarger = Random.nextBoolean()
 
         UtskriftskonfigurasjonBuilder()
@@ -40,7 +40,7 @@ class UtskriftskonfigurasjonBuilderTest : StringSpec({
             }
     }
 
-    "Test set all fields" {
+    "Setter alle felter" {
         val tosidig = Random.nextBoolean()
         val utskriftMedFarger = Random.nextBoolean()
 

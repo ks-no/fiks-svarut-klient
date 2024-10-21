@@ -10,49 +10,47 @@ import java.util.*
 
 class LenkeBuilderTest : StringSpec({
 
-    "Test url should be required" {
+    "Url skal være påkrevd" {
         shouldThrow<IllegalArgumentException> { LenkeBuilder().build() }.asClue {
             it.message shouldBe "Url er ikke satt"
         }
     }
 
-    "Test tekst should be required" {
+    "Tekst skal være påkrevd" {
         shouldThrow<IllegalArgumentException> { LenkeBuilder().url(UUID.randomUUID().toString()).build() }.asClue {
             it.message shouldBe "Tekst er ikke satt"
         }
     }
 
-    "Test only required fields" {
+    "Setter bare påkrevde felter" {
         val tekst = UUID.randomUUID().toString()
         val url = UUID.randomUUID().toString()
 
-        val lenke = LenkeBuilder()
+        LenkeBuilder()
             .tekst(tekst)
             .url(url)
             .build()
-
-        lenke.asClue {
-            it.ledetekst should beNull()
-            it.tekst shouldBe tekst
-            it.url shouldBe url
-        }
+            .asClue {
+                it.ledetekst should beNull()
+                it.tekst shouldBe tekst
+                it.url shouldBe url
+            }
     }
 
-    "Test set all fields" {
+    "Setter alle felter" {
         val ledetekst = UUID.randomUUID().toString()
         val tekst = UUID.randomUUID().toString()
         val url = UUID.randomUUID().toString()
 
-        val lenke = LenkeBuilder()
+        LenkeBuilder()
             .ledetekst(ledetekst)
             .tekst(tekst)
             .url(url)
             .build()
-
-        lenke.asClue {
-            it.ledetekst shouldBe ledetekst
-            it.tekst shouldBe tekst
-            it.url shouldBe url
-        }
+            .asClue {
+                it.ledetekst shouldBe ledetekst
+                it.tekst shouldBe tekst
+                it.url shouldBe url
+            }
     }
 })
