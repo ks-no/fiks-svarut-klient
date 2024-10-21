@@ -21,11 +21,13 @@
         <jackson.version>2.17.2</jackson.version>
         <maskinporten-client.version>3.3.1</maskinporten-client.version>
         <jetty-client.version>12.0.11</jetty-client.version>
+        <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
+
+        <kotest.version>5.9.1</kotest.version>
 
         <!-- OpenAPI -->
         <openapi.path>${project.basedir}/openapi</openapi.path>
         <openapi.package-prefix>${project.groupId}.svarut</openapi.package-prefix>
-        <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
     </properties>
 
     <dependencyManagement>
@@ -76,6 +78,15 @@
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-kotlin</artifactId>
         </dependency>
+
+
+        <dependency>
+            <groupId>io.kotest</groupId>
+            <artifactId>kotest-runner-junit5-jvm</artifactId>
+            <version>${kotest.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -102,6 +113,17 @@
                         <configuration>
                             <sourceDirs>src/main/kotlin</sourceDirs>
                             <sourceDirs>target/generated-sources/openapi</sourceDirs>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>src/test/kotlin</sourceDir>
+                            </sourceDirs>
                         </configuration>
                     </execution>
                 </executions>

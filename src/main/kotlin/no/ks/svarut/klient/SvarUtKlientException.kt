@@ -2,7 +2,7 @@ package no.ks.svarut.klient
 
 import java.util.*
 
-class SvarUtKlientException(val errorMessage: ErrorMessage) : RuntimeException("Status ${errorMessage.status}: ${errorMessage.message}")
+class SvarUtKlientException(errorMessage: ErrorMessage) : RuntimeException("Status ${errorMessage.status}: ${errorMessage.message}")
 
 data class ErrorMessage(
     val timestamp: Long?,
