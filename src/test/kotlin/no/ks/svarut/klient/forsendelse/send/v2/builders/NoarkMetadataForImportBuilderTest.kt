@@ -11,7 +11,7 @@ import kotlin.random.Random
 
 class NoarkMetadataForImportBuilderTest : StringSpec({
 
-    "Test build without required fields" {
+    "Test no fields required" {
         NoarkMetadataForImportBuilder().build()
             .asClue {
                 it.dokumentetsDato should beNull()

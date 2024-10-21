@@ -7,7 +7,7 @@ import kotlin.random.Random
 
 class UtskriftskonfigurasjonBuilderTest : StringSpec({
 
-    "Test build without any fields" {
+    "Test no fields required" {
         val utskriftskonfigurasjon = UtskriftskonfigurasjonBuilder().build()
         utskriftskonfigurasjon.asClue {
             it.tosidig shouldBe false

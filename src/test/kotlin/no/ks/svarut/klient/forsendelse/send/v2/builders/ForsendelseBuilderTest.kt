@@ -12,7 +12,7 @@ import java.util.*
 
 class ForsendelseBuilderTest : StringSpec({
 
-    "Test build without required fields" {
+    "Test mottaker should be required" {
         shouldThrow<IllegalArgumentException> { ForsendelseBuilder().build() }.asClue {
             it.message shouldBe "Mottaker er ikke satt"
         }
@@ -74,7 +74,7 @@ class ForsendelseBuilderTest : StringSpec({
         val taushetsbelagtPost = Random().nextBoolean()
         val utskriftskonfigurasjon = buildRandomUtskriftskonfigurasjon()
 
-        val forsendelse = ForsendelseBuilder()
+        ForsendelseBuilder()
             .mottaker(mottaker)
             .svarSendesTil(svarSendesTil)
             .tittel(tittel)
@@ -97,30 +97,29 @@ class ForsendelseBuilderTest : StringSpec({
             .taushetsbelagtPost(taushetsbelagtPost)
             .utskriftskonfigurasjon(utskriftskonfigurasjon)
             .build()
-
-        forsendelse.asClue {
-            it.mottaker shouldBe mottaker
-            it.svarSendesTil shouldBe svarSendesTil
-            it.tittel shouldBe tittel
-            it.forsendelsestype shouldBe forsendelsestype
-            it.avgivendeSystem shouldBe avgivendeSystem
-            it.lenker shouldBe lenker
-            it.dokumenter shouldBe dokumenter
-            it.eksponertFor shouldBe eksponertFor
-            it.eksternReferanse shouldBe eksternReferanse
-            it.konteringskode shouldBe konteringskode
-            it.krevNiva4Innlogging shouldBe krevNiva4Innlogging
-            it.kryptert shouldBe kryptert
-            it.kunDigitalLevering shouldBe kunDigitalLevering
-            it.metadataForImport shouldBe metadataForImport
-            it.metadataFraAvleverendeSystem shouldBe metadataFraAvleverendeSystem
-            it.signaturType shouldBe signaturType
-            it.signeringUtloper shouldBe signeringUtloper
-            it.svarPaForsendelse shouldBe svarPaForsendelse
-            it.svarPaForsendelseLink shouldBe svarPaForsendelseLink
-            it.taushetsbelagtPost shouldBe taushetsbelagtPost
-            it.utskriftskonfigurasjon shouldBe utskriftskonfigurasjon
-        }
+            .asClue {
+                it.mottaker shouldBe mottaker
+                it.svarSendesTil shouldBe svarSendesTil
+                it.tittel shouldBe tittel
+                it.forsendelsestype shouldBe forsendelsestype
+                it.avgivendeSystem shouldBe avgivendeSystem
+                it.lenker shouldBe lenker
+                it.dokumenter shouldBe dokumenter
+                it.eksponertFor shouldBe eksponertFor
+                it.eksternReferanse shouldBe eksternReferanse
+                it.konteringskode shouldBe konteringskode
+                it.krevNiva4Innlogging shouldBe krevNiva4Innlogging
+                it.kryptert shouldBe kryptert
+                it.kunDigitalLevering shouldBe kunDigitalLevering
+                it.metadataForImport shouldBe metadataForImport
+                it.metadataFraAvleverendeSystem shouldBe metadataFraAvleverendeSystem
+                it.signaturType shouldBe signaturType
+                it.signeringUtloper shouldBe signeringUtloper
+                it.svarPaForsendelse shouldBe svarPaForsendelse
+                it.svarPaForsendelseLink shouldBe svarPaForsendelseLink
+                it.taushetsbelagtPost shouldBe taushetsbelagtPost
+                it.utskriftskonfigurasjon shouldBe utskriftskonfigurasjon
+            }
     }
 
 

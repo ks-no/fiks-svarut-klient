@@ -12,7 +12,7 @@ import kotlin.random.Random
 
 class NoarkMetadataFraAvleverendeSaksSystemBuilderTest : StringSpec({
 
-    "Test build without required fields" {
+    "Test no fields required" {
         val noarkMetadata = NoarkMetadataFraAvleverendeSaksSystemBuilder().build()
         noarkMetadata.asClue {
             it.dokumentetsDato should beNull()
