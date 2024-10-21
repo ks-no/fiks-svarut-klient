@@ -27,3 +27,17 @@ API-dokumentasjon finnes [her](https://developers.fiks.ks.no/tjenester/svarut/re
        </dependency>
     </dependencies>
 ```
+
+### Java-support
+
+Klienten er skrevet i Kotlin og bruker blant annet genererte data-klasser. Enkelte av disse har mange felter, men de fleste av disse er ikke påkrevd.
+For å gjøre dette enklere å sette kun de feltene man ønsker fra Java er det laget noen builder-klasser som kan benyttes slik:
+```java
+Forsendelse forsendelse = new ForsendelseBuilder()
+        .mottaker(new AdresseBuilder()
+                .navn("Test Testesen")
+                .build()
+        )
+        .tittel("Tittel på forsendelsen")
+        .build();
+```
