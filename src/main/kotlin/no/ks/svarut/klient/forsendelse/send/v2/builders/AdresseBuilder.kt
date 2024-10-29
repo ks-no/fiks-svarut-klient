@@ -13,14 +13,14 @@ class AdresseBuilder {
     private var postnummer: String? = null
     private var land: String? = null
 
-    fun navn(navn: String) = this.also { this.navn = navn }
-    fun digitalId(digitalId: String) = this.also { this.digitalId = digitalId }
-    fun adresselinje1(adresselinje1: String) = this.also { this.adresselinje1 = adresselinje1 }
-    fun adresselinje2(adresselinje2: String) = this.also { this.adresselinje2 = adresselinje2 }
-    fun adresselinje3(adresselinje3: String) = this.also { this.adresselinje3 = adresselinje3 }
-    fun poststed(poststed: String) = this.also { this.poststed = poststed }
-    fun postnummer(postnummer: String) = this.also { this.postnummer = postnummer }
-    fun land(land: String) = this.also { this.land = land }
+    fun navn(navn: String?) = this.also { this.navn = navn }
+    fun digitalId(digitalId: String?) = this.also { this.digitalId = digitalId }
+    fun adresselinje1(adresselinje1: String?) = this.also { this.adresselinje1 = adresselinje1 }
+    fun adresselinje2(adresselinje2: String?) = this.also { this.adresselinje2 = adresselinje2 }
+    fun adresselinje3(adresselinje3: String?) = this.also { this.adresselinje3 = adresselinje3 }
+    fun poststed(poststed: String?) = this.also { this.poststed = poststed }
+    fun postnummer(postnummer: String?) = this.also { this.postnummer = postnummer }
+    fun land(land: String?) = this.also { this.land = land }
 
     fun build() = Adresse(
         navn = navn ?: throw IllegalArgumentException("Navn må være satt"),
