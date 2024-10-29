@@ -13,7 +13,7 @@ class AdresseBuilder {
     private var postnummer: String? = null
     private var land: String? = null
 
-    fun navn(navn: String?) = this.also { this.navn = navn }
+    fun navn(navn: String) = this.also { this.navn = navn }
     fun digitalId(digitalId: String?) = this.also { this.digitalId = digitalId }
     fun adresselinje1(adresselinje1: String?) = this.also { this.adresselinje1 = adresselinje1 }
     fun adresselinje2(adresselinje2: String?) = this.also { this.adresselinje2 = adresselinje2 }
