@@ -31,7 +31,9 @@ abstract class BaseKlient(
                 idleTimeout = it
             }
         }))
-    internal val objectMapper = ObjectMapper().registerKotlinModule().registerModule(JavaTimeModule())
+    internal val objectMapper = ObjectMapper()
+        .registerKotlinModule()
+        .registerModule(JavaTimeModule())
         .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
         .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
 
@@ -44,7 +46,8 @@ abstract class BaseKlient(
     }
 
     internal fun newRequest() = requestInterceptor.apply(
-        client.newRequest(baseUrl).onRequestBegin(authenticationStrategy::setAuthenticationHeaders)
+        client.newRequest(baseUrl)
+            .onRequestBegin(authenticationStrategy::setAuthenticationHeaders)
     )
 
     override fun close() {

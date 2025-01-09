@@ -28,7 +28,9 @@ class SlettKlientV2(
     fun slettAlleFiler(forsendelseId: UUID) = slettFiler(forsendelseId, SLETTETYPE_ALLE)
 
     private fun slettFiler(forsendelseId: UUID, slettetype: String) =
-        newRequest().method(HttpMethod.DELETE).path(pathSlettFiler(forsendelseId)).param(PARAM_SLETTETYPE, slettetype)
+        newRequest().method(HttpMethod.DELETE)
+            .path(pathSlettFiler(forsendelseId))
+            .param(PARAM_SLETTETYPE, slettetype)
             .send().let { response ->
                 if (response.status != 204) {
                     throw objectMapper.bodyToException(response.contentAsString)
