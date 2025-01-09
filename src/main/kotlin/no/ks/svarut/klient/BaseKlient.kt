@@ -13,24 +13,25 @@ import org.eclipse.jetty.io.ClientConnector
 import org.eclipse.jetty.util.ssl.SslContextFactory
 import java.io.Closeable
 import java.util.function.Function
-import java.time.Duration
 
 
 abstract class BaseKlient(
     private val baseUrl: String,
     private val authenticationStrategy: AuthenticationStrategy,
     private val requestInterceptor: Function<Request, Request>,
-    private val idleTimeoutDuration: Duration? = null
+    private val httpConfiguration: HttpConfiguration? = null
 ) : Closeable {
 
     internal val client = HttpClient(
         HttpClientTransportDynamic(
-        ClientConnector().apply {
-            sslContextFactory = SslContextFactory.Client()
-            idleTimeoutDuration?.let {
-                idleTimeout = it
+            ClientConnector().apply {
+                sslContextFactory = SslContextFactory.Client()
+                httpConfiguration?.idleTimeout?.let {
+                    idleTimeout = it
+                }
             }
-        }))
+        )
+    )
     internal val objectMapper = ObjectMapper()
         .registerKotlinModule()
         .registerModule(JavaTimeModule())

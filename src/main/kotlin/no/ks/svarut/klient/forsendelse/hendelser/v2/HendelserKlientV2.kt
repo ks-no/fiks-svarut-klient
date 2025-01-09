@@ -7,6 +7,7 @@ import no.ks.fiks.svarut.forsendelse.hendelser.model.v2.Signeringshendelse
 import no.ks.fiks.svarut.forsendelse.hendelser.model.v2.Signeringshendelser
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
+import no.ks.svarut.klient.HttpConfiguration
 import no.ks.svarut.klient.SvarUtKlientException
 import org.eclipse.jetty.client.Request
 import org.eclipse.jetty.http.HttpMethod
@@ -18,8 +19,9 @@ private const val BASE_PATH = "/api/v2/forsendelser"
 class HendelserKlientV2(
     baseUrl: String,
     authenticationStrategy: AuthenticationStrategy,
-    requestInterceptor: Function<Request, Request>
-) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor) {
+    requestInterceptor: Function<Request, Request>,
+    httpConfig: HttpConfiguration? = null
+) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor, httpConfig) {
 
     private fun pathHentHendelser(forsendelseId: UUID) = "$BASE_PATH/$forsendelseId/hendelser"
     private fun pathHentSigneringshendelser(forsendelseId: UUID) = "$BASE_PATH/$forsendelseId/signeringshendelser"

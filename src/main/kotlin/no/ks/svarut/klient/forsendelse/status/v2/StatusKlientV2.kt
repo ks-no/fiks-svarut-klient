@@ -6,6 +6,7 @@ import no.ks.fiks.svarut.forsendelse.status.model.v2.ForsendelseStatuser
 import no.ks.fiks.svarut.forsendelse.status.model.v2.StatusSok
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
+import no.ks.svarut.klient.HttpConfiguration
 import org.eclipse.jetty.client.Request
 import org.eclipse.jetty.client.StringRequestContent
 import org.eclipse.jetty.http.HttpMethod
@@ -17,8 +18,9 @@ private const val BASE_PATH = "/api/v2"
 class StatusKlientV2(
     baseUrl: String,
     authenticationStrategy: AuthenticationStrategy,
-    requestInterceptor: Function<Request, Request>
-) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor) {
+    requestInterceptor: Function<Request, Request>,
+    httpConfig: HttpConfiguration? = null
+) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor, httpConfig) {
 
     private fun pathHentStatuser(kontoId: UUID) = "$BASE_PATH/kontoer/$kontoId/forsendelser/status-sok"
 
