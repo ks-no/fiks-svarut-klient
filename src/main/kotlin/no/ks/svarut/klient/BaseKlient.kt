@@ -13,8 +13,7 @@ import org.eclipse.jetty.io.ClientConnector
 import org.eclipse.jetty.util.ssl.SslContextFactory
 import java.io.Closeable
 import java.util.function.Function
-import kotlin.time.Duration
-import kotlin.time.toJavaDuration
+import java.time.Duration
 
 
 abstract class BaseKlient(
@@ -29,7 +28,7 @@ abstract class BaseKlient(
         ClientConnector().apply {
                 sslContextFactory = SslContextFactory.Client()
                 idleTimeout?.let {
-                    setIdleTimeout(it.toJavaDuration())
+                    setIdleTimeout(it)
                 }
             }))
     internal val objectMapper = ObjectMapper().registerKotlinModule().registerModule(JavaTimeModule())

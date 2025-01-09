@@ -6,7 +6,7 @@ import org.eclipse.jetty.client.Request
 import org.eclipse.jetty.http.HttpMethod
 import java.util.*
 import java.util.function.Function
-import kotlin.time.Duration
+import java.time.Duration
 
 private const val BASE_PATH = "/api/v2"
 
