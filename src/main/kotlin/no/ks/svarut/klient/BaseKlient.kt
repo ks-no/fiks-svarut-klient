@@ -25,14 +25,12 @@ abstract class BaseKlient(
 
     internal val client = HttpClient(
         HttpClientTransportDynamic(
-            ClientConnector().apply {
-                sslContextFactory = SslContextFactory.Client()
-                idleTimeoutDuration?.let {
-                    idleTimeout = it
-                }
+        ClientConnector().apply {
+            sslContextFactory = SslContextFactory.Client()
+            idleTimeoutDuration?.let {
+                idleTimeout = it
             }
-        )
-    )
+        }))
     internal val objectMapper = ObjectMapper().registerKotlinModule().registerModule(JavaTimeModule())
         .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
         .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
@@ -57,8 +55,7 @@ abstract class BaseKlient(
         }
     }
 
-    fun
-            ObjectMapper.bodyToException(body: String): Exception = try {
+    fun ObjectMapper.bodyToException(body: String): Exception = try {
         SvarUtKlientException(objectMapper.readValue(body))
     } catch (e: Exception) {
         RuntimeException("Uventet feil. Response body: $body")
