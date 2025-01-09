@@ -13,23 +13,26 @@ import org.eclipse.jetty.io.ClientConnector
 import org.eclipse.jetty.util.ssl.SslContextFactory
 import java.io.Closeable
 import java.util.function.Function
+import kotlin.time.Duration
+import kotlin.time.toJavaDuration
 
 
 abstract class BaseKlient(
     private val baseUrl: String,
     private val authenticationStrategy: AuthenticationStrategy,
-    private val requestInterceptor: Function<Request, Request>
+    private val requestInterceptor: Function<Request, Request>,
+    idleTimeout: Duration? = null
 ) : Closeable {
 
     internal val client = HttpClient(
         HttpClientTransportDynamic(
-            ClientConnector()
-                .apply { sslContextFactory = SslContextFactory.Client() }
-        )
-    )
-    internal val objectMapper = ObjectMapper()
-        .registerKotlinModule()
-        .registerModule(JavaTimeModule())
+        ClientConnector().apply {
+                sslContextFactory = SslContextFactory.Client()
+                idleTimeout?.let {
+                    setIdleTimeout(it.toJavaDuration())
+                }
+            }))
+    internal val objectMapper = ObjectMapper().registerKotlinModule().registerModule(JavaTimeModule())
         .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
         .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
 
@@ -41,11 +44,9 @@ abstract class BaseKlient(
         }
     }
 
-    internal fun newRequest() =
-        requestInterceptor.apply(
-            client.newRequest(baseUrl)
-                .onRequestBegin(authenticationStrategy::setAuthenticationHeaders)
-        )
+    internal fun newRequest() = requestInterceptor.apply(
+        client.newRequest(baseUrl).onRequestBegin(authenticationStrategy::setAuthenticationHeaders)
+    )
 
     override fun close() {
         try {
