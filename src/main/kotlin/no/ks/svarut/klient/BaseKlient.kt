@@ -20,7 +20,7 @@ abstract class BaseKlient(
     private val baseUrl: String,
     private val authenticationStrategy: AuthenticationStrategy,
     private val requestInterceptor: Function<Request, Request>,
-    idleTimeout: Duration? = null
+    private val idleTimeoutDuration: Duration? = null
 ) : Closeable {
 
     internal val client = HttpClient(
@@ -28,7 +28,7 @@ abstract class BaseKlient(
         ClientConnector().apply {
                 sslContextFactory = SslContextFactory.Client()
                 idleTimeout?.let {
-                    setIdleTimeout(it)
+                    idleTimeout = idleTimeoutDuration
                 }
             }))
     internal val objectMapper = ObjectMapper().registerKotlinModule().registerModule(JavaTimeModule())
