@@ -26,9 +26,7 @@ abstract class BaseKlient(
         HttpClientTransportDynamic(
             ClientConnector().apply {
                 sslContextFactory = SslContextFactory.Client()
-                httpConfiguration.idleTimeout?.let {
-                    idleTimeout = it
-                }
+                idleTimeout = httpConfiguration.idleTimeout
             }
         )
     )
