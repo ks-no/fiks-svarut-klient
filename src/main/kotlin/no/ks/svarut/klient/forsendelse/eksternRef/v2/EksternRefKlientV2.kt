@@ -18,7 +18,7 @@ class EksternRefKlientV2(
     baseUrl: String,
     authenticationStrategy: AuthenticationStrategy,
     requestInterceptor: Function<Request, Request>,
-    httpConfig: HttpConfiguration? = null
+    httpConfig: HttpConfiguration = HttpConfiguration(),
 ) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor, httpConfig) {
 
     private fun pathFinnForsendelserKnyttetTilEksternRef(kontoId: UUID) = "$BASE_PATH/kontoer/$kontoId/forsendelser/"

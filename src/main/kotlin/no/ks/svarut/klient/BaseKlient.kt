@@ -19,14 +19,14 @@ abstract class BaseKlient(
     private val baseUrl: String,
     private val authenticationStrategy: AuthenticationStrategy,
     private val requestInterceptor: Function<Request, Request>,
-    private val httpConfiguration: HttpConfiguration? = null
+    private val httpConfiguration: HttpConfiguration = HttpConfiguration(),
 ) : Closeable {
 
     internal val client = HttpClient(
         HttpClientTransportDynamic(
             ClientConnector().apply {
                 sslContextFactory = SslContextFactory.Client()
-                httpConfiguration?.idleTimeout?.let {
+                httpConfiguration.idleTimeout?.let {
                     idleTimeout = it
                 }
             }

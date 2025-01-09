@@ -2,7 +2,7 @@ package no.ks.svarut.klient
 
 import java.time.Duration
 
-data class HttpConfiguration(val idleTimeout: Duration?) {
+data class HttpConfiguration(val idleTimeout: Duration? = null) {
     companion object {
         fun builder() = Builder()
     }

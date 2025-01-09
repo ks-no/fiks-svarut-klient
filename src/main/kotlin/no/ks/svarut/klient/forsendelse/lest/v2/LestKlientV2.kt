@@ -16,7 +16,7 @@ class LestKlientV2(
     baseUrl: String,
     authenticationStrategy: AuthenticationStrategy,
     requestInterceptor: Function<Request, Request>,
-    httpConfig: HttpConfiguration? = null
+    httpConfig: HttpConfiguration = HttpConfiguration(),
 ) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor, httpConfig) {
 
     private fun pathSettForsendelseLestAvEksterntSystem(forsendelseId: UUID) = "$BASE_PATH/forsendelser/$forsendelseId/lest"

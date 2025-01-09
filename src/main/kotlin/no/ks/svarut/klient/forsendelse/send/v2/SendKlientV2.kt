@@ -26,7 +26,7 @@ class SendKlientV2(
     baseUrl: String,
     authenticationStrategy: AuthenticationStrategy,
     requestInterceptor: Function<Request, Request>,
-    httpConfig: HttpConfiguration? = null
+    httpConfig: HttpConfiguration = HttpConfiguration(),
 ) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor, httpConfig) {
 
     private fun pathSend(kontoId: UUID) = "$BASE_PATH/kontoer/$kontoId/forsendelser/"

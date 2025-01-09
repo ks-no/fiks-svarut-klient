@@ -19,7 +19,7 @@ class StatusKlientV2(
     baseUrl: String,
     authenticationStrategy: AuthenticationStrategy,
     requestInterceptor: Function<Request, Request>,
-    httpConfig: HttpConfiguration? = null
+    httpConfig: HttpConfiguration = HttpConfiguration(),
 ) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor, httpConfig) {
 
     private fun pathHentStatuser(kontoId: UUID) = "$BASE_PATH/kontoer/$kontoId/forsendelser/status-sok"
