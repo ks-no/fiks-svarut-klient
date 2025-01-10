@@ -10,7 +10,7 @@ data class HttpConfiguration(val idleTimeout: Duration? = null) {
     class Builder {
         private var idleTimeout: Duration? = null
 
-        fun idleTimeout(idleTimeout: Duration?) = apply { this.idleTimeout = idleTimeout }
+        fun idleTimeout(idleTimeout: Duration) = apply { this.idleTimeout = idleTimeout }
 
         fun build() = HttpConfiguration(idleTimeout)
     }
