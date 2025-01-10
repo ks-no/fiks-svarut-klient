@@ -5,6 +5,7 @@ import no.ks.fiks.svarut.forsendelse.send.model.v2.Forsendelse
 import no.ks.fiks.svarut.forsendelse.send.model.v2.SendForsendelseResponse
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
+import no.ks.svarut.klient.HttpConfiguration
 import org.eclipse.jetty.client.InputStreamRequestContent
 import org.eclipse.jetty.client.MultiPartRequestContent
 import org.eclipse.jetty.client.Request
@@ -25,7 +26,8 @@ class SendKlientV2(
     baseUrl: String,
     authenticationStrategy: AuthenticationStrategy,
     requestInterceptor: Function<Request, Request>,
-) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor) {
+    httpConfig: HttpConfiguration = HttpConfiguration(),
+) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor, httpConfig) {
 
     private fun pathSend(kontoId: UUID) = "$BASE_PATH/kontoer/$kontoId/forsendelser/"
 

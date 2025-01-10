@@ -18,13 +18,18 @@ import java.util.function.Function
 abstract class BaseKlient(
     private val baseUrl: String,
     private val authenticationStrategy: AuthenticationStrategy,
-    private val requestInterceptor: Function<Request, Request>
+    private val requestInterceptor: Function<Request, Request>,
+    private val httpConfiguration: HttpConfiguration = HttpConfiguration(),
 ) : Closeable {
 
     internal val client = HttpClient(
         HttpClientTransportDynamic(
-            ClientConnector()
-                .apply { sslContextFactory = SslContextFactory.Client() }
+            ClientConnector().apply {
+                sslContextFactory = SslContextFactory.Client()
+                httpConfiguration.idleTimeout?.let {
+                    idleTimeout = it
+                }
+            }
         )
     )
     internal val objectMapper = ObjectMapper()
@@ -41,11 +46,10 @@ abstract class BaseKlient(
         }
     }
 
-    internal fun newRequest() =
-        requestInterceptor.apply(
-            client.newRequest(baseUrl)
-                .onRequestBegin(authenticationStrategy::setAuthenticationHeaders)
-        )
+    internal fun newRequest() = requestInterceptor.apply(
+        client.newRequest(baseUrl)
+            .onRequestBegin(authenticationStrategy::setAuthenticationHeaders)
+    )
 
     override fun close() {
         try {

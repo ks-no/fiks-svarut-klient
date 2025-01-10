@@ -4,6 +4,7 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import no.ks.fiks.svarut.forsendelse.eksternRef.model.v2.EksternRefOppslagResponse
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
+import no.ks.svarut.klient.HttpConfiguration
 import org.eclipse.jetty.client.Request
 import org.eclipse.jetty.http.HttpMethod
 import java.util.*
@@ -16,8 +17,9 @@ private const val PARAM_EKSTERN_REF = "eksternRef"
 class EksternRefKlientV2(
     baseUrl: String,
     authenticationStrategy: AuthenticationStrategy,
-    requestInterceptor: Function<Request, Request>
-) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor) {
+    requestInterceptor: Function<Request, Request>,
+    httpConfig: HttpConfiguration = HttpConfiguration(),
+) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor, httpConfig) {
 
     private fun pathFinnForsendelserKnyttetTilEksternRef(kontoId: UUID) = "$BASE_PATH/kontoer/$kontoId/forsendelser/"
 

@@ -2,6 +2,7 @@ package no.ks.svarut.klient.forsendelse.slett.v2
 
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
+import no.ks.svarut.klient.HttpConfiguration
 import org.eclipse.jetty.client.Request
 import org.eclipse.jetty.http.HttpMethod
 import java.util.*
@@ -16,8 +17,9 @@ private const val SLETTETYPE_ALLE = "ALLE"
 class SlettKlientV2(
     baseUrl: String,
     authenticationStrategy: AuthenticationStrategy,
-    requestInterceptor: Function<Request, Request>
-) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor) {
+    requestInterceptor: Function<Request, Request>,
+    httpConfig: HttpConfiguration = HttpConfiguration(),
+) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor, httpConfig) {
 
     private fun pathSlettFiler(forsendelseId: UUID) = "$BASE_PATH/forsendelser/$forsendelseId/dokumenter"
 

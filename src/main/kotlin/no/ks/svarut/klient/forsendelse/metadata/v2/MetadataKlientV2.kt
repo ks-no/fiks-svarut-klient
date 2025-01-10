@@ -5,6 +5,7 @@ import no.ks.fiks.svarut.forsendelse.metadata.model.v2.DokumentMetadata
 import no.ks.fiks.svarut.forsendelse.metadata.model.v2.ForsendelseMetadata
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
+import no.ks.svarut.klient.HttpConfiguration
 import org.eclipse.jetty.client.Request
 import org.eclipse.jetty.http.HttpMethod
 import java.util.*
@@ -15,8 +16,9 @@ private const val BASE_PATH = "/api/v2"
 class MetadataKlientV2(
     baseUrl: String,
     authenticationStrategy: AuthenticationStrategy,
-    requestInterceptor: Function<Request, Request>
-) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor) {
+    requestInterceptor: Function<Request, Request>,
+    httpConfig: HttpConfiguration = HttpConfiguration(),
+) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor, httpConfig) {
 
     private fun pathHentMetadata(forsendelseId: UUID) = "$BASE_PATH/forsendelser/$forsendelseId/metadata"
 
