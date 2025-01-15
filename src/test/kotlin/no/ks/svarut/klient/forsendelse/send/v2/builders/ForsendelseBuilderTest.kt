@@ -61,6 +61,7 @@ class ForsendelseBuilderTest : StringSpec({
         val dokumenter = (1..Random().nextInt(2, 10)).map { buildRandomDokument() }
         val eksponertFor = setOf(UUID.randomUUID().toString(), UUID.randomUUID().toString())
         val eksternReferanse = UUID.randomUUID().toString()
+        val korrelasjonsid = UUID.randomUUID().toString()
         val konteringskode = UUID.randomUUID().toString()
         val krevNiva4Innlogging = Random().nextBoolean()
         val kryptert = Random().nextBoolean()
@@ -84,6 +85,7 @@ class ForsendelseBuilderTest : StringSpec({
             .dokumenter(dokumenter)
             .eksponertFor(eksponertFor)
             .eksternReferanse(eksternReferanse)
+            .korrelasjonsid(korrelasjonsid)
             .konteringskode(konteringskode)
             .krevNiva4Innlogging(krevNiva4Innlogging)
             .kryptert(kryptert)
@@ -107,6 +109,7 @@ class ForsendelseBuilderTest : StringSpec({
                 it.dokumenter shouldBe dokumenter
                 it.eksponertFor shouldBe eksponertFor
                 it.eksternReferanse shouldBe eksternReferanse
+                it.korrelasjonsid shouldBe korrelasjonsid
                 it.konteringskode shouldBe konteringskode
                 it.krevNiva4Innlogging shouldBe krevNiva4Innlogging
                 it.kryptert shouldBe kryptert

@@ -22,6 +22,7 @@ class ForsendelseBuilder {
     private var lenker: List<Lenke>? = null
     private var forsendelsestype: String? = null
     private var eksternReferanse: String? = null
+    private var korrelasjonsid: String? = null
     private var svarPaForsendelseLink: Boolean? = false
     private var signeringUtloper: OffsetDateTime? = null
     private var signaturType: Forsendelse.SignaturType? = null
@@ -44,6 +45,7 @@ class ForsendelseBuilder {
     fun lenker(lenker: List<Lenke>?) = apply { this.lenker = lenker }
     fun forsendelsestype(forsendelsestype: String?) = apply { this.forsendelsestype = forsendelsestype }
     fun eksternReferanse(eksternReferanse: String?) = apply { this.eksternReferanse = eksternReferanse }
+    fun korrelasjonsid(korrelasjonsid: String?) = apply { this.korrelasjonsid = korrelasjonsid }
     fun svarPaForsendelseLink(svarPaForsendelseLink: Boolean?) = apply { this.svarPaForsendelseLink = svarPaForsendelseLink }
     fun signeringUtloper(signeringUtloper: OffsetDateTime?) = apply { this.signeringUtloper = signeringUtloper }
     fun signaturType(signaturType: Forsendelse.SignaturType?) = apply { this.signaturType = signaturType }
@@ -67,6 +69,7 @@ class ForsendelseBuilder {
         lenker = lenker,
         forsendelsestype = forsendelsestype,
         eksternReferanse = eksternReferanse,
+        korrelasjonsid = korrelasjonsid,
         svarPaForsendelseLink = svarPaForsendelseLink,
         signeringUtloper = signeringUtloper,
         signaturType = signaturType,

@@ -29,7 +29,7 @@ class DokumentBuilder {
         dokumentType = dokumentType,
         giroarkSider = giroarkSider,
         skalEkskluderesFraUtskrift = skalEkskluderesFraUtskrift,
-        ekstraMetadata = ekstraMetadata,
+        ekstraMetadata = ekstraMetadata?.toSet(),
         inneholderPersonsensitivInformasjon = inneholderPersonsensitivInformasjon
     )
 }
