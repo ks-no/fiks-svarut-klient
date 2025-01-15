@@ -56,7 +56,7 @@ class NoarkMetadataFraAvleverendeSaksSystemBuilder {
         dokumentetsDato = dokumentetsDato,
         tittel = tittel,
         saksbehandler = saksbehandler,
-        ekstraMetadata = ekstraMetadata
+        ekstraMetadata = ekstraMetadata?.toSet(),
     )
 
 }
