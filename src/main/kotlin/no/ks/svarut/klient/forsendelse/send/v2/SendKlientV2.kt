@@ -66,18 +66,19 @@ class SendKlientV2(
     }
 
     private fun MultiPartRequestContent.addDokumenter(forsendelse: Forsendelse, dokumentnavnTilData: Map<String, InputStream>) {
-        forsendelse.dokumenter?.forEach {
+        forsendelse.dokumenter?.forEachIndexed { index, dokument ->
             addDokument(
-                dokumentnavn = it.filnavn,
-                data = dokumentnavnTilData[it.filnavn] ?: throw MissingDataException("Fant ikke input stream for dokument ${it.filnavn}")
+                dokumentnavn = dokument.filnavn,
+                data = dokumentnavnTilData[dokument.filnavn] ?: throw MissingDataException("Fant ikke input stream for dokument ${dokument.filnavn}"),
+                filnr = index
             )
         }
     }
 
-    private fun MultiPartRequestContent.addDokument(dokumentnavn: String, data: InputStream) {
+    private fun MultiPartRequestContent.addDokument(dokumentnavn: String, data: InputStream, filnr: Int) {
         addPart(
             MultiPart.ContentSourcePart(
-                FILER_PART_NAME,
+                "${FILER_PART_NAME}_$filnr",
                 dokumentnavn,
                 null,
                 InputStreamRequestContent(data),
