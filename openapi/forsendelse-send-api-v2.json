@@ -214,6 +214,10 @@
           "svarSendesTil" : {
             "$ref" : "#/components/schemas/Adresse"
           },
+          "sendtAv" : {
+            "type" : "string",
+            "description" : "Fødelsnummer for person som har sendt forsendelsen."
+          },
           "svarPaForsendelse" : {
             "type" : "string",
             "description" : "Id til forsendelse dette er et svar på.",
