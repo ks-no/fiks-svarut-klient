@@ -214,7 +214,7 @@
           "svarSendesTil" : {
             "$ref" : "#/components/schemas/Adresse"
           },
-          "sendtAv" : {
+          "avgivendeSystemAktor" : {
             "type" : "string",
             "description" : "Fødelsnummer for person som har sendt forsendelsen."
           },
