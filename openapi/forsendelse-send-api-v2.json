@@ -183,7 +183,7 @@
           },
           "avgivendeSystemAktor" : {
             "type" : "string",
-            "description" : "Fødelsnummer for person som har sendt forsendelsen."
+            "description" : "Aktør som startet utsending av forsendelsen i avgivende system."
           },
           "konteringskode" : {
             "maxLength" : 20,
