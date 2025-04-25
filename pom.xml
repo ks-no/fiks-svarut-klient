@@ -18,7 +18,7 @@
         <java.version>17</java.version>
         <kotlin.code.style>official</kotlin.code.style>
 
-        <jackson.version>2.18.2</jackson.version>
+        <jackson.version>2.19.0</jackson.version>
         <maskinporten-client.version>3.3.2</maskinporten-client.version>
         <jetty-client.version>12.0.19</jetty-client.version>
         <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
