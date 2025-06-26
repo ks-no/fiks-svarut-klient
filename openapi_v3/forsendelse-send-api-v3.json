@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "KS SvarUt: Send forsendelse-API",
-    "description": "API for sending av forsendelser",
+    "title": "KS SvarUt: Send forsendelse-API - UNDER UTVIKLING, det vil fortsatt komme endringer",
+    "description": "API for sending av forsendelser - UNDER UTVIKLING, det vil fortsatt komme endringer",
     "contact": {
       "name": "Fiks-brukerstøtte",
       "url": "https://ks-no.github.io/",
