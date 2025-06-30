@@ -1,10 +1,10 @@
 package no.ks.svarut.klient.forsendelse.send.v3.builders
 
-import no.ks.fiks.svarut.forsendelse.send.model.v2.Metadata
-import no.ks.fiks.svarut.forsendelse.send.model.v2.NoarkMetadataFraAvleverendeSaksSystem
+import no.ks.fiks.svarut.forsendelse.send.model.v3.Metadata
+import no.ks.fiks.svarut.forsendelse.send.model.v3.NoarkMetadataFraAvleverendeSakssystem
 import java.time.OffsetDateTime
 
-class NoarkMetadataFraAvleverendeSaksSystemBuilder {
+class NoarkMetadataFraAvleverendeSakssystemBuilder {
 
     private var mappeId: String? = null
     private var mappeSystemId: String? = null
@@ -40,7 +40,7 @@ class NoarkMetadataFraAvleverendeSaksSystemBuilder {
     fun saksbehandler(saksbehandler: String?) = apply { this.saksbehandler = saksbehandler }
     fun ekstraMetadata(ekstraMetadata: List<Metadata>?) = apply { this.ekstraMetadata = ekstraMetadata }
 
-    fun build() = NoarkMetadataFraAvleverendeSaksSystem(
+    fun build() = NoarkMetadataFraAvleverendeSakssystem(
         mappeId = mappeId,
         mappeSystemId = mappeSystemId,
         saksaar = saksaar,

@@ -1,6 +1,6 @@
 package no.ks.svarut.klient.forsendelse.send.v3.builders
 
-import no.ks.fiks.svarut.forsendelse.send.model.v2.NoarkMetadataForImport
+import no.ks.fiks.svarut.forsendelse.send.model.v3.NoarkMetadataForImport
 
 class NoarkMetadataForImportBuilder {
 
