@@ -3,7 +3,7 @@ package no.ks.svarut.klient.forsendelse.send.v3.builders
 import no.ks.fiks.svarut.forsendelse.send.model.v3.*
 import java.util.*
 
-class PersonforsendelseBuilder {
+class PersonForsendelseBuilder {
     private var mottaker: Mottaker? = null
     private var tittel: String? = null
     private var eksponertFor: Set<String>? = null

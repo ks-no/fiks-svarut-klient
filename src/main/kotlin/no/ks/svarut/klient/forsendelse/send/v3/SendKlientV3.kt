@@ -8,7 +8,6 @@ import no.ks.fiks.svarut.forsendelse.send.model.v3.PersonForsendelse
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
 import no.ks.svarut.klient.HttpConfiguration
-import no.ks.svarut.klient.forsendelse.send.v2.MissingDataException
 import org.eclipse.jetty.client.InputStreamRequestContent
 import org.eclipse.jetty.client.MultiPartRequestContent
 import org.eclipse.jetty.client.Request
@@ -96,7 +95,7 @@ class SendKlientV3(
         forsendelse.dokumenter?.forEachIndexed { index, dokument ->
             addDokument(
                 dokumentnavn = dokument.filnavn,
-                data = dokumentnavnTilData[dokument.filnavn] ?: throw MissingDataException("Fant ikke input stream for dokument ${dokument.filnavn}"),
+                data = dokumentnavnTilData[dokument.filnavn] ?: throw ManglendeDataException("Fant ikke input stream for dokument ${dokument.filnavn}"),
                 filnr = index
             )
         }
@@ -106,7 +105,7 @@ class SendKlientV3(
         forsendelse.dokumenter?.forEachIndexed { index, dokument ->
             addDokument(
                 dokumentnavn = dokument.filnavn,
-                data = dokumentnavnTilData[dokument.filnavn] ?: throw MissingDataException("Fant ikke input stream for dokument ${dokument.filnavn}"),
+                data = dokumentnavnTilData[dokument.filnavn] ?: throw ManglendeDataException("Fant ikke input stream for dokument ${dokument.filnavn}"),
                 filnr = index
             )
         }
