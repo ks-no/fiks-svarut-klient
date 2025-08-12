@@ -1,6 +1,7 @@
 package no.ks.svarut.klient.forsendelse.send.v3
 
 import com.fasterxml.jackson.module.kotlin.readValue
+import com.nimbusds.common.contenttype.ContentType.APPLICATION_PDF
 import no.ks.fiks.svarut.forsendelse.send.model.v3.SendForsendelseResponse
 import no.ks.fiks.svarut.forsendelse.send.model.v3.NhnForsendelse
 import no.ks.fiks.svarut.forsendelse.send.model.v3.OrganisasjonForsendelse
@@ -12,6 +13,8 @@ import org.eclipse.jetty.client.InputStreamRequestContent
 import org.eclipse.jetty.client.MultiPartRequestContent
 import org.eclipse.jetty.client.Request
 import org.eclipse.jetty.client.StringRequestContent
+import org.eclipse.jetty.http.HttpFields
+import org.eclipse.jetty.http.HttpHeader
 import org.eclipse.jetty.http.HttpMethod
 import org.eclipse.jetty.http.MultiPart
 import java.io.InputStream
@@ -43,8 +46,11 @@ class SendKlientV3(
             close()
         })
 
-    fun sendTilNhn(kontoId: UUID, forsendelse: NhnForsendelse, filnavn: String, data: InputStream): UUID =
-        send(pathSendNhn(kontoId), buildMultipartBodyNhn(forsendelse, filnavn, data))
+    fun sendTilNhnMottaker(kontoId: UUID, forsendelse: NhnForsendelse, nhnDokument: NhnDokument): UUID =
+        if (nhnDokument.contentType != APPLICATION_PDF.type)
+            throw IllegalArgumentException("Kan kun sende PDF til NHN mottaker. Fikk ${nhnDokument.contentType}")
+        else
+            send(pathSendNhn(kontoId), buildMultipartBodyNhn(forsendelse, nhnDokument))
 
     fun sendTilOrganisasjon(kontoId: UUID, forsendelse: OrganisasjonForsendelse, dokumentnavnTilData: Map<String, InputStream>): UUID =
         send(
@@ -71,10 +77,10 @@ class SendKlientV3(
                 }
             }
 
-    private fun buildMultipartBodyNhn(forsendelse: NhnForsendelse, filnavn: String, data: InputStream) =
+    private fun buildMultipartBodyNhn(forsendelse: NhnForsendelse, nhnDokument: NhnDokument) =
         MultiPartRequestContent().apply {
             addForsendelse(forsendelse)
-            addDokument(filnavn, data,1)
+            addDokument(nhnDokument.filnavn, nhnDokument.contentType, nhnDokument.data,1)
             close()
         }
 
@@ -95,6 +101,7 @@ class SendKlientV3(
         forsendelse.dokumenter?.forEachIndexed { index, dokument ->
             addDokument(
                 dokumentnavn = dokument.filnavn,
+                contentType = dokument.mimeType,
                 data = dokumentnavnTilData[dokument.filnavn] ?: throw ManglendeDataException("Fant ikke input stream for dokument ${dokument.filnavn}"),
                 filnr = index
             )
@@ -105,22 +112,21 @@ class SendKlientV3(
         forsendelse.dokumenter?.forEachIndexed { index, dokument ->
             addDokument(
                 dokumentnavn = dokument.filnavn,
+                contentType = dokument.mimeType,
                 data = dokumentnavnTilData[dokument.filnavn] ?: throw ManglendeDataException("Fant ikke input stream for dokument ${dokument.filnavn}"),
                 filnr = index
             )
         }
     }
 
-    //TODO: Legge til Mimetype
-    private fun MultiPartRequestContent.addDokument(dokumentnavn: String, data: InputStream, filnr: Int) {
+    private fun MultiPartRequestContent.addDokument(dokumentnavn: String, contentType: String, data: InputStream, filnr: Int) {
         addPart(
             MultiPart.ContentSourcePart(
                 "${FILER_PART_NAME}_$filnr",
                 dokumentnavn,
-                null,
+                HttpFields.build().add(HttpHeader.CONTENT_TYPE, contentType),
                 InputStreamRequestContent(data),
             )
         )
     }
-
 }
