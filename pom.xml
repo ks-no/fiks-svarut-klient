@@ -27,6 +27,7 @@
 
         <!-- OpenAPI -->
         <openapi.path>${project.basedir}/openapi</openapi.path>
+        <openapi-v3.path>${project.basedir}/openapi_v3</openapi-v3.path>
         <openapi.package-prefix>${project.groupId}.svarut</openapi.package-prefix>
     </properties>
 
@@ -230,6 +231,50 @@
                                 <serializationLibrary>jackson</serializationLibrary>
                             </configOptions>
                             <modelPackage>${openapi.package-prefix}.forsendelse.send.model.v2</modelPackage>
+                            <generateApis>false</generateApis>
+                            <generateSupportingFiles>false</generateSupportingFiles>
+                            <generateApiTests>false</generateApiTests>
+                            <generateModelTests>false</generateModelTests>
+                            <addCompileSourceRoot>true</addCompileSourceRoot>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-send-v3</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <inputSpec>${openapi-v3.path}/forsendelse-send-api-v3.json</inputSpec>
+                            <generatorName>kotlin</generatorName>
+                            <configOptions>
+                                <dateLibrary>java8</dateLibrary>
+                                <serializationLibrary>jackson</serializationLibrary>
+                            </configOptions>
+                            <modelPackage>${openapi.package-prefix}.forsendelse.send.model.v3</modelPackage>
+                            <generateApis>false</generateApis>
+                            <generateSupportingFiles>false</generateSupportingFiles>
+                            <generateApiTests>false</generateApiTests>
+                            <generateModelTests>false</generateModelTests>
+                            <addCompileSourceRoot>true</addCompileSourceRoot>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-status-v3</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <generatorName>kotlin</generatorName>
+                            <configOptions>
+                                <dateLibrary>java8</dateLibrary>
+                                <serializationLibrary>jackson</serializationLibrary>
+                            </configOptions>
+                            <inputSpec>${openapi-v3.path}/forsendelse-status-api-v3.json</inputSpec>
+                            <modelPackage>${openapi.package-prefix}.forsendelse.status.model.v3</modelPackage>
+                            <apiPackage>${openapi.package-prefix}.forsendelse.status.api.v3</apiPackage>
+                            <invokerPackage>${openapi.package-prefix}.forsendelse.status.invoker.v3</invokerPackage>
                             <generateApis>false</generateApis>
                             <generateSupportingFiles>false</generateSupportingFiles>
                             <generateApiTests>false</generateApiTests>
