@@ -108,7 +108,7 @@
             "type" : "string",
             "description" : "Gyldige statuser for en forsendelse",
             "example" : "LEST",
-            "enum" : [ "MOTTATT", "AKSEPTERT", "AVVIST", "VARSLET", "LEST", "SENDT_PRINT", "PRINTET", "MANUELT_HANDTERT", "SENDT_DIGITALT", "SENDT_SDP", "LEVERT_SDP", "KLAR_FOR_MOTTAK", "IKKE_LEVERT", "SLETTET", "SENDT_NHN" ]
+            "enum" : [ "MOTTATT", "AKSEPTERT", "AVVIST", "VARSLET", "LEST", "SENDT_PRINT", "PRINTET", "MANUELT_HANDTERT", "SENDT_DIGITALT", "SENDT_SDP", "LEVERT_SDP", "KLAR_FOR_MOTTAK", "IKKE_LEVERT", "SLETTET", "SENDT_NHN", "LEVERT_NHN" ]
           }
         },
         "description" : "Status for forsendelse"
