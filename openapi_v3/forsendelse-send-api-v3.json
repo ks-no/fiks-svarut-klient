@@ -260,9 +260,6 @@
         "description": "TODO: Må man ha med postadresse? Dette er adressen det skal sendes til dersom man ønsker å svare på forsendelsen.\nEn eventuell adresse som fylles inn her vil overstyre adressen fra avsenderens forsidekonfigurasjon. Den vil også fremkomme på forsiden av brevet dersom forsendelsen sendes i posten."
       },
       "Adresse": {
-        "required": [
-          "postnummer", "poststed"
-        ],
         "type": "object",
         "properties": {
           "adresselinje1": {
