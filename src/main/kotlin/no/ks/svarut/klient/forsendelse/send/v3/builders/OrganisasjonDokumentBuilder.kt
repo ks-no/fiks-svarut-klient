@@ -8,7 +8,7 @@ class OrganisasjonDokumentBuilder {
     private var filnavn: String? = null
     private var mimeType: String? = null
     private var dokumentType: String? = null
-    private var giroarkSider: Set<Int>? = null
+    private var giroarkSide: Int? = null
     private var skalEkskluderesFraUtskrift: Boolean? = false
     private var ekstraMetadata: List<Metadata>? = null
     private var inneholderPersonsensitivInformasjon: Boolean? = false
@@ -16,7 +16,7 @@ class OrganisasjonDokumentBuilder {
     fun filnavn(filnavn: String) = apply { this.filnavn = filnavn }
     fun mimeType(mimeType: String) = apply { this.mimeType = mimeType }
     fun dokumentType(dokumentType: String?) = apply { this.dokumentType = dokumentType }
-    fun giroarkSider(giroarkSider: Set<Int>?) = apply { this.giroarkSider = giroarkSider }
+    fun giroarkSide(giroarkSide: Int) = apply { if (giroarkSide < 1) throw IllegalArgumentException("Giroarkside må vere et heltall større enn 0") else this.giroarkSide = giroarkSide }
     fun skalEkskluderesFraUtskrift(skalEkskluderesFraUtskrift: Boolean?) = apply { this.skalEkskluderesFraUtskrift = skalEkskluderesFraUtskrift }
     fun ekstraMetadata(ekstraMetadata: List<Metadata>?) = apply { this.ekstraMetadata = ekstraMetadata }
     fun inneholderPersonsensitivInformasjon(inneholderPersonsensitivInformasjon: Boolean?) = apply { this.inneholderPersonsensitivInformasjon = inneholderPersonsensitivInformasjon }
@@ -25,7 +25,7 @@ class OrganisasjonDokumentBuilder {
         filnavn = filnavn ?: throw IllegalArgumentException("Dokument må ha filnavn"),
         mimeType = mimeType ?: throw IllegalArgumentException("Mimetype på dokumentet må være satt"),
         dokumentType = dokumentType,
-        giroarkSider = giroarkSider,
+        giroarkSide = giroarkSide,
         skalEkskluderesFraUtskrift = skalEkskluderesFraUtskrift,
         ekstraMetadata = ekstraMetadata?.toSet(),
         inneholderPersonsensitivInformasjon = inneholderPersonsensitivInformasjon

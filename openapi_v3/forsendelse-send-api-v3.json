@@ -231,7 +231,7 @@
           },
           "digitalId": {
             "type": "string",
-            "description": "Fødelsnummer for person, eller organisasjonsnummer for organisasjon. Nødvendig for å sende forsendelsen digitalt. Påkrevd for mottaker ved kun digital levering."
+            "description": "Nødvendig for å sende forsendelsen digitalt. Påkrevd for mottaker ved kun digital levering. For person må det vere et gyldig fødsels- eller d-nummer, for organisasjon må det vere et gyldig organisasjonsnummer som finnes i Brønnøysundregisteret."
           },
           "adresse": {
             "$ref": "#/components/schemas/Adresse"
@@ -300,6 +300,7 @@
           "tittel": {
             "maxLength": 1000,
             "type": "string",
+            "x-error-message": "Tittel kan inneholde maks 1000 tegn",
             "description": "Tittel på forsendelsen. Tittel blir vist i tittelfeltet på melding i digitale postkasser, og i listen over innkommende meldinger."
           },
           "mottaker": {
@@ -377,15 +378,11 @@
                   "description": "Angir om dette dokumentet skal signeres. Kun ett dokument kan signeres, og det må ha mimeType application/pdf.",
                   "default": false
                 },
-                "giroarkSider": {
-                  "uniqueItems": true,
-                  "type": "array",
-                  "description": "Liste med sidetall som skal printes på gult giroark. Digital versjon vil få grått giroark. Første side er 1.",
-                  "items": {
-                    "type": "integer",
-                    "description": "Liste med sidetall som skal printes på gult giroark. Digital versjon vil få grått giroark. Første side er 1.",
-                    "format": "int32"
-                  }
+                "giroarkSide": {
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": 1,
+                  "description": "Sidetall som skal printes på gult giroark. Digital versjon vil få grått giroark. Første side er 1, kan ikke overstige antall sider i PDF."
                 },
                 "skalEkskluderesFraUtskrift": {
                   "type": "boolean",
@@ -533,15 +530,11 @@
                   "type": "string",
                   "description": "Fritekstfelt som kan brukes til å fortelle noe om dokumentets type. Kan brukes til Noark 4-dokumenttype."
                 },
-                "giroarkSider": {
-                  "uniqueItems": true,
-                  "type": "array",
-                  "description": "Liste med sidetall som skal printes på gult giroark. Digital versjon vil få grått giroark. Første side er 1.",
-                  "items": {
-                    "type": "integer",
-                    "description": "Liste med sidetall som skal printes på gult giroark. Digital versjon vil få grått giroark. Første side er 1.",
-                    "format": "int32"
-                  }
+                "giroarkSide": {
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": 1,
+                  "description": "Sidetall som skal printes på gult giroark. Digital versjon vil få grått giroark. Første side er 1, kan ikke overstige antall sider i PDF."
                 },
                 "skalEkskluderesFraUtskrift": {
                   "type": "boolean",
@@ -615,9 +608,9 @@
             "description": "Tittel på forsendelsen"
           },
           "beskrivelse": {
-            "maxLength": 200,
+            "maxLength": 1000,
             "type": "string",
-            "description": "Beskrivelse av innholdet forsendelsen utover det som er oppgitt i tittel"
+            "description": "Beskrivelse av innholdet forsendelsen utover det som er oppgitt i tittel. TODO: Øke lengde?"
           },
           "mottakerType": {
             "enum": [
@@ -740,10 +733,14 @@
         "properties": {
           "url": {
             "type": "string",
-            "description": "Lenke til ressurs. Må være i gyldig i henhold til RFC 2396 og RFC 2732."
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "Lenke til ressurs. Må være gyldig i henhold til RFC 2396 og RFC 2732."
           },
           "tekst": {
             "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
             "description": "Tekst for lenken."
           },
           "ledetekst": {
@@ -761,7 +758,9 @@
         "type": "object",
         "properties": {
           "key": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50
           },
           "value": {
             "type": "string"

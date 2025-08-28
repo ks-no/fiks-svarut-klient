@@ -7,20 +7,20 @@ class PersonDokumentBuilder {
     private var filnavn: String? = null
     private var mimeType: String? = null
     private var skalSigneres: Boolean? = false
-    private var giroarkSider: Set<Int>? = null
+    private var giroarkSide: Int? = null
     private var skalEkskluderesFraUtskrift: Boolean? = false
 
     fun filnavn(filnavn: String) = apply { this.filnavn = filnavn }
     fun mimeType(mimeType: String) = apply { this.mimeType = mimeType }
     fun skalSigneres(skalSigneres: Boolean?) = apply { this.skalSigneres = skalSigneres }
-    fun giroarkSider(giroarkSider: Set<Int>?) = apply { this.giroarkSider = giroarkSider }
+    fun giroarkSide(giroarkSide: Int) = apply { if(giroarkSide < 1) throw IllegalArgumentException("Giroarkside må vere et heltall større enn 0") else this.giroarkSide = giroarkSide }
     fun skalEkskluderesFraUtskrift(skalEkskluderesFraUtskrift: Boolean?) = apply { this.skalEkskluderesFraUtskrift = skalEkskluderesFraUtskrift }
 
     fun build() = PersonForsendelseDokumenterInner(
         filnavn = filnavn ?: throw IllegalArgumentException("Dokument må ha filnavn"),
         mimeType = mimeType ?: throw IllegalArgumentException("Mimetype på dokumentet må være satt"),
         skalSigneres = skalSigneres,
-        giroarkSider = giroarkSider,
+        giroarkSide = giroarkSide,
         skalEkskluderesFraUtskrift = skalEkskluderesFraUtskrift,
     )
 }
