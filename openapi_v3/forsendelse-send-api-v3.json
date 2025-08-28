@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "KS SvarUt: Send forsendelse-API - UNDER UTVIKLING, det vil fortsatt komme endringer",
-    "description": "API for sending av forsendelser - UNDER UTVIKLING, det vil fortsatt komme endringer",
+    "title": "KS SvarUt: Send forsendelse-API",
+    "description": "API for sending av forsendelser",
     "contact": {
       "name": "Fiks-brukerstøtte",
       "url": "https://ks-no.github.io/",
@@ -630,7 +630,8 @@
             "description": "Dersom type er FASTLEGE vil forsendelsen sendes til HER-id funnet ved oppslag i fastlegeregisteret på fødselsnummeret oppgitt i pasient-felt. Ved type HER_ID vil forsendelse sendes til oppgitt HER-id."
           },
           "mottakerHerId": {
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "description": "HER-id til mottaker. Påkrevd om mottakerType er satt til HER_ID."
           },
           "avsenderKontakt": {
