@@ -19,7 +19,7 @@ class NhnForsendelseBuilder {
     private var avsenderKontakt: NhnForsendelseAvsenderKontakt? = null
     private var pasient: NhnForsendelsePasient? = null
     private var beskrivelse: String? = null
-    private var mottakerHerId: String? = null
+    private var mottakerHerId: Int? = null
 
 
     fun tittel(tittel: String) = apply { this.tittel = tittel }
@@ -40,7 +40,7 @@ class NhnForsendelseBuilder {
 
     fun pasient(pasient: NhnForsendelsePasient?) = apply { this.pasient = pasient }
     fun beskrivelse(beskrivelse: String?) = apply { this.beskrivelse = beskrivelse }
-    fun mottakerHerId(mottakerHerId: String?) = apply { this.mottakerHerId = mottakerHerId }
+    fun mottakerHerId(mottakerHerId: Int?) = apply { this.mottakerHerId = mottakerHerId }
     fun avgivendeSystemAktor(avgivendeSystemAktor: String?) = apply { this.avgivendeSystemAktor = avgivendeSystemAktor }
     fun mottakerType(mottakerType: String?) =
         apply { this.mottakerType = mottakerType?.let { NhnForsendelse.MottakerType.valueOf(it) } }

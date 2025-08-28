@@ -630,7 +630,8 @@
             "description": "Dersom type er FASTLEGE vil forsendelsen sendes til HER-id funnet ved oppslag i fastlegeregisteret på fødselsnummeret oppgitt i pasient-felt. Ved type HER_ID vil forsendelse sendes til oppgitt HER-id."
           },
           "mottakerHerId": {
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "description": "HER-id til mottaker. Påkrevd om mottakerType er satt til HER_ID."
           },
           "avsenderKontakt": {
