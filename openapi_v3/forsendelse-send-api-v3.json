@@ -231,7 +231,7 @@
           },
           "digitalId": {
             "type": "string",
-            "description": "Fødelsnummer for person, eller organisasjonsnummer for organisasjon. Nødvendig for å sende forsendelsen digitalt. Påkrevd for mottaker ved kun digital levering."
+            "description": "Nødvendig for å sende forsendelsen digitalt. Påkrevd for mottaker ved kun digital levering. For person må det vere et gyldig fødsels- eller d-nummer, for organisasjon må det vere et gyldig organisasjonsnummer som finnes i Enhetsregisteret."
           },
           "adresse": {
             "$ref": "#/components/schemas/Adresse"
@@ -247,22 +247,19 @@
         "properties": {
           "navn": {
             "type": "string",
-            "description": "Navn på organisasjon svaret skal sendes til. TODO - DOBBELTSJEKKE DETTE"
+            "description": "Navn på organisasjon eller person som svaret skal sendes til."
           },
           "digitalId": {
             "type": "string",
-            "description": "Organisasjonsnummer til organisasjon svar skal sendes til. Nødvendig for å sende forsendelsen digitalt. Må vere et organisasjonsnummer om svarPaForsendelse på forsendelse er satt til true. "
+            "description": "Et gyldig organisasjonsnummer eller fødselsnummer som svar skal sendes til. Nødvendig for å sende forsendelsen digitalt. Må være et organisasjonsnummer om svarPaForsendelse-feltet på forsendelse er satt til true. "
           },
           "adresse": {
             "$ref": "#/components/schemas/Adresse"
           }
         },
-        "description": "TODO: Må man ha med postadresse? Dette er adressen det skal sendes til dersom man ønsker å svare på forsendelsen.\nEn eventuell adresse som fylles inn her vil overstyre adressen fra avsenderens forsidekonfigurasjon. Den vil også fremkomme på forsiden av brevet dersom forsendelsen sendes i posten."
+        "description": "Dette er returadressen det skal sendes til dersom man ønsker å svare på forsendelsen.\nEn eventuell adresse som fylles inn her vil overstyre adressen fra avsenderens forsidekonfigurasjon. Den vil også fremkomme på forsiden av brevet dersom forsendelsen sendes i posten."
       },
       "Adresse": {
-        "required": [
-          "postnummer", "poststed"
-        ],
         "type": "object",
         "properties": {
           "adresselinje1": {
@@ -358,7 +355,7 @@
           },
           "dokumenter": {
             "type": "array",
-            "description": "Forsendelsens dokumenter. Innsendt rekkefølge overholdes i generert brev. Total filstørrelse inntil 350 MB er støttet dersom forsendelsen skal kunne gå til print.",
+            "description": "Forsendelsens dokumenter. Innsendt rekkefølge overholdes i generert brev. Total filstørrelse inntil 350 MB er støttet dersom forsendelsen skal kunne gå til print. TODO: TTL?",
             "items": {
               "required": [
                 "filnavn",
@@ -380,15 +377,11 @@
                   "description": "Angir om dette dokumentet skal signeres. Kun ett dokument kan signeres, og det må ha mimeType application/pdf.",
                   "default": false
                 },
-                "giroarkSider": {
-                  "uniqueItems": true,
-                  "type": "array",
-                  "description": "Liste med sidetall som skal printes på gult giroark. Digital versjon vil få grått giroark. Første side er 1.",
-                  "items": {
-                    "type": "integer",
-                    "description": "Liste med sidetall som skal printes på gult giroark. Digital versjon vil få grått giroark. Første side er 1.",
-                    "format": "int32"
-                  }
+                "giroarkSide": {
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": 1,
+                  "description": "Sidetall som skal printes på gult giroark. Digital versjon vil få grått giroark. Første side er 1, kan ikke overstige antall sider i PDF."
                 },
                 "skalEkskluderesFraUtskrift": {
                   "type": "boolean",
@@ -413,7 +406,7 @@
           },
           "kanSvarePaForsendelse": {
             "type": "boolean",
-            "description": "Dersom dette feltet settes til true vil forsendelsen avvises om svarSendesTil ikke inneholder en gyldig adresse med organisasjonsnummer. Hvis forsendelsen aksepteres og sendes digitalt, vil det genereres en lenke hvor mottaker kan sende et svar tilbake til adressen spesifisert i svarSendesTil via eDialog.",
+            "description": "Dersom dette feltet settes til true kreves det at svarSendesTil skal inneholde en gyldig adresse med gyldig organisasjonsnummer. Hvis forsendelsen aksepteres og sendes digitalt, vil det genereres en lenke til eDialog hvor mottaker kan sende et svar tilbake til adressen spesifisert i svarSendesTil.",
             "default": false
           },
           "korrelasjonsid": {
@@ -536,15 +529,11 @@
                   "type": "string",
                   "description": "Fritekstfelt som kan brukes til å fortelle noe om dokumentets type. Kan brukes til Noark 4-dokumenttype."
                 },
-                "giroarkSider": {
-                  "uniqueItems": true,
-                  "type": "array",
-                  "description": "Liste med sidetall som skal printes på gult giroark. Digital versjon vil få grått giroark. Første side er 1.",
-                  "items": {
-                    "type": "integer",
-                    "description": "Liste med sidetall som skal printes på gult giroark. Digital versjon vil få grått giroark. Første side er 1.",
-                    "format": "int32"
-                  }
+                "giroarkSide": {
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": 1,
+                  "description": "Sidetall som skal printes på gult giroark. Digital versjon vil få grått giroark. Første side er 1, kan ikke overstige antall sider i PDF."
                 },
                 "skalEkskluderesFraUtskrift": {
                   "type": "boolean",
@@ -592,7 +581,7 @@
           },
           "kanSvarePaForsendelse": {
             "type": "boolean",
-            "description": "Dersom dette feltet settes til true vil forsendelsen avvises om svarSendesTil ikke inneholder en gyldig adresse med organisasjonsnummer. Hvis forsendelsen aksepteres og sendes digitalt, vil det genereres en lenke hvor mottaker kan sende et svar tilbake til adressen spesifisert i svarSendesTil via eDialog.",
+            "description": "Dersom dette feltet settes til true kreves det at svarSendesTil skal inneholde en gyldig adresse med gyldig organisasjonsnummer. Hvis forsendelsen aksepteres og sendes digitalt, vil det genereres en lenke til eDialog hvor mottaker kan sende et svar tilbake til adressen spesifisert i svarSendesTil.",
             "default": false
           },
           "taushetsbelagtPost": {
@@ -618,9 +607,9 @@
             "description": "Tittel på forsendelsen"
           },
           "beskrivelse": {
-            "maxLength": 200,
+            "maxLength": 5000,
             "type": "string",
-            "description": "Beskrivelse av innholdet forsendelsen utover det som er oppgitt i tittel"
+            "description": "Beskrivelse av innholdet forsendelsen utover det som er oppgitt i tittel."
           },
           "mottakerType": {
             "enum": [
@@ -743,10 +732,14 @@
         "properties": {
           "url": {
             "type": "string",
-            "description": "Lenke til ressurs. Må være i gyldig i henhold til RFC 2396 og RFC 2732."
+            "minLength": 1,
+            "maxLength": 1000,
+            "description": "Lenke til ressurs. Må være gyldig i henhold til RFC 2396 og RFC 2732."
           },
           "tekst": {
             "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
             "description": "Tekst for lenken."
           },
           "ledetekst": {
@@ -764,7 +757,9 @@
         "type": "object",
         "properties": {
           "key": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
           },
           "value": {
             "type": "string"
