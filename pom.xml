@@ -36,7 +36,7 @@
 
         <!-- OpenAPI -->
         <openapi.path>${project.basedir}/openapi</openapi.path>
-        <openapi-v3.path>${project.basedir}/openapi_v3</openapi-v3.path>
+        <spec-submodule.path>${project.basedir}/fiks-svarut-specs/specs</spec-submodule.path>
         <openapi.package-prefix>${project.groupId}.svarut</openapi.package-prefix>
     </properties>
 
