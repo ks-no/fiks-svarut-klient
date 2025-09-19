@@ -36,7 +36,7 @@
 
         <!-- OpenAPI -->
         <openapi.path>${project.basedir}/openapi</openapi.path>
-        <openapi-v3.path>${project.basedir}/openapi_v3</openapi-v3.path>
+        <spec-submodule.path>${project.basedir}/fiks-svarut-specs/specs</spec-submodule.path>
         <openapi.package-prefix>${project.groupId}.svarut</openapi.package-prefix>
     </properties>
 
@@ -254,7 +254,7 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi-v3.path}/forsendelse-send-api-v3.json</inputSpec>
+                            <inputSpec>${spec-submodule.path}/forsendelse-send-api-v3.json</inputSpec>
                             <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
@@ -280,7 +280,7 @@
                                 <dateLibrary>java8</dateLibrary>
                                 <serializationLibrary>jackson</serializationLibrary>
                             </configOptions>
-                            <inputSpec>${openapi-v3.path}/forsendelse-status-api-v3.json</inputSpec>
+                            <inputSpec>${spec-submodule.path}/forsendelse-status-api-v3.json</inputSpec>
                             <modelPackage>${openapi.package-prefix}.forsendelse.status.model.v3</modelPackage>
                             <apiPackage>${openapi.package-prefix}.forsendelse.status.api.v3</apiPackage>
                             <invokerPackage>${openapi.package-prefix}.forsendelse.status.invoker.v3</invokerPackage>
