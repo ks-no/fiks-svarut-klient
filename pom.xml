@@ -38,6 +38,8 @@
         <openapi.path>${project.basedir}/openapi</openapi.path>
         <spec-submodule.path>${project.basedir}/fiks-svarut-specs/specs</spec-submodule.path>
         <openapi.package-prefix>${project.groupId}.svarut</openapi.package-prefix>
+        
+        <central-publishing-maven-plugin.ignorePublishedComponents>true</central-publishing-maven-plugin.ignorePublishedComponents>
     </properties>
 
     <dependencyManagement>
