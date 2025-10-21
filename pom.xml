@@ -29,7 +29,7 @@
 
         <jackson.version>2.20.0</jackson.version>
         <maskinporten-client.version>3.5.1</maskinporten-client.version>
-        <jetty-client.version>12.1.1</jetty-client.version>
+        <jetty-client.version>12.1.3</jetty-client.version>
         <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
 
         <kotest.version>5.9.1</kotest.version>
