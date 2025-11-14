@@ -183,7 +183,7 @@
           },
           "avgivendeSystemAktor" : {
             "type" : "string",
-            "description" : "Aktør som startet utsending av forsendelsen i avgivende system."
+            "description" : "Aktør som startet utsending av forsendelsen i avgivende system"
           },
           "konteringskode" : {
             "maxLength" : 20,
@@ -233,6 +233,7 @@
           "lenker" : {
             "type" : "array",
             "description" : "Lenker som ved bruk av standardmaler blir sendt med i meldinger til digitale postkasser. Innsendt rekkefølge overholdes.",
+            "maxItems": 5,
             "items" : {
               "$ref" : "#/components/schemas/Lenke"
             }
