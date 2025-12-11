@@ -9,14 +9,14 @@ class AdresseBuilder {
     private var adresselinje3: String? = null
     private lateinit var poststed: String
     private lateinit var postnummer: String
-    private var land: String? = null
+    private var landkode: String? = null
 
     fun adresselinje1(adresselinje1: String?) = this.also { this.adresselinje1 = adresselinje1 }
     fun adresselinje2(adresselinje2: String?) = this.also { this.adresselinje2 = adresselinje2 }
     fun adresselinje3(adresselinje3: String?) = this.also { this.adresselinje3 = adresselinje3 }
     fun poststed(poststed: String) = this.also { this.poststed = poststed }
     fun postnummer(postnummer: String) = this.also { this.postnummer = postnummer }
-    fun land(land: String?) = this.also { this.land = land }
+    fun landkode(landkode: String?) = this.also { this.landkode = landkode }
 
     fun build() = Adresse(
         adresselinje1 = adresselinje1,
@@ -24,6 +24,7 @@ class AdresseBuilder {
         adresselinje3 = adresselinje3,
         poststed = poststed,
         postnummer = postnummer,
-        land = land)
+        landkode = landkode
+    )
 
 }
