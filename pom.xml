@@ -12,7 +12,7 @@
 
     <groupId>no.ks.fiks</groupId>
     <artifactId>fiks-svarut-klient</artifactId>
-    <version>4.4.0</version>
+    <version>4.4.1-SNAPSHOT</version>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Client for interacting with SvarUt</description>
     <url>https://github.com/ks-no/fiks-svarut-klient</url>
