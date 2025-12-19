@@ -15,7 +15,7 @@ class NhnForsendelseBuilder {
     private var svarPaForsendelseId: UUID? = null
     private var eksternReferanse: String? = null
     private var korrelasjonsid: String? = null
-    private var mottakerType: NhnForsendelse.MottakerType? = null
+    private var mottakertype: NhnForsendelse.Mottakertype? = null
     private var avsenderKontakt: NhnForsendelseAvsenderKontakt? = null
     private var pasient: NhnForsendelsePasient? = null
     private var beskrivelse: String? = null
@@ -34,7 +34,7 @@ class NhnForsendelseBuilder {
     fun svarPaForsendelse(svarPaForsendelse: UUID?) = apply { this.svarPaForsendelseId = svarPaForsendelse }
     fun eksternReferanse(eksternReferanse: String?) = apply { this.eksternReferanse = eksternReferanse }
     fun korrelasjonsid(korrelasjonsid: String?) = apply { this.korrelasjonsid = korrelasjonsid }
-    fun mottakerType(mottakerType: NhnForsendelse.MottakerType?) = apply { this.mottakerType = mottakerType }
+    fun mottakerType(mottakerType: NhnForsendelse.Mottakertype?) = apply { this.mottakertype = mottakerType }
     fun avsenderKontakt(avsenderKontakt: NhnForsendelseAvsenderKontakt?) =
         apply { this.avsenderKontakt = avsenderKontakt }
 
@@ -43,7 +43,7 @@ class NhnForsendelseBuilder {
     fun mottakerHerId(mottakerHerId: Int?) = apply { this.mottakerHerId = mottakerHerId }
     fun avgivendeSystemAktor(avgivendeSystemAktor: String?) = apply { this.avgivendeSystemAktor = avgivendeSystemAktor }
     fun mottakerType(mottakerType: String?) =
-        apply { this.mottakerType = mottakerType?.let { NhnForsendelse.MottakerType.valueOf(it) } }
+        apply { this.mottakertype = mottakerType?.let { NhnForsendelse.Mottakertype.valueOf(it) } }
 
     fun build() = NhnForsendelse(
         tittel = tittel ?: throw IllegalArgumentException("Tittel er ikke satt"),
@@ -57,7 +57,7 @@ class NhnForsendelseBuilder {
         svarPaForsendelseId = svarPaForsendelseId,
         eksternReferanse = eksternReferanse,
         korrelasjonsid = korrelasjonsid,
-        mottakerType = mottakerType ?: throw IllegalArgumentException("MottakerType er ikke satt"),
+        mottakertype = mottakertype ?: throw IllegalArgumentException("Mottakertype er ikke satt"),
         avsenderKontakt = avsenderKontakt ?: throw IllegalArgumentException("AvsenderKontakt er ikke satt"),
         pasient = pasient ?: throw IllegalArgumentException("Pasient er ikke satt"),
         beskrivelse = beskrivelse,

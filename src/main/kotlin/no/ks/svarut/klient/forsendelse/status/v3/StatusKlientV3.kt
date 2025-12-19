@@ -22,7 +22,7 @@ class StatusKlientV3(
     httpConfig: HttpConfiguration = HttpConfiguration(),
 ) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor, httpConfig) {
 
-    private fun pathHentStatuser(kontoId: UUID) = "$BASE_PATH/kontoer/$kontoId/forsendelser/status"
+    private fun pathHentStatuser(kontoId: UUID) = "$BASE_PATH/kontoer/$kontoId/forsendelser/status/sok"
 
     fun hentStatus(kontoId: UUID, forsendelseId: UUID): ForsendelseStatus? =
         hentStatuser(kontoId, listOf(forsendelseId)).singleOrNull()
