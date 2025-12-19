@@ -6,6 +6,7 @@ import no.ks.fiks.svarut.forsendelse.send.model.v3.SendForsendelseResponse
 import no.ks.fiks.svarut.forsendelse.send.model.v3.NhnForsendelse
 import no.ks.fiks.svarut.forsendelse.send.model.v3.OrganisasjonForsendelse
 import no.ks.fiks.svarut.forsendelse.send.model.v3.PersonForsendelse
+import no.ks.fiks.svarut.forsendelse.send.model.v3.PrintForsendelse
 import no.ks.svarut.klient.AuthenticationStrategy
 import no.ks.svarut.klient.BaseKlient
 import no.ks.svarut.klient.HttpConfiguration
@@ -36,6 +37,7 @@ class SendKlientV3(
 
     private fun pathSendPerson(kontoId: UUID) = "$BASE_PATH/kontoer/$kontoId/forsendelser/person"
     private fun pathSendOrganisasjon(kontoId: UUID) = "$BASE_PATH/kontoer/$kontoId/forsendelser/organisasjon"
+    private fun pathSendTilPrint(kontoId: UUID) = "$BASE_PATH/kontoer/$kontoId/forsendelser/print"
     private fun pathSendNhn(kontoId: UUID) = "$BASE_PATH/kontoer/$kontoId/forsendelser/nhn"
 
     fun sendTilPerson(kontoId: UUID, forsendelse: PersonForsendelse, dokumentnavnTilData: Map<String, InputStream>): UUID =
@@ -55,6 +57,15 @@ class SendKlientV3(
     fun sendTilOrganisasjon(kontoId: UUID, forsendelse: OrganisasjonForsendelse, dokumentnavnTilData: Map<String, InputStream>): UUID =
         send(
             path = pathSendOrganisasjon(kontoId),
+            body = MultiPartRequestContent().apply {
+                addForsendelse(forsendelse)
+                addDokumenter(forsendelse, dokumentnavnTilData)
+                close()
+            })
+
+    fun sendRettTilPrint(kontoId: UUID, forsendelse: PrintForsendelse, dokumentnavnTilData: Map<String, InputStream>): UUID =
+        send(
+            path = pathSendTilPrint(kontoId),
             body = MultiPartRequestContent().apply {
                 addForsendelse(forsendelse)
                 addDokumenter(forsendelse, dokumentnavnTilData)
@@ -90,6 +101,9 @@ class SendKlientV3(
     private fun MultiPartRequestContent.addForsendelse(forsendelse: PersonForsendelse) {
         addPartForsendelse(StringRequestContent(objectMapper.writeValueAsString(forsendelse)))
     }
+    private fun MultiPartRequestContent.addForsendelse(forsendelse: PrintForsendelse) {
+        addPartForsendelse(StringRequestContent(objectMapper.writeValueAsString(forsendelse)))
+    }
     private fun MultiPartRequestContent.addForsendelse(forsendelse: OrganisasjonForsendelse)  =
         addPartForsendelse(StringRequestContent(objectMapper.writeValueAsString(forsendelse)))
 
@@ -98,6 +112,17 @@ class SendKlientV3(
     }
 
     private fun MultiPartRequestContent.addDokumenter(forsendelse: PersonForsendelse, dokumentnavnTilData: Map<String, InputStream>) {
+        forsendelse.dokumenter?.forEachIndexed { index, dokument ->
+            addDokument(
+                dokumentnavn = dokument.filnavn,
+                contentType = dokument.mimeType,
+                data = dokumentnavnTilData[dokument.filnavn] ?: throw ManglendeDataException("Fant ikke input stream for dokument ${dokument.filnavn}"),
+                filnr = index
+            )
+        }
+    }
+
+    private fun MultiPartRequestContent.addDokumenter(forsendelse: PrintForsendelse, dokumentnavnTilData: Map<String, InputStream>) {
         forsendelse.dokumenter?.forEachIndexed { index, dokument ->
             addDokument(
                 dokumentnavn = dokument.filnavn,
