@@ -63,7 +63,7 @@ class SendKlientV3(
                 close()
             })
 
-    fun sendRettTilPrint(kontoId: UUID, forsendelse: PrintForsendelse, dokumentnavnTilData: Map<String, InputStream>): UUID =
+    fun sendTilPrint(kontoId: UUID, forsendelse: PrintForsendelse, dokumentnavnTilData: Map<String, InputStream>): UUID =
         send(
             path = pathSendTilPrint(kontoId),
             body = MultiPartRequestContent().apply {
