@@ -1,7 +1,6 @@
 package no.ks.svarut.klient.forsendelse.send.v3.builders
 
 import no.ks.fiks.svarut.forsendelse.send.model.v3.PrintForsendelseDokumenterInner
-import no.ks.fiks.svarut.forsendelse.send.model.v3.Metadata
 
 class PrintDokumentBuilder {
 
