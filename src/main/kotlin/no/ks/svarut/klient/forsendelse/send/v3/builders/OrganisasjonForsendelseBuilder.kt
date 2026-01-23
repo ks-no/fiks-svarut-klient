@@ -9,10 +9,12 @@ class OrganisasjonForsendelseBuilder {
     private var tittel: String? = null
     private var eksponertFor: Set<String>? = null
     private var avgivendeSystem: String? = null
+    private var avgivendeSystemAktor: String? = null
     private var konteringskode: String? = null
     private var kunDigitalLevering: Boolean? = false
     private var kryptert: Boolean? = false
     private var utskriftskonfigurasjon: Utskriftskonfigurasjon? = null
+    private var sikkerhetsniva: Sikkerhetsniva? = null
     private var metadataFraAvleverendeSystem: NoarkMetadataFraAvleverendeSakssystem? = null
     private var metadataForImport: NoarkMetadataForImport? = null
     private var svarSendesTil: SvarSendesTil? = null
@@ -29,10 +31,12 @@ class OrganisasjonForsendelseBuilder {
     fun tittel(tittel: String) = apply { this.tittel = tittel }
     fun eksponertFor(eksponertFor: Set<String>?) = apply { this.eksponertFor = eksponertFor }
     fun avgivendeSystem(avgivendeSystem: String?) = apply { this.avgivendeSystem = avgivendeSystem }
+    fun avgivendeSystemAktor(avgivendeSystemAktor: String?) = apply { this.avgivendeSystemAktor = avgivendeSystemAktor }
     fun konteringskode(konteringskode: String?) = apply { this.konteringskode = konteringskode }
     fun kunDigitalLevering(kunDigitalLevering: Boolean?) = apply { this.kunDigitalLevering = kunDigitalLevering }
     fun kryptert(kryptert: Boolean?) = apply { this.kryptert = kryptert }
     fun utskriftskonfigurasjon(utskriftskonfigurasjon: Utskriftskonfigurasjon?) = apply { this.utskriftskonfigurasjon = utskriftskonfigurasjon }
+    fun sikkerhetsniva(sikkerhetsniva: Sikkerhetsniva?) = apply { this.sikkerhetsniva = sikkerhetsniva }
     fun metadataFraAvleverendeSystem(metadataFraAvleverendeSystem: NoarkMetadataFraAvleverendeSakssystem?) = apply { this.metadataFraAvleverendeSystem = metadataFraAvleverendeSystem }
     fun metadataForImport(metadataForImport: NoarkMetadataForImport?) = apply { this.metadataForImport = metadataForImport }
     fun svarSendesTil(svarSendesTil: SvarSendesTil?) = apply { this.svarSendesTil = svarSendesTil }
@@ -50,10 +54,12 @@ class OrganisasjonForsendelseBuilder {
         tittel = tittel ?: throw IllegalArgumentException("Tittel er ikke satt"),
         eksponertFor = eksponertFor,
         avgivendeSystem = avgivendeSystem,
+        avgivendeSystemAktor = avgivendeSystemAktor,
         konteringskode = konteringskode,
         kunDigitalLevering = kunDigitalLevering,
         kryptert = kryptert,
         utskriftskonfigurasjon = utskriftskonfigurasjon,
+        sikkerhetsniva = sikkerhetsniva,
         metadataFraAvleverendeSystem = metadataFraAvleverendeSystem,
         metadataForImport = metadataForImport,
         svarSendesTil = svarSendesTil,
