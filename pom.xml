@@ -94,7 +94,7 @@
 
         <dependency>
             <groupId>io.kotest</groupId>
-            <artifactId>kotest-runner-junit5-jvm</artifactId>
+            <artifactId>kotest-runner-junit6-jvm</artifactId>
             <version>${kotest.version}</version>
             <scope>test</scope>
         </dependency>
