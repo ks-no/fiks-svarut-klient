@@ -24,7 +24,7 @@ class OrganisasjonForsendelseBuilder {
     private var forsendelsestype: String? = null
     private var eksternReferanse: String? = null
     private var korrelasjonsid: String? = null
-    private var kanSvarePaForsendelse: Boolean? = false
+    private var kanSvareViaEdialog: Boolean? = false
     private var taushetsbelagtPost: Boolean? = false
 
     fun mottaker(mottaker: Mottaker) = apply { this.mottaker = mottaker }
@@ -46,7 +46,7 @@ class OrganisasjonForsendelseBuilder {
     fun forsendelsestype(forsendelsestype: String?) = apply { this.forsendelsestype = forsendelsestype }
     fun eksternReferanse(eksternReferanse: String?) = apply { this.eksternReferanse = eksternReferanse }
     fun korrelasjonsid(korrelasjonsid: String?) = apply { this.korrelasjonsid = korrelasjonsid }
-    fun kanSvarePaForsendelse(kanSvarePaForsendelse: Boolean?) = apply { this.kanSvarePaForsendelse = kanSvarePaForsendelse }
+    fun kanSvareViaEdialog(kanSvareViaEdialog: Boolean?) = apply { this.kanSvareViaEdialog = kanSvareViaEdialog }
     fun taushetsbelagtPost(taushetsbelagtPost: Boolean?) = apply { this.taushetsbelagtPost = taushetsbelagtPost }
 
     fun build() = OrganisasjonForsendelse(
@@ -69,7 +69,7 @@ class OrganisasjonForsendelseBuilder {
         forsendelsestype = forsendelsestype,
         eksternReferanse = eksternReferanse,
         korrelasjonsid = korrelasjonsid,
-        kanSvarePaForsendelse = kanSvarePaForsendelse,
+        kanSvareViaEdialog = kanSvareViaEdialog,
         taushetsbelagtPost = taushetsbelagtPost
     )
 }

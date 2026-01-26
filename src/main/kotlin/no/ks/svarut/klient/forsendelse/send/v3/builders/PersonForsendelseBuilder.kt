@@ -20,7 +20,7 @@ class PersonForsendelseBuilder {
     private var forsendelsestype: String? = null
     private var eksternReferanse: String? = null
     private var korrelasjonsid: String? = null
-    private var kanSvarPaForsendelse: Boolean? = false
+    private var kanSvareViaEdialog: Boolean? = false
     private var signering: PersonForsendelseSignering? = null
 
     fun mottaker(mottaker: Mottaker) = apply { this.mottaker = mottaker }
@@ -38,7 +38,7 @@ class PersonForsendelseBuilder {
     fun forsendelsestype(forsendelsestype: String?) = apply { this.forsendelsestype = forsendelsestype }
     fun eksternReferanse(eksternReferanse: String?) = apply { this.eksternReferanse = eksternReferanse }
     fun korrelasjonsid(korrelasjonsid: String?) = apply { this.korrelasjonsid = korrelasjonsid }
-    fun svarPaForsendelse(svarPaForsendelse: Boolean?) = apply { this.kanSvarPaForsendelse = svarPaForsendelse }
+    fun kanSvareViaEdialog(kanSvareViaEdialog: Boolean?) = apply { this.kanSvareViaEdialog = kanSvareViaEdialog }
     fun signering(signering: PersonForsendelseSignering) = apply { this.signering = signering }
 
     fun build() = PersonForsendelse(
@@ -58,6 +58,6 @@ class PersonForsendelseBuilder {
         lenker = lenker,
         eksternReferanse = eksternReferanse,
         korrelasjonsid = korrelasjonsid,
-        kanSvarePaForsendelse = kanSvarPaForsendelse,
+        kanSvareViaEdialog = kanSvareViaEdialog,
     )
 }
