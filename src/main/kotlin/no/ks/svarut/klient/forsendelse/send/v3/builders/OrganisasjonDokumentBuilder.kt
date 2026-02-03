@@ -16,7 +16,7 @@ class OrganisasjonDokumentBuilder {
     fun filnavn(filnavn: String) = apply { this.filnavn = filnavn }
     fun mimeType(mimeType: String) = apply { this.mimeType = mimeType }
     fun dokumentType(dokumentType: String?) = apply { this.dokumentType = dokumentType }
-    fun giroarkSide(giroarkSide: Int) = apply { if (giroarkSide < 1) throw IllegalArgumentException("Giroarkside må vere et heltall større enn 0") else this.giroarkSide = giroarkSide }
+    fun giroarkSide(giroarkSide: Int?) = apply { if (giroarkSide != null && giroarkSide < 1) throw IllegalArgumentException("Giroarkside må vere et heltall større enn 0") else this.giroarkSide = giroarkSide }
     fun skalEkskluderesFraUtskrift(skalEkskluderesFraUtskrift: Boolean?) = apply { this.skalEkskluderesFraUtskrift = skalEkskluderesFraUtskrift }
     fun ekstraMetadata(ekstraMetadata: List<Metadata>?) = apply { this.ekstraMetadata = ekstraMetadata }
     fun inneholderPersonsensitivInformasjon(inneholderPersonsensitivInformasjon: Boolean?) = apply { this.inneholderPersonsensitivInformasjon = inneholderPersonsensitivInformasjon }
