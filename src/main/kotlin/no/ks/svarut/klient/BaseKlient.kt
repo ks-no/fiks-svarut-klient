@@ -1,5 +1,6 @@
 package no.ks.svarut.klient
 
+import com.fasterxml.jackson.databind.DatabindException
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
@@ -60,8 +61,26 @@ abstract class BaseKlient(
     }
 
     fun ObjectMapper.bodyToException(body: String): Exception = try {
-        SvarUtKlientException(objectMapper.readValue(body))
+        SvarUtKlientException(body.toErrorMessage())
     } catch (e: Exception) {
-        RuntimeException("Uventet feil. Response body: $body")
+        RuntimeException("Uventet feil. Response body: $body", e)
     }
+
+    private fun String.toErrorMessage(): ErrorMessage =
+        try {
+            objectMapper.readValue(this)
+        } catch (_: DatabindException) {
+            ErrorMessage(
+                timestamp = null,
+                status = null,
+                error = null,
+                errorId = null,
+                path = null,
+                originalPath = null,
+                message = "Klarte ikke å parse feilmelding. Body: $this",
+                errorCode = null,
+                errorJson = null,
+            )
+        }
+
 }
