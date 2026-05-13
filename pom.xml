@@ -7,7 +7,7 @@
     <parent>
         <groupId>no.ks.fiks.pom</groupId>
         <artifactId>fiks-ekstern-kotlin-superpom</artifactId>
-        <version>1.9.0</version>
+        <version>1.10.0</version>
     </parent>
 
     <groupId>no.ks.fiks</groupId>
@@ -28,8 +28,8 @@
         <kotlin.code.style>official</kotlin.code.style>
 
         <jackson.version>2.21.3</jackson.version>
-        <maskinporten-client.version>3.6.0</maskinporten-client.version>
-        <jetty-client.version>12.1.7</jetty-client.version>
+        <maskinporten-client.version>3.6.1</maskinporten-client.version>
+        <jetty-client.version>12.1.9</jetty-client.version>
         <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
 
         <kotest.version>6.1.5</kotest.version>
