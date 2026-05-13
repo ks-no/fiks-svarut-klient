@@ -7,3 +7,8 @@ updates:
     time: "04:49"
     timezone: Europe/Oslo
   open-pull-requests-limit: 15
+- package-ecosystem: gitsubmodule
+  directory: "/"
+  schedule:
+    interval: "daily"
+
