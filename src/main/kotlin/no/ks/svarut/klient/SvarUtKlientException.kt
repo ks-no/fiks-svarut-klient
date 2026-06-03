@@ -13,5 +13,5 @@ data class ErrorMessage(
     val originalPath: String?,
     val message: String?,
     val errorCode: String?,
-    val errorJson: String?
+    val errorJson: Map<String, String>?,
 )
