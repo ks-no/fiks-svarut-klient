@@ -35,7 +35,6 @@
         <kotest.version>6.1.11</kotest.version>
 
         <!-- OpenAPI -->
-        <openapi.path>${project.basedir}/openapi</openapi.path>
         <spec-submodule.path>${project.basedir}/fiks-svarut-specs/specs</spec-submodule.path>
         <openapi.package-prefix>${project.groupId}.svarut</openapi.package-prefix>
         
@@ -154,7 +153,7 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi.path}/forsendelse-eksternref-api-v2.json</inputSpec>
+                            <inputSpec>${spec-submodule.path}/forsendelse-eksternref-api-v2.json</inputSpec>
                             <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
@@ -175,7 +174,7 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi.path}/forsendelse-hendelser-api-v2.json</inputSpec>
+                            <inputSpec>${spec-submodule.path}/forsendelse-hendelser-api-v2.json</inputSpec>
                             <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
@@ -196,7 +195,7 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi.path}/forsendelse-lest-api-v2.json</inputSpec>
+                            <inputSpec>${spec-submodule.path}/forsendelse-lest-api-v2.json</inputSpec>
                             <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
@@ -217,7 +216,7 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi.path}/forsendelse-metadata-api-v2.json</inputSpec>
+                            <inputSpec>${spec-submodule.path}/forsendelse-metadata-api-v2.json</inputSpec>
                             <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
@@ -238,7 +237,7 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi.path}/forsendelse-send-api-v2.json</inputSpec>
+                            <inputSpec>${spec-submodule.path}/forsendelse-send-api-v2.json</inputSpec>
                             <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
@@ -303,7 +302,7 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi.path}/forsendelse-slett-api-v2.json</inputSpec>
+                            <inputSpec>${spec-submodule.path}/forsendelse-slett-api-v2.json</inputSpec>
                             <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
@@ -324,7 +323,7 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi.path}/forsendelse-status-api-v2.json</inputSpec>
+                            <inputSpec>${spec-submodule.path}/forsendelse-status-api-v2.json</inputSpec>
                             <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
@@ -345,7 +344,7 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi.path}/forsendelse-typer-api-v2.json</inputSpec>
+                            <inputSpec>${spec-submodule.path}/forsendelse-typer-api-v2.json</inputSpec>
                             <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
@@ -366,7 +365,7 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <inputSpec>${openapi.path}/mottakersystem-api-v2.json</inputSpec>
+                            <inputSpec>${spec-submodule.path}/mottakersystem-api-v2.json</inputSpec>
                             <generatorName>kotlin</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
