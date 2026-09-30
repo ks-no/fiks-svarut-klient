@@ -60,7 +60,7 @@ abstract class BaseKlient(
         }
     }
 
-    fun ObjectMapper.bodyToException(body: String): Exception = try {
+    fun bodyToException(body: String): Exception = try {
         SvarUtKlientException(body.toErrorMessage())
     } catch (e: Exception) {
         RuntimeException("Uventet feil. Response body: $body", e)
@@ -79,7 +79,7 @@ abstract class BaseKlient(
                 originalPath = null,
                 message = "Klarte ikke å parse feilmelding. Body: $this",
                 errorCode = null,
-                errorJson = null,
+                errorDetails = null,
             )
         }
 

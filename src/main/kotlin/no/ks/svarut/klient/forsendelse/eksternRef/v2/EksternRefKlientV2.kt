@@ -34,7 +34,7 @@ class EksternRefKlientV2(
             .send()
             .let { response ->
                 if (response.status != 200) {
-                    throw objectMapper.bodyToException(response.contentAsString)
+                    throw bodyToException(response.contentAsString)
                 } else {
                     objectMapper.readValue<EksternRefOppslagResponse>(response.contentAsString)
                         .forsendelseIds
@@ -49,7 +49,7 @@ class EksternRefKlientV2(
             .send()
             .let { response ->
                 if (response.status != 200) {
-                    throw objectMapper.bodyToException(response.contentAsString)
+                    throw bodyToException(response.contentAsString)
                 } else {
                     objectMapper.readValue<EksternRefOppslagMetadataResponse>(response.contentAsString)
                         .forsendelser
