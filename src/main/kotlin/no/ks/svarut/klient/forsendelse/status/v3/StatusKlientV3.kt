@@ -35,7 +35,7 @@ class StatusKlientV3(
             .send()
             .let { response ->
                 if (response.status != 200) {
-                    throw objectMapper.bodyToException(response.contentAsString)
+                    throw bodyToException(response.contentAsString)
                 } else {
                     objectMapper.readValue<ForsendelseStatuser>(response.contentAsString)
                         .statuser

@@ -35,7 +35,7 @@ class SlettKlientV2(
             .send()
             .let { response ->
                 if (response.status != 204) {
-                    throw objectMapper.bodyToException(response.contentAsString)
+                    throw bodyToException(response.contentAsString)
                 }
             }
 }
