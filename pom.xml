@@ -379,6 +379,27 @@
                             <addCompileSourceRoot>true</addCompileSourceRoot>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>generate-nhn</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <inputSpec>${spec-submodule.path}/nhn-api-v1.json</inputSpec>
+                            <generatorName>kotlin</generatorName>
+                            <configOptions>
+                                <dateLibrary>java8</dateLibrary>
+                                <serializationLibrary>jackson</serializationLibrary>
+                            </configOptions>
+                            <modelPackage>${openapi.package-prefix}.nhn.model.v1</modelPackage>
+                            <generateApis>false</generateApis>
+                            <generateSupportingFiles>false</generateSupportingFiles>
+                            <generateApiTests>false</generateApiTests>
+                            <generateModelTests>false</generateModelTests>
+                            <addCompileSourceRoot>true</addCompileSourceRoot>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
