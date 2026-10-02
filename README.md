@@ -14,8 +14,7 @@ API-dokumentasjon finnes [her](https://developers.fiks.ks.no/tjenester/svarut/re
 |---------------|-------------|---------------------|
 | 1.x.x         | 11          | 9                   |
 | 2.x.x         | 17          | 11                  |
-| 3.x.x         | 17          | 12                  |
-| 4.x.x         | 17          | 12                  |
+| 3-6.x.x       | 17          | 12                  |
 
 #### Maven dependency
 
