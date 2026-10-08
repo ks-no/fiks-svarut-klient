@@ -32,12 +32,14 @@
         <jetty-client.version>12.1.13</jetty-client.version>
         <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
 
+        <openapi-generator-maven-plugin.version>7.26.0</openapi-generator-maven-plugin.version>
+
         <kotest.version>6.2.5</kotest.version>
 
         <!-- OpenAPI -->
         <spec-submodule.path>${project.basedir}/fiks-svarut-specs/specs</spec-submodule.path>
         <openapi.package-prefix>${project.groupId}.svarut</openapi.package-prefix>
-        
+
         <central-publishing-maven-plugin.ignorePublishedComponents>true</central-publishing-maven-plugin.ignorePublishedComponents>
     </properties>
 
@@ -145,6 +147,7 @@
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>${openapi-generator-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>generate-eksternref</id>
