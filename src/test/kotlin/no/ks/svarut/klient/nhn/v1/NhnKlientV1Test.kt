@@ -31,7 +31,7 @@ class NhnKlientV1Test : StringSpec({
             status = 200,
             body = CommunicationParty(
                 herId = 12345,
-                type = CommunicationPartyType.ORGANIZATION,
+                type = CommunicationPartyType.Organization,
                 amqpTransportStatus = AmqpTransportStatus.Enabled,
                 name = "Oslo Legevakt",
             ),
@@ -43,7 +43,7 @@ class NhnKlientV1Test : StringSpec({
         ) { klient ->
             klient.adresseregisterOppslag(12345).asClue {
                 it.herId shouldBe 12345
-                it.type shouldBe CommunicationPartyType.ORGANIZATION
+                it.type shouldBe CommunicationPartyType.Organization
                 it.amqpTransportStatus shouldBe AmqpTransportStatus.Enabled
                 it.name shouldBe "Oslo Legevakt"
             }
