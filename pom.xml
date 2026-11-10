@@ -12,7 +12,7 @@
 
     <groupId>no.ks.fiks</groupId>
     <artifactId>fiks-svarut-klient</artifactId>
-    <version>6.1.1-SNAPSHOT</version>
+    <version>6.1.1-nhn2-SNAPSHOT</version>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Client for interacting with SvarUt</description>
     <url>https://github.com/ks-no/fiks-svarut-klient</url>
@@ -375,6 +375,27 @@
                                 <serializationLibrary>jackson</serializationLibrary>
                             </configOptions>
                             <modelPackage>${openapi.package-prefix}.mottakersystem.model.v2</modelPackage>
+                            <generateApis>false</generateApis>
+                            <generateSupportingFiles>false</generateSupportingFiles>
+                            <generateApiTests>false</generateApiTests>
+                            <generateModelTests>false</generateModelTests>
+                            <addCompileSourceRoot>true</addCompileSourceRoot>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-nhn</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <inputSpec>${spec-submodule.path}/nhn-api-v1.json</inputSpec>
+                            <generatorName>kotlin</generatorName>
+                            <configOptions>
+                                <dateLibrary>java8</dateLibrary>
+                                <serializationLibrary>jackson</serializationLibrary>
+                            </configOptions>
+                            <modelPackage>${openapi.package-prefix}.nhn.model.v1</modelPackage>
                             <generateApis>false</generateApis>
                             <generateSupportingFiles>false</generateSupportingFiles>
                             <generateApiTests>false</generateApiTests>
