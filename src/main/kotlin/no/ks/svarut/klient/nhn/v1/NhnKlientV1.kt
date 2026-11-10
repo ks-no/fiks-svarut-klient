@@ -7,6 +7,7 @@ import no.ks.svarut.klient.BaseKlient
 import no.ks.svarut.klient.HttpConfiguration
 import org.eclipse.jetty.client.Request
 import org.eclipse.jetty.http.HttpMethod
+import java.util.UUID
 import java.util.function.Function
 
 private const val BASE_PATH = "/api/v1/nhn"
@@ -18,12 +19,12 @@ class NhnKlientV1(
     httpConfig: HttpConfiguration = HttpConfiguration(),
 ) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor, httpConfig) {
 
-    private fun pathAdresseregisterOppslag(herId: Int) = "$BASE_PATH/oppslag/$herId"
+    private fun pathAdresseregisterOppslag(kontoId: UUID, herId: Int) = "$BASE_PATH/oppslag/$kontoId/$herId"
 
-    fun adresseregisterOppslag(herId: Int): CommunicationParty =
+    fun adresseregisterOppslag(kontoId: UUID, herId: Int): CommunicationParty =
         newRequest()
             .method(HttpMethod.GET)
-            .path(pathAdresseregisterOppslag(herId))
+            .path(pathAdresseregisterOppslag(kontoId, herId))
             .send()
             .let { response ->
                 if (response.status != 200) {

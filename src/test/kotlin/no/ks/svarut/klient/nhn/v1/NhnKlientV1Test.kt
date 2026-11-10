@@ -16,11 +16,14 @@ import no.ks.svarut.klient.SvarUtKlientException
 import org.eclipse.jetty.client.Request
 import java.net.InetSocketAddress
 import java.nio.charset.StandardCharsets.UTF_8
+import java.util.UUID
 import java.util.function.Function
 
 private val objectMapper = jacksonObjectMapper()
 
 class NhnKlientV1Test : StringSpec({
+
+    val kontoId = UUID.fromString("3fa85f64-5717-4562-b3fc-2c963f66afa6")
 
     "adresseregisterOppslag henter communication party for herId" {
         var requestPath: String? = null
@@ -41,7 +44,7 @@ class NhnKlientV1Test : StringSpec({
                 interceptorHeader = exchange.requestHeaders.getFirst("X-Test-Interceptor")
             },
         ) { klient ->
-            klient.adresseregisterOppslag(12345).asClue {
+            klient.adresseregisterOppslag(kontoId, 12345).asClue {
                 it.herId shouldBe 12345
                 it.type shouldBe CommunicationPartyType.Organization
                 it.amqpTransportStatus shouldBe AmqpTransportStatus.Enabled
@@ -49,7 +52,7 @@ class NhnKlientV1Test : StringSpec({
             }
         }
 
-        requestPath shouldBe "/api/v1/nhn/oppslag/12345"
+        requestPath shouldBe "/api/v1/nhn/oppslag/$kontoId/12345"
         authorizationHeader shouldBe "Bearer test-token"
         interceptorHeader shouldBe "applied"
     }
@@ -64,7 +67,7 @@ class NhnKlientV1Test : StringSpec({
             onRequest = {},
         ) { klient ->
             shouldThrow<SvarUtKlientException> {
-                klient.adresseregisterOppslag(99999)
+                klient.adresseregisterOppslag(kontoId, 99999)
             }.errorMessage.asClue {
                 it.status shouldBe 404
                 it.message shouldBe "Fant ikke communication party for herId 99999"
@@ -107,8 +110,3 @@ private fun withServerKlient(
         server.stop(0)
     }
 }
-
-
-
-
-
