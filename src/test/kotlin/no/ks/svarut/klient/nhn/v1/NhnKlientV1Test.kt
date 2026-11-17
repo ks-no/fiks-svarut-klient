@@ -52,7 +52,7 @@ class NhnKlientV1Test : StringSpec({
             }
         }
 
-        requestPath shouldBe "/api/v1/nhn/oppslag/$kontoId/12345"
+        requestPath shouldBe "/api/v1/nhn/konto/$kontoId/adresseregister/12345"
         authorizationHeader shouldBe "Bearer test-token"
         interceptorHeader shouldBe "applied"
     }

@@ -19,7 +19,7 @@ class NhnKlientV1(
     httpConfig: HttpConfiguration = HttpConfiguration(),
 ) : BaseKlient(baseUrl, authenticationStrategy, requestInterceptor, httpConfig) {
 
-    private fun pathAdresseregisterOppslag(kontoId: UUID, herId: Int) = "$BASE_PATH/oppslag/$kontoId/$herId"
+    private fun pathAdresseregisterOppslag(kontoId: UUID, herId: Int) = "$BASE_PATH/konto/$kontoId/adresseregister/$herId"
 
     fun adresseregisterOppslag(kontoId: UUID, herId: Int): CommunicationParty =
         newRequest()
