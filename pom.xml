@@ -34,7 +34,7 @@
 
         <openapi-generator-maven-plugin.version>7.27.0</openapi-generator-maven-plugin.version>
 
-        <kotest.version>6.2.5</kotest.version>
+        <kotest.version>6.2.7</kotest.version>
 
         <!-- OpenAPI -->
         <spec-submodule.path>${project.basedir}/fiks-svarut-specs/specs</spec-submodule.path>
